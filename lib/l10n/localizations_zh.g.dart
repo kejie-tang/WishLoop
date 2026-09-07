@@ -2489,9 +2489,6 @@ class L10nZh extends L10n {
   }
 
   @override
-  String get wBackfillHelp => '补记按当前兴趣规则和金额入账；撤销会退回原记录的金额。';
-
-  @override
   String get wSignedRewardHelp => '正数用于奖励，负数用于记录不好的习惯并扣减。金额自动四舍五入到两位小数。';
 
   @override
@@ -2528,9 +2525,6 @@ class L10nZh extends L10n {
 
   @override
   String get wEstimateUnavailable => '暂无法预计：近14天净奖励未增长';
-
-  @override
-  String get wEstimateHelp => '按含今天的最近14个自然日净奖励估算，未打卡日计为0。';
 
   @override
   String get wSwitchToMonth => '切换到月视图';

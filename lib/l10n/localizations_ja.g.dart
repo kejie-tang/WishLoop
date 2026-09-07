@@ -2594,10 +2594,6 @@ class L10nJa extends L10n {
   }
 
   @override
-  String get wBackfillHelp =>
-      'Backfill uses current hobby rules and amount. Undo reverses the original recorded amount.';
-
-  @override
   String get wSignedRewardHelp =>
       'Positive amounts reward you; negative amounts deduct for unwanted habits. Amounts round to two decimal places.';
 
@@ -2636,10 +2632,6 @@ class L10nJa extends L10n {
   @override
   String get wEstimateUnavailable =>
       'No estimate: net rewards over the last 14 days are not positive';
-
-  @override
-  String get wEstimateHelp =>
-      'Based on net hobby rewards over 14 calendar days including today; unrecorded days count as zero.';
 
   @override
   String get wSwitchToMonth => 'Switch to month view';

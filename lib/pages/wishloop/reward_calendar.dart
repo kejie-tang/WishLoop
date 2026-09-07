@@ -336,7 +336,12 @@ class _RewardCalendarState extends State<RewardCalendar>
         ? Colors.white
         : const Color(0xFF181818);
     final selected = day == widget.selectedDay;
-    final amount = RewardMoney.format(net, locale: l.localeName, signed: true);
+    final amount = RewardMoney.format(
+      net,
+      locale: l.localeName,
+      signed: true,
+      showSymbol: false,
+    );
     return Padding(
       padding: const EdgeInsets.all(2),
       child: Semantics(

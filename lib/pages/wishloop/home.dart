@@ -132,7 +132,10 @@ class _WishLoopHomeState extends State<WishLoopHome>
       feedback(
         context,
         reward < 0
-            ? l.wPenaltyFeedback(hobby.name, money(context, reward.abs()))
+            ? l.wPenaltyFeedback(
+                hobby.name,
+                money(context, reward, signed: true),
+              )
             : l.wCompleteFeedback(
                 hobby.name,
                 money(context, reward, signed: true),
@@ -305,8 +308,6 @@ class _WishLoopHomeState extends State<WishLoopHome>
           style: theme.textTheme.titleLarge,
         ),
         Text(l.wSelectedNet(money(context, s.dayNetMinor, signed: true))),
-        if (day != _vm.repository.today)
-          Text(l.wBackfillHelp, style: theme.textTheme.bodySmall),
         const SizedBox(height: 16),
         if (s.hobbies.isEmpty && due.isEmpty)
           EmptyWalletSection(

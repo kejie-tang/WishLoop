@@ -1699,7 +1699,6 @@
     "wFutureDay": "未来日期，不能提前记录",
     "wDateHobbies": "{date}的兴趣",
     "wSelectedNet": "当天净奖励 {amount}",
-    "wBackfillHelp": "补记按当前兴趣规则和金额入账；撤销会退回原记录的金额。",
     "wSignedRewardHelp": "正数用于奖励，负数用于记录不好的习惯并扣减。金额自动四舍五入到两位小数。",
     "wPenalty": "习惯扣减",
     "wPenaltyLabel": "发生扣减 {amount}",
@@ -1710,7 +1709,6 @@
     "wEstimateReached": "已达到目标",
     "wEstimateDays": "预计还要 {days} 天",
     "wEstimateUnavailable": "暂无法预计：近14天净奖励未增长",
-    "wEstimateHelp": "按含今天的最近14个自然日净奖励估算，未打卡日计为0。",
     "wSwitchToMonth": "切换到月视图",
     "wSwitchToWeek": "切换到周视图"
 }

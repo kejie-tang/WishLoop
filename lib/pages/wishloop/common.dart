@@ -12,6 +12,7 @@ String money(BuildContext context, int amount, {bool signed = false}) =>
       amount,
       locale: L10n.of(context)!.localeName,
       signed: signed,
+      showSymbol: !signed,
     );
 
 void feedback(

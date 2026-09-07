@@ -4301,12 +4301,6 @@ abstract class L10n {
   /// **'Selected day: {amount} net'**
   String wSelectedNet(String amount);
 
-  /// No description provided for @wBackfillHelp.
-  ///
-  /// In en, this message translates to:
-  /// **'Backfill uses current hobby rules and amount. Undo reverses the original recorded amount.'**
-  String get wBackfillHelp;
-
   /// No description provided for @wSignedRewardHelp.
   ///
   /// In en, this message translates to:
@@ -4366,12 +4360,6 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'No estimate: net rewards over the last 14 days are not positive'**
   String get wEstimateUnavailable;
-
-  /// No description provided for @wEstimateHelp.
-  ///
-  /// In en, this message translates to:
-  /// **'Based on net hobby rewards over 14 calendar days including today; unrecorded days count as zero.'**
-  String get wEstimateHelp;
 
   /// No description provided for @wSwitchToMonth.
   ///

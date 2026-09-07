@@ -39,6 +39,7 @@ abstract final class RewardMoney {
     int minor, {
     String locale = 'en',
     bool showCode = false,
+    bool showSymbol = true,
     bool signed = false,
   }) {
     final sign = minor < 0
@@ -50,6 +51,11 @@ abstract final class RewardMoney {
       locale,
     ).format(minor.abs() ~/ 100);
     final fraction = (minor.abs() % 100).toString().padLeft(2, '0');
-    return '$sign${showCode ? '$currency ' : '¥'}$whole.$fraction';
+    final unit = showCode
+        ? '$currency '
+        : showSymbol
+        ? '¥'
+        : '';
+    return '$sign$unit$whole.$fraction';
   }
 }

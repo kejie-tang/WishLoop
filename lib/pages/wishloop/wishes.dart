@@ -67,7 +67,6 @@ class WishProgress extends StatelessWidget {
           key: ValueKey('estimate-${wish.id}'),
           style: Theme.of(context).textTheme.titleSmall,
         ),
-        Text(l.wEstimateHelp, style: Theme.of(context).textTheme.bodySmall),
       ],
     );
   }
