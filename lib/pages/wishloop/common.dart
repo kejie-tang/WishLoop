@@ -140,3 +140,49 @@ class EmptyWalletSection extends StatelessWidget {
     ),
   );
 }
+
+/// Normalizes decimal input on blur while preserving integer-only parsing.
+class MoneyFormField extends StatelessWidget {
+  final TextEditingController controller;
+  final String label;
+  final String? helper;
+  final bool signed, allowZero;
+  const MoneyFormField({
+    super.key,
+    required this.controller,
+    required this.label,
+    this.helper,
+    this.signed = false,
+    this.allowZero = true,
+  });
+  @override
+  Widget build(BuildContext context) {
+    final l = L10n.of(context)!;
+    return Focus(
+      onFocusChange: (focused) {
+        if (!focused) {
+          final minor = RewardMoney.parse(controller.text, signed: signed);
+          if (minor != null) controller.text = RewardMoney.decimal(minor);
+        }
+      },
+      child: TextFormField(
+        controller: controller,
+        decoration: InputDecoration(
+          labelText: label,
+          helperText: helper,
+          helperMaxLines: 3,
+        ),
+        keyboardType: TextInputType.numberWithOptions(
+          decimal: true,
+          signed: signed,
+        ),
+        validator: (value) {
+          final minor = RewardMoney.parse(value ?? '', signed: signed);
+          return minor == null || (!allowZero && minor == 0)
+              ? l.wInvalid
+              : null;
+        },
+      ),
+    );
+  }
+}

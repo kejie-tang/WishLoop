@@ -105,7 +105,8 @@ class _TransactionTile extends StatelessWidget {
     final t = transaction;
     final l = L10n.of(context)!;
     final (icon, label) = switch (t.type) {
-      WalletTransactionType.earn => (Icons.add, l.wEarn),
+      WalletTransactionType.earn =>
+        t.amountMinor < 0 ? (Icons.remove, l.wPenalty) : (Icons.add, l.wEarn),
       WalletTransactionType.spend => (Icons.card_giftcard, l.wSpend),
       WalletTransactionType.adjustment => (Icons.tune, l.wAdjustment),
     };
@@ -182,18 +183,12 @@ class _AdjustmentDialogState extends State<_AdjustmentDialog> {
           children: [
             Text(l.wAdjustHelp),
             const SizedBox(height: 20),
-            TextFormField(
+            MoneyFormField(
               key: const ValueKey('adjust-amount'),
               controller: _amount,
-              decoration: InputDecoration(labelText: l.wAmount),
-              keyboardType: const TextInputType.numberWithOptions(
-                decimal: true,
-                signed: true,
-              ),
-              validator: (v) =>
-                  (RewardMoney.parse(v ?? '', signed: true) ?? 0) == 0
-                  ? l.wInvalid
-                  : null,
+              label: l.wAmount,
+              signed: true,
+              allowZero: false,
             ),
             const SizedBox(height: 16),
             TextFormField(

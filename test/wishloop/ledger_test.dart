@@ -55,7 +55,7 @@ void main() {
       expect(await repo.complete(hobby), 500);
       final state = await repo.load();
       expect(state.balanceMinor, 500);
-      expect(state.todayEarnedMinor, 500);
+      expect(state.dayNetMinor, 500);
       expect(state.monthEarnedMinor, 500);
       expect(state.transactions.single.type, WalletTransactionType.earn);
       final checkin = (await helper.db.query('hw_checkins')).single;
@@ -238,7 +238,7 @@ void main() {
     final day = repo.today;
     await repo.complete(hobby);
     now = DateTime(2026, 10, 1);
-    expect((await repo.load()).todayEarnedMinor, 0);
+    expect((await repo.load()).dayNetMinor, 0);
     expect((await repo.load()).monthEarnedMinor, 0);
     await repo.complete(hobby);
     await repo.undo(hobby, day);
@@ -360,14 +360,7 @@ void main() {
     expect(RewardMoney.parse('+300', signed: true), 30000);
     expect(RewardMoney.parse('0.29'), 29);
     expect(RewardMoney.parse('-3.50', signed: true), -350);
-    for (final value in [
-      '1.234',
-      'NaN',
-      'Infinity',
-      '1e5',
-      '-1',
-      '10000000000',
-    ]) {
+    for (final value in ['NaN', 'Infinity', '1e5', '-1', '10000000000']) {
       expect(RewardMoney.parse(value), isNull);
     }
     expect(RewardMoney.format(350), '¥3.50');
@@ -416,7 +409,7 @@ void main() {
       await databaseFactory.setDatabasesPath(dir.path);
       final upgraded = DBHelper();
       await upgraded.init();
-      expect(await upgraded.db.getVersion(), 9);
+      expect(await upgraded.db.getVersion(), 10);
       expect((await upgraded.db.query('mh_habits')).single['name'], 'Existing');
       expect((await upgraded.db.query('mh_habits')).single['reward_minor'], 0);
       expect(

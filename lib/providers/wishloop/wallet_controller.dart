@@ -14,6 +14,14 @@ class WalletController extends ChangeNotifier {
   bool busy = false;
   Object? error;
   bool _disposed = false;
+  HabitDate? _selectedDay;
+  int _refreshGeneration = 0;
+  HabitDate get selectedDay => _selectedDay ?? repository.today;
+
+  Future<void> selectDay(HabitDate day) async {
+    if (day.epochDay > repository.today.epochDay || day.year < 1900) return;
+    await run(() async => _selectedDay = day == repository.today ? null : day);
+  }
 
   WalletController(this.repository);
   void _notify() {
@@ -21,15 +29,20 @@ class WalletController extends ChangeNotifier {
   }
 
   Future<void> refresh() async {
+    final generation = ++_refreshGeneration;
     try {
-      snapshot = await repository.load();
+      final value = await repository.load(onDay: selectedDay);
+      if (generation != _refreshGeneration) return;
+      snapshot = value;
       error = null;
     } catch (e, stack) {
       error = e;
       debugPrint('WishLoop load failed: $e\n$stack');
     } finally {
-      loading = false;
-      _notify();
+      if (generation == _refreshGeneration) {
+        loading = false;
+        _notify();
+      }
     }
   }
 
@@ -49,7 +62,8 @@ class WalletController extends ChangeNotifier {
     }
   }
 
-  Future<int?> complete(String id) => run<int?>(() => repository.complete(id));
+  Future<int?> complete(String id, {HabitDate? onDay}) =>
+      run<int?>(() => repository.complete(id, onDay: onDay ?? selectedDay));
   Future<bool?> undo(String id, HabitDate day) =>
       run(() => repository.undo(id, day));
 

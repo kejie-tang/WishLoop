@@ -1,3 +1,4 @@
+// Frozen v1.0.0 / database v9 schema, for real upgrade regression tests.
 // Copyright 2026 Hobby Wallet contributors
 // SPDX-License-Identifier: Apache-2.0
 
@@ -5,7 +6,7 @@ import 'package:sqflite/sqflite.dart';
 
 /// Called inside sqflite's onCreate/onUpgrade transaction. Never removes
 /// existing habits, records, groups, settings, or sync metadata.
-abstract final class HobbyWalletSchema {
+abstract final class LegacyWalletV9Schema {
   static Future<void> migrate(DatabaseExecutor db) async {
     final columns = (await db.rawQuery(
       'PRAGMA table_info(mh_habits)',
@@ -13,7 +14,7 @@ abstract final class HobbyWalletSchema {
     const additions = {
       'hobby_emoji': "TEXT NOT NULL DEFAULT '🌱'",
       'reward_minor':
-          'INTEGER NOT NULL DEFAULT 0 CHECK(reward_minor BETWEEN -999999999999 AND 999999999999)',
+          'INTEGER NOT NULL DEFAULT 0 CHECK(reward_minor BETWEEN 0 AND 999999999999)',
       'duration_minutes':
           'INTEGER NOT NULL DEFAULT 30 CHECK(duration_minutes BETWEEN 1 AND 1440)',
       'weekday_mask':
@@ -31,83 +32,13 @@ abstract final class HobbyWalletSchema {
     }
   }
 
-  /// v9 → v10: SQLite's documented create/copy/drop/rename procedure. The
-  /// opener disables foreign keys BEFORE the migration transaction and enables
-  /// them onOpen. Rows, IDs, indexes, triggers and references are preserved.
-  static Future<void> upgradeToSigned(Database db) async {
-    const tables = ['mh_habits', 'hw_checkins', 'hw_transactions'];
-    final triggers = await db.rawQuery(
-      "SELECT name, sql FROM sqlite_master WHERE type = 'trigger' AND sql IS NOT NULL",
-    );
-    for (final trigger in triggers) {
-      final name = (trigger['name'] as String).replaceAll('"', '""');
-      await db.execute('DROP TRIGGER "$name"');
-    }
-    for (final table in tables) {
-      final schema =
-          (await db.rawQuery(
-                "SELECT sql FROM sqlite_master WHERE type = 'table' AND name = ?",
-                [table],
-              )).single['sql']
-              as String;
-      final indexes = await db.rawQuery(
-        "SELECT sql FROM sqlite_master WHERE type = 'index' AND tbl_name = ? AND sql IS NOT NULL",
-        [table],
-      );
-      final sequence = await db.query(
-        'sqlite_sequence',
-        where: 'name = ?',
-        whereArgs: [table],
-      );
-      final temporary = '${table}_signed_v10';
-      final revised = schema
-          .replaceFirst(table, temporary)
-          .replaceAll(
-            'reward_minor BETWEEN 0 AND 999999999999',
-            'reward_minor BETWEEN -999999999999 AND 999999999999',
-          )
-          .replaceAll(
-            "AND source_type = 'CHECK_IN' AND amount_minor >= 0",
-            "AND source_type = 'CHECK_IN'",
-          );
-      await db.execute(revised);
-      await db.execute('INSERT INTO $temporary SELECT * FROM $table');
-      await db.execute('DROP TABLE $table');
-      await db.execute('ALTER TABLE $temporary RENAME TO $table');
-      if (sequence.isNotEmpty) {
-        final values = {'seq': sequence.single['seq']};
-        if (await db.update(
-              'sqlite_sequence',
-              values,
-              where: 'name = ?',
-              whereArgs: [table],
-            ) ==
-            0) {
-          await db.insert('sqlite_sequence', {'name': table, ...values});
-        }
-      }
-      for (final index in indexes) {
-        await db.execute(index['sql'] as String);
-      }
-    }
-    for (final trigger in triggers) {
-      await db.execute(trigger['sql'] as String);
-    }
-    await db.execute(
-      'CREATE INDEX IF NOT EXISTS hw_checkins_day ON hw_checkins(day)',
-    );
-    if ((await db.rawQuery('PRAGMA foreign_key_check')).isNotEmpty) {
-      throw StateError('Foreign key validation failed during v10 migration');
-    }
-  }
-
   static const _statements = [
     '''CREATE TABLE IF NOT EXISTS hw_checkins (
       id TEXT PRIMARY KEY NOT NULL,
       habit_uuid TEXT NOT NULL REFERENCES mh_habits(uuid),
       day INTEGER NOT NULL,
       record_uuid TEXT NOT NULL UNIQUE REFERENCES mh_records(uuid),
-      reward_minor INTEGER NOT NULL CHECK(reward_minor BETWEEN -999999999999 AND 999999999999),
+      reward_minor INTEGER NOT NULL CHECK(reward_minor BETWEEN 0 AND 999999999999),
       completion_value REAL NOT NULL,
       completed_at INTEGER NOT NULL,
       previous_record TEXT,
@@ -123,11 +54,10 @@ abstract final class HobbyWalletSchema {
       timestamp INTEGER NOT NULL,
       currency TEXT NOT NULL DEFAULT 'CNY' CHECK(currency = 'CNY'),
       UNIQUE(source_type, source_id),
-      CHECK((type = 'EARN' AND source_type = 'CHECK_IN')
+      CHECK((type = 'EARN' AND source_type = 'CHECK_IN' AND amount_minor >= 0)
         OR (type = 'SPEND' AND source_type = 'WISHLIST' AND amount_minor < 0)
         OR (type = 'ADJUSTMENT' AND source_type = 'MANUAL' AND amount_minor != 0))
     )''',
-    'CREATE INDEX IF NOT EXISTS hw_checkins_day ON hw_checkins(day)',
     'CREATE INDEX IF NOT EXISTS hw_transactions_time ON hw_transactions(timestamp DESC)',
     '''CREATE TABLE IF NOT EXISTS hw_wishlist (
       id TEXT PRIMARY KEY NOT NULL,

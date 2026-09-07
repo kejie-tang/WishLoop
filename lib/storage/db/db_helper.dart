@@ -251,11 +251,18 @@ class _DBHelper implements DBHelper {
       onCreate: _onCreate,
       onUpgrade: (db, oldVersion, newVersion) async {
         await _onUpgrade(db, oldVersion, newVersion);
-        if (oldVersion < 9) await HobbyWalletSchema.migrate(db);
+        if (oldVersion < 9) {
+          await HobbyWalletSchema.migrate(db);
+        } else if (oldVersion < 10) {
+          await HobbyWalletSchema.upgradeToSigned(db);
+        }
       },
       onConfigure: (db) async {
-        await db.execute("PRAGMA foreign_keys = ON");
+        // SQLite cannot change foreign_keys from inside onUpgrade's transaction.
+        final migratingV9 = await db.getVersion() == 9;
+        await db.execute('PRAGMA foreign_keys = ${migratingV9 ? 'OFF' : 'ON'}');
       },
+      onOpen: (db) async => db.execute('PRAGMA foreign_keys = ON'),
       singleInstance: false,
     );
   }

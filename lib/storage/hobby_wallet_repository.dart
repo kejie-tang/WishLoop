@@ -44,22 +44,21 @@ class HobbyWalletRepository {
     }
   }
 
-  Future<HobbyWalletSnapshot> load() => _db.transaction((db) async {
+  Future<HobbyWalletSnapshot> load({HabitDate? onDay}) => _db.transaction((
+    db,
+  ) async {
     final current = now();
-    final day = HabitDate.dateTime(current);
-    final monthStart = DateTime(
-      current.year,
-      current.month,
-    ).millisecondsSinceEpoch;
-    final nextMonth = DateTime(
-      current.year,
-      current.month + 1,
-    ).millisecondsSinceEpoch;
-    final hobbies = (await db.query(
-      'mh_habits',
-      where: 'status IN (1,3)',
-      orderBy: 'status, sort_position, id_',
+    final currentDay = HabitDate.dateTime(current);
+    final day = onDay ?? currentDay;
+    final monthStart = HabitDate(current.year, current.month);
+    final nextMonth = HabitDate(current.year, current.month + 1);
+    final allHobbies = (await db.rawQuery(
+      '''SELECT h.* FROM mh_habits h WHERE h.status IN (1,3) OR EXISTS
+        (SELECT 1 FROM mh_records r WHERE r.parent_uuid = h.uuid AND r.record_date = ?)
+        ORDER BY h.status, h.sort_position, h.id_''',
+      [day.epochDay],
     )).map(Hobby.fromRow).toList();
+    final hobbies = allHobbies.where((h) => h.habit.status != 2).toList();
     final completions = await db.query(
       'hw_checkins',
       where: 'day = ?',
@@ -71,16 +70,42 @@ class HobbyWalletRepository {
     );
     final dueIds = <String>{};
     for (final hobby in hobbies) {
-      if (await _isDue(db, hobby, day)) dueIds.add(hobby.id);
+      if (day.epochDay <= currentDay.epochDay &&
+          await _isDue(
+            db,
+            hobby,
+            day,
+            backfill: day.epochDay < currentDay.epochDay,
+          )) {
+        dueIds.add(hobby.id);
+      }
     }
-    final earned =
-        (await db.rawQuery(
-              "SELECT COALESCE(SUM(amount_minor),0) AS total FROM hw_transactions WHERE type = 'EARN' AND timestamp >= ? AND timestamp < ?",
-              [monthStart, nextMonth],
-            )).single['total']
-            as int;
+    final dailyNet = <int, int>{
+      for (final r in await db.rawQuery(
+        """SELECT c.day, SUM(t.amount_minor) AS total FROM hw_checkins c
+        JOIN hw_transactions t ON t.source_type = 'CHECK_IN' AND t.source_id = c.id
+        GROUP BY c.day""",
+      ))
+        r['day'] as int: r['total'] as int,
+    };
+    int sumBetween(int start, int end) => dailyNet.entries
+        .where((e) => e.key >= start && e.key < end)
+        .fold(0, (sum, e) => sum + e.value);
+    final completedIds = legacyDone
+        .map((r) => r['parent_uuid'] as String)
+        .toSet();
     return HobbyWalletSnapshot(
       hobbies: List.unmodifiable(hobbies),
+      dayHobbies: List.unmodifiable(
+        allHobbies.where(
+          (h) => dueIds.contains(h.id) || completedIds.contains(h.id),
+        ),
+      ),
+      dailyNetMinor: Map.unmodifiable(dailyNet),
+      recent14NetMinor: sumBetween(
+        currentDay.epochDay - 13,
+        currentDay.epochDay + 1,
+      ),
       transactions: List.unmodifiable(
         (await db.query(
           'hw_transactions',
@@ -100,7 +125,7 @@ class HobbyWalletRepository {
           orderBy: 'timestamp DESC',
         )).map(WishlistRedemption.fromRow),
       ),
-      todayCompletions: Map.unmodifiable({
+      dayCompletions: Map.unmodifiable({
         for (final c in completions)
           c['habit_uuid'] as String: c['reward_minor'] as int,
       }),
@@ -110,18 +135,27 @@ class HobbyWalletRepository {
       completedIds: Set.unmodifiable(
         legacyDone.map((r) => r['parent_uuid'] as String),
       ),
-      todayEarnedMinor: completions.fold(
+      dayNetMinor: completions.fold(
         0,
         (sum, c) => sum + (c['reward_minor'] as int),
       ),
-      monthEarnedMinor: earned,
+      monthEarnedMinor: sumBetween(monthStart.epochDay, nextMonth.epochDay),
     );
   });
 
   /// Existing frequency quotas are preserved. Custom periods are anchored to
   /// the original start date; weekly periods start on Monday.
-  Future<bool> _isDue(DatabaseExecutor db, Hobby hobby, HabitDate day) async {
-    if (!hobby.isScheduled(day)) return false;
+  Future<bool> _isDue(
+    DatabaseExecutor db,
+    Hobby hobby,
+    HabitDate day, {
+    bool backfill = false,
+  }) async {
+    if (hobby.habit.status != HabitStatus.activated.dbCode ||
+        hobby.weekdayMask & (1 << (day.weekday - 1)) == 0 ||
+        (!backfill && day.epochDay < hobby.habit.startDate!)) {
+      return false;
+    }
     final frequency = hobby.frequency;
     if (frequency.isDaily) return true;
     final HabitDate start;
@@ -172,8 +206,7 @@ class HobbyWalletRepository {
         description.length > 2000 ||
         durationMinutes < 1 ||
         durationMinutes > 1440 ||
-        rewardMinor < 0 ||
-        rewardMinor > RewardMoney.maxMinor ||
+        rewardMinor.abs() > RewardMoney.maxMinor ||
         weekdayMask < 1 ||
         weekdayMask > 127 ||
         frequency.freq < 1 ||
@@ -251,8 +284,13 @@ class HobbyWalletRepository {
   }
 
   /// Returns the reward only for a new completion. Duplicate taps return null.
-  Future<int?> complete(String hobbyId) => _db.transaction((db) async {
-    final day = today;
+  Future<int?> complete(String hobbyId, {HabitDate? onDay}) => _db.transaction((
+    db,
+  ) async {
+    final day = onDay ?? today;
+    if (day.epochDay > today.epochDay || day.year < 1900) {
+      throw const WalletException(WalletFailure.invalidInput);
+    }
     final id = genRecordUUID(hobbyId, day.epochDay);
     if ((await db.query(
       'hw_checkins',
@@ -270,7 +308,12 @@ class HobbyWalletRepository {
       throw const WalletException(WalletFailure.missingHobby);
     }
     final hobby = Hobby.fromRow(rows.single);
-    if (!await _isDue(db, hobby, day)) {
+    if (!await _isDue(
+      db,
+      hobby,
+      day,
+      backfill: day.epochDay < today.epochDay,
+    )) {
       throw const WalletException(WalletFailure.invalidInput);
     }
     await _checkBalanceRange(db, hobby.rewardMinor);
@@ -288,6 +331,20 @@ class HobbyWalletRepository {
               : (r['record_value'] as num) >= hobby.habit.dailyGoal!),
     )) {
       return null;
+    }
+    // Backfill may predate creation. Extend the habit start without changing
+    // the phase of an existing custom schedule, then keep original record APIs.
+    if (day.epochDay < hobby.habit.startDate!) {
+      final f = hobby.frequency;
+      final start = f.type == HabitFrequencyType.custom && !f.isDaily
+          ? day.subtractDays((day.epochDay - hobby.habit.startDate!) % f.days)
+          : day;
+      await db.update(
+        'mh_habits',
+        {'start_date': start.epochDay},
+        where: 'uuid = ?',
+        whereArgs: [hobbyId],
+      );
     }
     final recordId = previous.isEmpty ? id : previous.single['uuid'] as String;
     final completionValue = hobby.habit.type == 2 ? 0 : hobby.habit.dailyGoal!;
@@ -328,7 +385,10 @@ class HobbyWalletRepository {
       'source_type': 'CHECK_IN',
       'source_id': id,
       'title': hobby.name,
-      'timestamp': stamp,
+      // Ledger date follows the selected day; completed_at retains entry time.
+      'timestamp': day == today
+          ? stamp
+          : DateTime(day.year, day.month, day.day, 12).millisecondsSinceEpoch,
     });
     return hobby.rewardMinor;
   });

@@ -17,6 +17,7 @@ import '../../reminders/notification_channel.dart';
 import '../../reminders/wishloop_reminders.dart';
 import 'common.dart';
 import 'editors.dart';
+import 'reward_calendar.dart';
 import 'settings.dart';
 import 'wallet.dart';
 import 'wishes.dart';
@@ -124,13 +125,18 @@ class _WishLoopHomeState extends State<WishLoopHome>
 
   Future<void> _complete(Hobby hobby) async {
     final l = L10n.of(context)!;
-    final day = _vm.repository.today;
+    final day = _vm.snapshot.day ?? _vm.selectedDay;
     await perform(context, () async {
-      final reward = await _vm.complete(hobby.id);
+      final reward = await _vm.complete(hobby.id, onDay: day);
       if (!mounted || reward == null) return;
       feedback(
         context,
-        l.wCompleteFeedback(hobby.name, money(context, reward, signed: true)),
+        reward < 0
+            ? l.wPenaltyFeedback(hobby.name, money(context, reward.abs()))
+            : l.wCompleteFeedback(
+                hobby.name,
+                money(context, reward, signed: true),
+              ),
         action: SnackBarAction(
           label: l.wUndo,
           onPressed: () => _undo(hobby, day),
@@ -231,113 +237,104 @@ class _WishLoopHomeState extends State<WishLoopHome>
   Widget _today(BuildContext context, HobbyWalletSnapshot s) {
     final l = L10n.of(context)!;
     final theme = Theme.of(context);
-    final due = s.hobbies
-        .where(
-          (h) =>
-              !h.archived &&
-              (s.dueIds.contains(h.id) || s.completedIds.contains(h.id)),
-        )
-        .toList();
+    final due = s.dayHobbies;
+    final day = s.day ?? _vm.selectedDay;
     final primary = s.wishes
         .where((w) => w.isPrimary && w.status == WishlistStatus.active)
         .firstOrNull;
-    return RefreshIndicator(
-      onRefresh: _vm.refresh,
-      child: ListView(
-        key: const PageStorageKey('today-scroll'),
-        physics: const AlwaysScrollableScrollPhysics(),
-        padding: const EdgeInsets.fromLTRB(20, 8, 20, 28),
-        children: [
-          Text(
-            DateFormat.MMMMEEEEd(
-              l.localeName,
-            ).format(s.day ?? _vm.repository.today),
-            style: theme.textTheme.labelLarge,
+    return ListView(
+      key: const PageStorageKey('today-scroll'),
+      physics: const AlwaysScrollableScrollPhysics(),
+      padding: const EdgeInsets.fromLTRB(20, 8, 20, 28),
+      children: [
+        Text(
+          DateFormat.MMMMEEEEd(
+            l.localeName,
+          ).format(s.day ?? _vm.repository.today),
+          style: theme.textTheme.labelLarge,
+        ),
+        const SizedBox(height: 6),
+        Text(l.wSubtitle, style: theme.textTheme.bodyMedium),
+        const SizedBox(height: 24),
+        RewardCalendar(
+          today: _vm.repository.today,
+          selectedDay: day,
+          dailyNetMinor: s.dailyNetMinor,
+          enabled: !_vm.busy,
+          onSelected: (selected) => _vm.selectDay(selected),
+        ),
+        WalletCard(
+          color: theme.colorScheme.primaryContainer,
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(l.wWallet, style: theme.textTheme.titleMedium),
+              ),
+              Flexible(
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    money(context, s.balanceMinor),
+                    style: theme.textTheme.headlineSmall,
+                  ),
+                ),
+              ),
+            ],
           ),
-          const SizedBox(height: 6),
-          Text(l.wSubtitle, style: theme.textTheme.bodyMedium),
-          const SizedBox(height: 24),
+        ),
+        if (primary != null)
           WalletCard(
-            color: theme.colorScheme.primaryContainer,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(l.wTodayReward, style: theme.textTheme.titleMedium),
-                const SizedBox(height: 8),
-                AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 180),
-                  child: FittedBox(
-                    key: ValueKey(s.todayEarnedMinor),
-                    fit: BoxFit.scaleDown,
-                    child: Text(
-                      money(context, s.todayEarnedMinor),
-                      style: theme.textTheme.displayMedium?.copyWith(
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                const Divider(),
-                const SizedBox(height: 10),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        l.wWallet,
-                        style: theme.textTheme.titleMedium,
-                      ),
-                    ),
-                    Flexible(
-                      child: Text(
-                        money(context, s.balanceMinor),
-                        style: theme.textTheme.headlineSmall,
-                      ),
-                    ),
-                  ],
+                Text(l.wCurrentWish, style: theme.textTheme.labelLarge),
+                const SizedBox(height: 16),
+                WishProgress(
+                  wish: primary,
+                  balance: s.balanceMinor,
+                  recent14NetMinor: s.recent14NetMinor,
                 ),
               ],
             ),
           ),
-          if (primary != null)
-            WalletCard(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(l.wCurrentWish, style: theme.textTheme.labelLarge),
-                  const SizedBox(height: 16),
-                  WishProgress(wish: primary, balance: s.balanceMinor),
-                ],
-              ),
+        const SizedBox(height: 12),
+        Text(
+          l.wDateHobbies(DateFormat.yMMMd(l.localeName).format(day)),
+          key: const ValueKey('selected-day-title'),
+          style: theme.textTheme.titleLarge,
+        ),
+        Text(l.wSelectedNet(money(context, s.dayNetMinor, signed: true))),
+        if (day != _vm.repository.today)
+          Text(l.wBackfillHelp, style: theme.textTheme.bodySmall),
+        const SizedBox(height: 16),
+        if (s.hobbies.isEmpty && due.isEmpty)
+          EmptyWalletSection(
+            icon: Icons.spa_outlined,
+            title: l.wEmptyHobbies,
+            body: l.wEmptyHobbiesBody,
+            action: l.wAddHobby,
+            onAction: _edit,
+          )
+        else if (due.isEmpty)
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 32),
+            child: Text(l.wEmptyToday, textAlign: TextAlign.center),
+          ),
+        for (final h in due) _hobbyCard(context, h, today: true),
+        if (day == _vm.repository.today &&
+            due.any((h) => h.rewardMinor >= 0) &&
+            due
+                .where((h) => h.rewardMinor >= 0)
+                .every((h) => s.completedIds.contains(h.id)))
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 18),
+            child: Text(
+              l.wAllDone,
+              textAlign: TextAlign.center,
+              style: theme.textTheme.titleMedium,
             ),
-          const SizedBox(height: 12),
-          Text(l.wTodayHobbies, style: theme.textTheme.titleLarge),
-          const SizedBox(height: 16),
-          if (s.hobbies.isEmpty)
-            EmptyWalletSection(
-              icon: Icons.spa_outlined,
-              title: l.wEmptyHobbies,
-              body: l.wEmptyHobbiesBody,
-              action: l.wAddHobby,
-              onAction: _edit,
-            )
-          else if (due.isEmpty)
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 32),
-              child: Text(l.wEmptyToday, textAlign: TextAlign.center),
-            ),
-          for (final h in due) _hobbyCard(context, h, today: true),
-          if (due.isNotEmpty && due.every((h) => s.completedIds.contains(h.id)))
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 18),
-              child: Text(
-                l.wAllDone,
-                textAlign: TextAlign.center,
-                style: theme.textTheme.titleMedium,
-              ),
-            ),
-        ],
-      ),
+          ),
+      ],
     );
   }
 
@@ -372,6 +369,9 @@ class _WishLoopHomeState extends State<WishLoopHome>
     final l = L10n.of(context)!;
     final s = _vm.snapshot;
     final done = s.completedIds.contains(h.id);
+    final recordedReward = today && done
+        ? (s.dayCompletions[h.id] ?? 0)
+        : h.rewardMinor;
     final weekdays = h.weekdayMask == 127
         ? ''
         : [
@@ -467,12 +467,8 @@ class _WishLoopHomeState extends State<WishLoopHome>
           ],
           const SizedBox(height: 16),
           Text(
-            l.wRewardLabel(
-              money(
-                context,
-                today && done ? (s.todayCompletions[h.id] ?? 0) : h.rewardMinor,
-                signed: true,
-              ),
+            (recordedReward < 0 ? l.wPenaltyLabel : l.wRewardLabel)(
+              money(context, recordedReward, signed: true),
             ),
             style: TextStyle(
               color: Theme.of(context).colorScheme.primary,
@@ -486,7 +482,7 @@ class _WishLoopHomeState extends State<WishLoopHome>
                 if (done)
                   Expanded(
                     child: Text(
-                      l.wCompleted,
+                      h.rewardMinor < 0 ? l.wPenaltyRecorded : l.wCompleted,
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                   ),
@@ -503,7 +499,9 @@ class _WishLoopHomeState extends State<WishLoopHome>
                     child: FilledButton(
                       key: ValueKey('complete-${h.id}'),
                       onPressed: _vm.busy ? null : () => _complete(h),
-                      child: Text(l.wComplete),
+                      child: Text(
+                        h.rewardMinor < 0 ? l.wRecordPenalty : l.wComplete,
+                      ),
                     ),
                   ),
               ],

@@ -2134,7 +2134,7 @@ class L10nZh extends L10n {
   String get wTodayReward => '今日奖励';
 
   @override
-  String get wMonthReward => '本月奖励';
+  String get wMonthReward => '本月净奖励';
 
   @override
   String get wSubtitle => '把每一次坚持，存成喜欢的生活。';
@@ -2149,7 +2149,7 @@ class L10nZh extends L10n {
   String get wAllDone => '今天的坚持，已经存好了。';
 
   @override
-  String get wEmptyToday => '今天没有待完成的兴趣，给自己一点自由时间。';
+  String get wEmptyToday => '这一天没有待记录的兴趣。';
 
   @override
   String get wEmptyHobbies => '从一件喜欢的小事开始';
@@ -2191,7 +2191,7 @@ class L10nZh extends L10n {
   String get wDuration => '预计时长（分钟）';
 
   @override
-  String get wReward => '每次完成奖励（¥）';
+  String get wReward => '每次金额（¥）';
 
   @override
   String get wFrequency => '频率';
@@ -2375,7 +2375,7 @@ class L10nZh extends L10n {
   String get wLoadError => '暂时无法读取数据，请重试。';
 
   @override
-  String get wInvalid => '请输入有效内容，金额最多保留两位小数。';
+  String get wInvalid => '请输入有效内容和金额，金额自动保留两位小数。';
 
   @override
   String get wInsufficient => '奖励金不足，暂时无法兑换。';
@@ -2445,6 +2445,92 @@ class L10nZh extends L10n {
   String wReminderBody(String name, String amount) {
     return '今天的$name还没完成，完成后奖励 $amount。';
   }
+
+  @override
+  String get wRewardCalendar => '奖励日历';
+
+  @override
+  String get wCalendarWeek => '周';
+
+  @override
+  String get wCalendarMonth => '月';
+
+  @override
+  String get wPreviousPeriod => '上一周或月';
+
+  @override
+  String get wNextPeriod => '下一周或月';
+
+  @override
+  String wPeriodNet(String amount) {
+    return '净奖励 $amount';
+  }
+
+  @override
+  String get wCalendarLegend => '红色增加 · 绿色扣减 · 深浅按当前周/月归一化';
+
+  @override
+  String get wExpandMonth => '下滑展开月历，左右滑动翻周';
+
+  @override
+  String get wCollapseWeek => '标题处上滑收起周历，左右滑动翻月';
+
+  @override
+  String get wFutureDay => '未来日期，不能提前记录';
+
+  @override
+  String wDateHobbies(String date) {
+    return '$date的兴趣';
+  }
+
+  @override
+  String wSelectedNet(String amount) {
+    return '当天净奖励 $amount';
+  }
+
+  @override
+  String get wBackfillHelp => '补记按当前兴趣规则和金额入账；撤销会退回原记录的金额。';
+
+  @override
+  String get wSignedRewardHelp => '正数用于奖励，负数用于记录不好的习惯并扣减。金额自动四舍五入到两位小数。';
+
+  @override
+  String get wPenalty => '习惯扣减';
+
+  @override
+  String wPenaltyLabel(String amount) {
+    return '发生扣减 $amount';
+  }
+
+  @override
+  String get wRecordPenalty => '记录发生';
+
+  @override
+  String get wPenaltyRecorded => '已记录 ✓';
+
+  @override
+  String wPenaltyFeedback(String name, String amount) {
+    return '$name已记录，扣减 $amount';
+  }
+
+  @override
+  String wPenaltyReminder(String name, String amount) {
+    return '$name：提醒自己避免这个习惯，发生会扣减 $amount。';
+  }
+
+  @override
+  String get wEstimateReached => '已达到目标';
+
+  @override
+  String wEstimateDays(int days) {
+    return '预计还要 $days 天';
+  }
+
+  @override
+  String get wEstimateUnavailable => '暂无法预计：近14天净奖励未增长';
+
+  @override
+  String get wEstimateHelp => '按含今天的最近14个自然日净奖励估算，未打卡日计为0。';
 }
 
 /// The translations for Chinese, using the Han script (`zh_Hant`).

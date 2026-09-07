@@ -41,10 +41,21 @@ class WishLoopReminders {
             id: hobby.habit.id!,
             uuid: hobby.id,
             name: hobby.name,
-            quest: l10n.wReminderBody(
-              hobby.name,
-              RewardMoney.format(hobby.rewardMinor, locale: l10n.localeName),
-            ),
+            quest: hobby.rewardMinor < 0
+                ? l10n.wPenaltyReminder(
+                    hobby.name,
+                    RewardMoney.format(
+                      hobby.rewardMinor.abs(),
+                      locale: l10n.localeName,
+                    ),
+                  )
+                : l10n.wReminderBody(
+                    hobby.name,
+                    RewardMoney.format(
+                      hobby.rewardMinor,
+                      locale: l10n.localeName,
+                    ),
+                  ),
             reminder: HabitReminder.daily(time: reminder.time),
             lastUntrackDate: day,
             crtDate: next.subtract(const Duration(seconds: 1)),

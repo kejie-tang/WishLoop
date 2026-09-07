@@ -10,17 +10,24 @@ abstract final class RewardMoney {
   static const maxMinor = 999999999999;
 
   static int? parse(String input, {bool signed = false}) {
-    final value = input.trim();
+    final value = input.trim().replaceAll('−', '-').replaceAll('－', '-');
     if (!RegExp(
-      signed ? r'^[+-]?\d{1,10}(\.\d{1,2})?$' : r'^\d{1,10}(\.\d{1,2})?$',
-    ).hasMatch(value)) {
+          signed
+              ? r'^[+-]?(?:\d{1,10}(?:\.\d*)?|\.\d+)$'
+              : r'^(?:\d{1,10}(?:\.\d*)?|\.\d+)$',
+        ).hasMatch(value) ||
+        value.length > 100) {
       return null;
     }
     final negative = value.startsWith('-');
     final parts = value.replaceFirst(RegExp(r'^[+-]'), '').split('.');
+    final fraction = (parts.length == 1 ? '' : parts[1]).padRight(3, '0');
+    // Decimal half-up rounding on the magnitude, including negative values.
+    // Never parse money through a binary floating-point representation.
     final minor =
-        int.parse(parts.first) * 100 +
-        (parts.length == 1 ? 0 : int.parse(parts[1].padRight(2, '0')));
+        (int.tryParse(parts.first) ?? 0) * 100 +
+        int.parse(fraction.substring(0, 2)) +
+        (int.parse(fraction[2]) >= 5 ? 1 : 0);
     if (minor > maxMinor) return null;
     return negative ? -minor : minor;
   }

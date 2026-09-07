@@ -3644,7 +3644,7 @@ abstract class L10n {
   /// No description provided for @wMonthReward.
   ///
   /// In en, this message translates to:
-  /// **'This month’s rewards'**
+  /// **'Monthly net rewards'**
   String get wMonthReward;
 
   /// No description provided for @wSubtitle.
@@ -3674,7 +3674,7 @@ abstract class L10n {
   /// No description provided for @wEmptyToday.
   ///
   /// In en, this message translates to:
-  /// **'Nothing scheduled today. Enjoy some time for yourself.'**
+  /// **'No hobbies to record on this day.'**
   String get wEmptyToday;
 
   /// No description provided for @wEmptyHobbies.
@@ -3758,7 +3758,7 @@ abstract class L10n {
   /// No description provided for @wReward.
   ///
   /// In en, this message translates to:
-  /// **'Reward per check-in (¥)'**
+  /// **'Amount per occurrence (¥)'**
   String get wReward;
 
   /// No description provided for @wFrequency.
@@ -4124,7 +4124,7 @@ abstract class L10n {
   /// No description provided for @wInvalid.
   ///
   /// In en, this message translates to:
-  /// **'Enter a valid value. Amounts allow up to two decimal places.'**
+  /// **'Enter valid details and an amount; amounts round to two decimal places.'**
   String get wInvalid;
 
   /// No description provided for @wInsufficient.
@@ -4228,6 +4228,150 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'You haven’t completed {name} today. Your reward: {amount}.'**
   String wReminderBody(String name, String amount);
+
+  /// No description provided for @wRewardCalendar.
+  ///
+  /// In en, this message translates to:
+  /// **'Reward calendar'**
+  String get wRewardCalendar;
+
+  /// No description provided for @wCalendarWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'Week'**
+  String get wCalendarWeek;
+
+  /// No description provided for @wCalendarMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'Month'**
+  String get wCalendarMonth;
+
+  /// No description provided for @wPreviousPeriod.
+  ///
+  /// In en, this message translates to:
+  /// **'Previous period'**
+  String get wPreviousPeriod;
+
+  /// No description provided for @wNextPeriod.
+  ///
+  /// In en, this message translates to:
+  /// **'Next period'**
+  String get wNextPeriod;
+
+  /// No description provided for @wPeriodNet.
+  ///
+  /// In en, this message translates to:
+  /// **'Net rewards {amount}'**
+  String wPeriodNet(String amount);
+
+  /// No description provided for @wCalendarLegend.
+  ///
+  /// In en, this message translates to:
+  /// **'Red: gain · Green: loss · Intensity scaled to this period'**
+  String get wCalendarLegend;
+
+  /// No description provided for @wExpandMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'Swipe down for month; swipe sideways to change week'**
+  String get wExpandMonth;
+
+  /// No description provided for @wCollapseWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'Swipe up on the header for week; swipe sideways to change month'**
+  String get wCollapseWeek;
+
+  /// No description provided for @wFutureDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Future date: recording is unavailable'**
+  String get wFutureDay;
+
+  /// No description provided for @wDateHobbies.
+  ///
+  /// In en, this message translates to:
+  /// **'Hobbies for {date}'**
+  String wDateHobbies(String date);
+
+  /// No description provided for @wSelectedNet.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected day: {amount} net'**
+  String wSelectedNet(String amount);
+
+  /// No description provided for @wBackfillHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Backfill uses current hobby rules and amount. Undo reverses the original recorded amount.'**
+  String get wBackfillHelp;
+
+  /// No description provided for @wSignedRewardHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Positive amounts reward you; negative amounts deduct for unwanted habits. Amounts round to two decimal places.'**
+  String get wSignedRewardHelp;
+
+  /// No description provided for @wPenalty.
+  ///
+  /// In en, this message translates to:
+  /// **'Habit deduction'**
+  String get wPenalty;
+
+  /// No description provided for @wPenaltyLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Occurrence deduction {amount}'**
+  String wPenaltyLabel(String amount);
+
+  /// No description provided for @wRecordPenalty.
+  ///
+  /// In en, this message translates to:
+  /// **'Record occurrence'**
+  String get wRecordPenalty;
+
+  /// No description provided for @wPenaltyRecorded.
+  ///
+  /// In en, this message translates to:
+  /// **'Recorded ✓'**
+  String get wPenaltyRecorded;
+
+  /// No description provided for @wPenaltyFeedback.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} recorded: {amount} deducted'**
+  String wPenaltyFeedback(String name, String amount);
+
+  /// No description provided for @wPenaltyReminder.
+  ///
+  /// In en, this message translates to:
+  /// **'Avoid {name}; recording an occurrence deducts {amount}.'**
+  String wPenaltyReminder(String name, String amount);
+
+  /// No description provided for @wEstimateReached.
+  ///
+  /// In en, this message translates to:
+  /// **'Goal reached'**
+  String get wEstimateReached;
+
+  /// No description provided for @wEstimateDays.
+  ///
+  /// In en, this message translates to:
+  /// **'About {days} more days'**
+  String wEstimateDays(int days);
+
+  /// No description provided for @wEstimateUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'No estimate: net rewards over the last 14 days are not positive'**
+  String get wEstimateUnavailable;
+
+  /// No description provided for @wEstimateHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Based on net hobby rewards over 14 calendar days including today; unrecorded days count as zero.'**
+  String get wEstimateHelp;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

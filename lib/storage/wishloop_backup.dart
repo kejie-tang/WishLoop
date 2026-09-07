@@ -57,7 +57,7 @@ class WishLoopBackup {
     final envelope = jsonDecode(text) as Map<String, dynamic>;
     if (envelope['format'] != 'WishLoop' ||
         envelope['version'] != 1 ||
-        envelope['schema'] != appDBVersion ||
+        !{9, appDBVersion}.contains(envelope['schema']) ||
         envelope['data'] is! String) {
       throw const FormatException('Unsupported backup');
     }

@@ -19,11 +19,18 @@ Future<void> openWishEditor(BuildContext context, [WishlistItem? wish]) =>
 class WishProgress extends StatelessWidget {
   final WishlistItem wish;
   final int balance;
-  const WishProgress({super.key, required this.wish, required this.balance});
+  final int recent14NetMinor;
+  const WishProgress({
+    super.key,
+    required this.wish,
+    required this.balance,
+    this.recent14NetMinor = 0,
+  });
   @override
   Widget build(BuildContext context) {
     final l = L10n.of(context)!;
     final tenths = wish.progressTenths(balance);
+    final estimate = wish.estimatedDays(balance, recent14NetMinor);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -50,6 +57,17 @@ class WishProgress extends StatelessWidget {
           alignment: AlignmentDirectional.centerEnd,
           child: Text('${tenths ~/ 10}.${tenths % 10}%'),
         ),
+        const SizedBox(height: 8),
+        Text(
+          estimate == 0
+              ? l.wEstimateReached
+              : estimate == null
+              ? l.wEstimateUnavailable
+              : l.wEstimateDays(estimate),
+          key: ValueKey('estimate-${wish.id}'),
+          style: Theme.of(context).textTheme.titleSmall,
+        ),
+        Text(l.wEstimateHelp, style: Theme.of(context).textTheme.bodySmall),
       ],
     );
   }
@@ -131,7 +149,11 @@ class WishesBody extends StatelessWidget {
                 ),
                 const SizedBox(height: 12),
                 if (w.status == WishlistStatus.active)
-                  WishProgress(wish: w, balance: s.balanceMinor)
+                  WishProgress(
+                    wish: w,
+                    balance: s.balanceMinor,
+                    recent14NetMinor: s.recent14NetMinor,
+                  )
                 else ...[
                   Text(
                     '${w.emoji}  ${w.name}',

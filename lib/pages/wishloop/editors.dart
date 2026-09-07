@@ -104,7 +104,7 @@ class _HobbyEditorState extends State<HobbyEditor> {
           emoji: _emoji.text.trim(),
           description: _description.text,
           durationMinutes: int.parse(_duration.text),
-          rewardMinor: RewardMoney.parse(_reward.text)!,
+          rewardMinor: RewardMoney.parse(_reward.text, signed: true)!,
           weekdayMask: _weekdays,
           frequency: freq,
           reminder: !_remind
@@ -196,15 +196,12 @@ class _HobbyEditorState extends State<HobbyEditor> {
               },
             ),
             const SizedBox(height: 20),
-            TextFormField(
+            MoneyFormField(
               key: const ValueKey('hobby-reward'),
               controller: _reward,
-              decoration: InputDecoration(labelText: l.wReward),
-              keyboardType: const TextInputType.numberWithOptions(
-                decimal: true,
-              ),
-              validator: (v) =>
-                  RewardMoney.parse(v ?? '') == null ? l.wInvalid : null,
+              label: l.wReward,
+              helper: l.wSignedRewardHelp,
+              signed: true,
             ),
             const SizedBox(height: 24),
             DropdownButtonFormField<String>(
@@ -373,15 +370,11 @@ class _WishEditorState extends State<WishEditor> {
                   : null,
             ),
             const SizedBox(height: 16),
-            TextFormField(
+            MoneyFormField(
               key: const ValueKey('wish-price'),
               controller: _price,
-              decoration: InputDecoration(labelText: l.wTargetPrice),
-              keyboardType: const TextInputType.numberWithOptions(
-                decimal: true,
-              ),
-              validator: (v) =>
-                  (RewardMoney.parse(v ?? '') ?? 0) <= 0 ? l.wInvalid : null,
+              label: l.wTargetPrice,
+              allowZero: false,
             ),
             const SizedBox(height: 22),
             TextFormField(

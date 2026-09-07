@@ -146,6 +146,16 @@ class WishlistItem {
 
   double progress(int balanceMinor) =>
       balanceMinor.clamp(0, targetPriceMinor) / targetPriceMinor;
+
+  /// The fixed trailing window includes today and 13 previous calendar days.
+  /// Missing days count as zero. No division or rounding of money into doubles.
+  int? estimatedDays(int balanceMinor, int recent14NetMinor) {
+    final remaining = targetPriceMinor - balanceMinor;
+    if (remaining <= 0) return 0;
+    if (recent14NetMinor <= 0) return null;
+    return (remaining * 14 + recent14NetMinor - 1) ~/ recent14NetMinor;
+  }
+
   int progressTenths(int balanceMinor) =>
       balanceMinor.clamp(0, targetPriceMinor) * 1000 ~/ targetPriceMinor;
   bool canRedeem(int balanceMinor) =>
@@ -182,28 +192,34 @@ class WishlistRedemption {
 
 class HobbyWalletSnapshot {
   final List<Hobby> hobbies;
+  final List<Hobby> dayHobbies;
+  final Map<int, int> dailyNetMinor;
+  final int recent14NetMinor;
   final List<WalletTransaction> transactions;
   final List<WishlistItem> wishes;
   final List<WishlistRedemption> redemptions;
-  final Map<String, int> todayCompletions;
+  final Map<String, int> dayCompletions;
   final HabitDate? day;
   final Set<String> dueIds;
   final Set<String> completedIds;
   final int balanceMinor;
-  final int todayEarnedMinor;
+  final int dayNetMinor;
   final int monthEarnedMinor;
 
   const HobbyWalletSnapshot({
     this.hobbies = const [],
+    this.dayHobbies = const [],
+    this.dailyNetMinor = const {},
+    this.recent14NetMinor = 0,
     this.transactions = const [],
     this.wishes = const [],
     this.redemptions = const [],
-    this.todayCompletions = const {},
+    this.dayCompletions = const {},
     this.day,
     this.dueIds = const {},
     this.completedIds = const {},
     this.balanceMinor = 0,
-    this.todayEarnedMinor = 0,
+    this.dayNetMinor = 0,
     this.monthEarnedMinor = 0,
   });
 }

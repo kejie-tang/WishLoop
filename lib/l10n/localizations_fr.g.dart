@@ -2295,7 +2295,7 @@ class L10nFr extends L10n {
   String get wTodayReward => 'Today’s rewards';
 
   @override
-  String get wMonthReward => 'This month’s rewards';
+  String get wMonthReward => 'Monthly net rewards';
 
   @override
   String get wSubtitle => 'Save a little dedication for the things you love.';
@@ -2310,8 +2310,7 @@ class L10nFr extends L10n {
   String get wAllDone => 'Today’s dedication is safely saved.';
 
   @override
-  String get wEmptyToday =>
-      'Nothing scheduled today. Enjoy some time for yourself.';
+  String get wEmptyToday => 'No hobbies to record on this day.';
 
   @override
   String get wEmptyHobbies => 'Start with one thing you love';
@@ -2355,7 +2354,7 @@ class L10nFr extends L10n {
   String get wDuration => 'Duration (minutes)';
 
   @override
-  String get wReward => 'Reward per check-in (¥)';
+  String get wReward => 'Amount per occurrence (¥)';
 
   @override
   String get wFrequency => 'Frequency';
@@ -2551,7 +2550,7 @@ class L10nFr extends L10n {
 
   @override
   String get wInvalid =>
-      'Enter a valid value. Amounts allow up to two decimal places.';
+      'Enter valid details and an amount; amounts round to two decimal places.';
 
   @override
   String get wInsufficient => 'Not enough rewards to redeem this wish.';
@@ -2624,4 +2623,97 @@ class L10nFr extends L10n {
   String wReminderBody(String name, String amount) {
     return 'You haven’t completed $name today. Your reward: $amount.';
   }
+
+  @override
+  String get wRewardCalendar => 'Reward calendar';
+
+  @override
+  String get wCalendarWeek => 'Week';
+
+  @override
+  String get wCalendarMonth => 'Month';
+
+  @override
+  String get wPreviousPeriod => 'Previous period';
+
+  @override
+  String get wNextPeriod => 'Next period';
+
+  @override
+  String wPeriodNet(String amount) {
+    return 'Net rewards $amount';
+  }
+
+  @override
+  String get wCalendarLegend =>
+      'Red: gain · Green: loss · Intensity scaled to this period';
+
+  @override
+  String get wExpandMonth =>
+      'Swipe down for month; swipe sideways to change week';
+
+  @override
+  String get wCollapseWeek =>
+      'Swipe up on the header for week; swipe sideways to change month';
+
+  @override
+  String get wFutureDay => 'Future date: recording is unavailable';
+
+  @override
+  String wDateHobbies(String date) {
+    return 'Hobbies for $date';
+  }
+
+  @override
+  String wSelectedNet(String amount) {
+    return 'Selected day: $amount net';
+  }
+
+  @override
+  String get wBackfillHelp =>
+      'Backfill uses current hobby rules and amount. Undo reverses the original recorded amount.';
+
+  @override
+  String get wSignedRewardHelp =>
+      'Positive amounts reward you; negative amounts deduct for unwanted habits. Amounts round to two decimal places.';
+
+  @override
+  String get wPenalty => 'Habit deduction';
+
+  @override
+  String wPenaltyLabel(String amount) {
+    return 'Occurrence deduction $amount';
+  }
+
+  @override
+  String get wRecordPenalty => 'Record occurrence';
+
+  @override
+  String get wPenaltyRecorded => 'Recorded ✓';
+
+  @override
+  String wPenaltyFeedback(String name, String amount) {
+    return '$name recorded: $amount deducted';
+  }
+
+  @override
+  String wPenaltyReminder(String name, String amount) {
+    return 'Avoid $name; recording an occurrence deducts $amount.';
+  }
+
+  @override
+  String get wEstimateReached => 'Goal reached';
+
+  @override
+  String wEstimateDays(int days) {
+    return 'About $days more days';
+  }
+
+  @override
+  String get wEstimateUnavailable =>
+      'No estimate: net rewards over the last 14 days are not positive';
+
+  @override
+  String get wEstimateHelp =>
+      'Based on net hobby rewards over 14 calendar days including today; unrecorded days count as zero.';
 }

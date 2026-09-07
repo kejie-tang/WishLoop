@@ -1954,12 +1954,12 @@
     "wWalletTab": "Wallet",
     "wWishlist": "Wishes",
     "wTodayReward": "Today’s rewards",
-    "wMonthReward": "This month’s rewards",
+    "wMonthReward": "Monthly net rewards",
     "wSubtitle": "Save a little dedication for the things you love.",
     "wCurrentWish": "Your next reward",
     "wTodayHobbies": "Today’s hobbies",
     "wAllDone": "Today’s dedication is safely saved.",
-    "wEmptyToday": "Nothing scheduled today. Enjoy some time for yourself.",
+    "wEmptyToday": "No hobbies to record on this day.",
     "wEmptyHobbies": "Start with one thing you love",
     "wEmptyHobbiesBody": "Add a hobby and choose a small reward for each check-in.",
     "wEmptyWishes": "Something to look forward to",
@@ -1973,7 +1973,7 @@
     "wEmoji": "Emoji / icon",
     "wDescription": "Description (optional)",
     "wDuration": "Duration (minutes)",
-    "wReward": "Reward per check-in (¥)",
+    "wReward": "Amount per occurrence (¥)",
     "wFrequency": "Frequency",
     "wWeekdays": "Days of the week",
     "wTimes": "Times per period",
@@ -2034,7 +2034,7 @@
     "wRetry": "Retry",
     "wError": "The action could not be completed. Please try again.",
     "wLoadError": "Could not load your data. Please retry.",
-    "wInvalid": "Enter a valid value. Amounts allow up to two decimal places.",
+    "wInvalid": "Enter valid details and an amount; amounts round to two decimal places.",
     "wInsufficient": "Not enough rewards to redeem this wish.",
     "wAlreadyRedeemed": "This wish has already been redeemed.",
     "wSaved": "Saved",
@@ -2126,5 +2126,84 @@
                 "type": "String"
             }
         }
-    }
+    },
+    "wRewardCalendar": "Reward calendar",
+    "wCalendarWeek": "Week",
+    "wCalendarMonth": "Month",
+    "wPreviousPeriod": "Previous period",
+    "wNextPeriod": "Next period",
+    "wPeriodNet": "Net rewards {amount}",
+    "@wPeriodNet": {
+        "placeholders": {
+            "amount": {
+                "type": "String"
+            }
+        }
+    },
+    "wCalendarLegend": "Red: gain · Green: loss · Intensity scaled to this period",
+    "wExpandMonth": "Swipe down for month; swipe sideways to change week",
+    "wCollapseWeek": "Swipe up on the header for week; swipe sideways to change month",
+    "wFutureDay": "Future date: recording is unavailable",
+    "wDateHobbies": "Hobbies for {date}",
+    "@wDateHobbies": {
+        "placeholders": {
+            "date": {
+                "type": "String"
+            }
+        }
+    },
+    "wSelectedNet": "Selected day: {amount} net",
+    "@wSelectedNet": {
+        "placeholders": {
+            "amount": {
+                "type": "String"
+            }
+        }
+    },
+    "wBackfillHelp": "Backfill uses current hobby rules and amount. Undo reverses the original recorded amount.",
+    "wSignedRewardHelp": "Positive amounts reward you; negative amounts deduct for unwanted habits. Amounts round to two decimal places.",
+    "wPenalty": "Habit deduction",
+    "wPenaltyLabel": "Occurrence deduction {amount}",
+    "@wPenaltyLabel": {
+        "placeholders": {
+            "amount": {
+                "type": "String"
+            }
+        }
+    },
+    "wRecordPenalty": "Record occurrence",
+    "wPenaltyRecorded": "Recorded ✓",
+    "wPenaltyFeedback": "{name} recorded: {amount} deducted",
+    "@wPenaltyFeedback": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            },
+            "amount": {
+                "type": "String"
+            }
+        }
+    },
+    "wPenaltyReminder": "Avoid {name}; recording an occurrence deducts {amount}.",
+    "@wPenaltyReminder": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            },
+            "amount": {
+                "type": "String"
+            }
+        }
+    },
+    "wEstimateReached": "Goal reached",
+    "wEstimateDays": "About {days} more days",
+    "@wEstimateDays": {
+        "placeholders": {
+            "days": {
+                "type": "int"
+            }
+        }
+    },
+    "wEstimateUnavailable": "No estimate: net rewards over the last 14 days are not positive",
+    "wEstimateHelp": "Based on net hobby rewards over 14 calendar days including today; unrecorded days count as zero."
 }
