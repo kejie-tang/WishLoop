@@ -2205,5 +2205,7 @@
         }
     },
     "wEstimateUnavailable": "No estimate: net rewards over the last 14 days are not positive",
-    "wEstimateHelp": "Based on net hobby rewards over 14 calendar days including today; unrecorded days count as zero."
+    "wEstimateHelp": "Based on net hobby rewards over 14 calendar days including today; unrecorded days count as zero.",
+    "wSwitchToMonth": "Switch to month view",
+    "wSwitchToWeek": "Switch to week view"
 }

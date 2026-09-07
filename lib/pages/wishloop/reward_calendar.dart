@@ -58,6 +58,17 @@ class _RewardCalendarState extends State<RewardCalendar>
   }
 
   void _move(int step) {
+    if (!widget.enabled) return;
+    // At the newest period, reuse forward navigation for a mode switch. This
+    // follows the mode selector and keeps the day being viewed or edited.
+    if (step > 0 && _range.contains(widget.today)) {
+      _setMode(
+        _mode == RewardCalendarMode.week
+            ? RewardCalendarMode.month
+            : RewardCalendarMode.week,
+      );
+      return;
+    }
     if (!_canMove(step)) return;
     final next = _range.shift(step);
     final position = _mode == RewardCalendarMode.week
@@ -80,6 +91,7 @@ class _RewardCalendarState extends State<RewardCalendar>
     final l = L10n.of(context)!;
     final theme = Theme.of(context);
     final range = _range;
+    final latest = range.contains(widget.today);
     final days = range.days.toList();
     final leading = _mode == RewardCalendarMode.month
         ? range.start.weekday - 1
@@ -216,9 +228,21 @@ class _RewardCalendarState extends State<RewardCalendar>
                 ),
                 IconButton(
                   key: const ValueKey('calendar-next'),
-                  tooltip: l.wNextPeriod,
-                  onPressed: _canMove(1) ? () => _move(1) : null,
-                  icon: const Icon(Icons.chevron_right),
+                  tooltip: latest
+                      ? (_mode == RewardCalendarMode.week
+                            ? l.wSwitchToMonth
+                            : l.wSwitchToWeek)
+                      : l.wNextPeriod,
+                  onPressed: widget.enabled && (latest || _canMove(1))
+                      ? () => _move(1)
+                      : null,
+                  icon: Icon(
+                    latest
+                        ? (_mode == RewardCalendarMode.week
+                              ? Icons.calendar_view_month
+                              : Icons.calendar_view_week)
+                        : Icons.chevron_right,
+                  ),
                 ),
               ],
             ),

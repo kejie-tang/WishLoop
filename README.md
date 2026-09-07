@@ -4,11 +4,11 @@
 
 **所有 ¥ 金额都只是个人兴趣激励和虚拟记账单位。App 不提供真实货币奖励、提现、交易或兑换现金。**
 
-[下载 Android APK（v1.1.2）](https://github.com/kejie-tang/WishLoop/releases/tag/v1.1.2) · [v1.1.2 验证记录](docs/wishloop/V1.1.2.md)
+[下载 Android APK（v1.1.3）](https://github.com/kejie-tang/WishLoop/releases/tag/v1.1.3) · [v1.1.3 验证记录](docs/wishloop/V1.1.3.md)
 
 ## 使用
 
-- **今天**：周/月净奖励日历、账户余额、主要愿望进度与预计天数；点日期补记或撤销。日历下滑展开月视图、标题处上滑收起为周视图，左右滑动翻周/月，也可使用按钮。
+- **今天**：周/月净奖励日历、账户余额、主要愿望进度与预计天数；点日期补记或撤销。日历下滑展开月视图、标题处上滑收起为周视图，左右滑动翻周/月，也可使用按钮。在最新周/月继续向下一期翻页时，切换周/月视图并保留所选日期；右侧按钮也可切换。
 - **兴趣**：创建、编辑、归档、恢复、删除；支持 Emoji、描述、时长、正负金额、每天/每周/每月/自定义周期及指定星期。负数兴趣用于记录不好的习惯，点击“记录发生”扣减，撤销退回原扣减。
 - **账户**：余额、当月净奖励、最近 200 条流水、正负人工调整。完整历史保存在数据库和备份中。
 - **愿望**：目标价格、备注、主要愿望、进度、余额不足提示、二次确认兑换及兑换历史。
@@ -90,7 +90,7 @@ APK：`build/app/outputs/flutter-apk/app-release.apk`。支持 Android 7.0 及�
 
 applicationId 保持 `io.github.friesi23.mhabit`。**正式上架前需要修改 package name / applicationId**。如果手机已安装官方 Table Habit，不同签名无法直接覆盖；先在原 App 导出数据，避免丢失历史。
 
-[构建环境记录](docs/wishloop/BUILD.md) · [基线结果](docs/wishloop/BASELINE.md) · [最新验证记录](docs/wishloop/V1.1.2.md) · [v1.0.0 验证](docs/wishloop/VERIFICATION.md)
+[构建环境记录](docs/wishloop/BUILD.md) · [基线结果](docs/wishloop/BASELINE.md) · [最新验证记录](docs/wishloop/V1.1.3.md) · [v1.0.0 验证](docs/wishloop/VERIFICATION.md)
 
 Android 集成测试只在专用、空白测试设备运行：
 

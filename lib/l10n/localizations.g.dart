@@ -4372,6 +4372,18 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Based on net hobby rewards over 14 calendar days including today; unrecorded days count as zero.'**
   String get wEstimateHelp;
+
+  /// No description provided for @wSwitchToMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch to month view'**
+  String get wSwitchToMonth;
+
+  /// No description provided for @wSwitchToWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch to week view'**
+  String get wSwitchToWeek;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

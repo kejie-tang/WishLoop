@@ -1710,5 +1710,7 @@
     "wEstimateReached": "已达到目标",
     "wEstimateDays": "预计还要 {days} 天",
     "wEstimateUnavailable": "暂无法预计：近14天净奖励未增长",
-    "wEstimateHelp": "按含今天的最近14个自然日净奖励估算，未打卡日计为0。"
+    "wEstimateHelp": "按含今天的最近14个自然日净奖励估算，未打卡日计为0。",
+    "wSwitchToMonth": "切换到月视图",
+    "wSwitchToWeek": "切换到周视图"
 }

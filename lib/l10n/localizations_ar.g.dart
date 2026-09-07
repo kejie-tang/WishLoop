@@ -2668,4 +2668,10 @@ class L10nAr extends L10n {
   @override
   String get wEstimateHelp =>
       'Based on net hobby rewards over 14 calendar days including today; unrecorded days count as zero.';
+
+  @override
+  String get wSwitchToMonth => 'Switch to month view';
+
+  @override
+  String get wSwitchToWeek => 'Switch to week view';
 }

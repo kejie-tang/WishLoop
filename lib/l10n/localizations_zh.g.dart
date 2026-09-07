@@ -2531,6 +2531,12 @@ class L10nZh extends L10n {
 
   @override
   String get wEstimateHelp => '按含今天的最近14个自然日净奖励估算，未打卡日计为0。';
+
+  @override
+  String get wSwitchToMonth => '切换到月视图';
+
+  @override
+  String get wSwitchToWeek => '切换到周视图';
 }
 
 /// The translations for Chinese, using the Han script (`zh_Hant`).

@@ -272,6 +272,63 @@ void main() {
   );
 
   testWidgets(
+    'latest-period forward swipe and button switch modes; history still pages normally',
+    (tester) async {
+      await pump(tester);
+      final today = vm.repository.today;
+      RewardCalendarMode mode() => tester
+          .widget<SegmentedButton<RewardCalendarMode>>(
+            find.byKey(const ValueKey('calendar-mode')),
+          )
+          .selected
+          .single;
+      Future<void> swipe(double dx) async {
+        await tester.drag(
+          find.byKey(const ValueKey('calendar-period')),
+          Offset(dx, 0),
+        );
+        await tester.pumpAndSettle();
+      }
+
+      await swipe(-150);
+      expect(mode(), RewardCalendarMode.month);
+      expect(vm.snapshot.day, today);
+      await swipe(-150);
+      expect(mode(), RewardCalendarMode.week);
+      expect(vm.snapshot.day, today);
+      await swipe(-15);
+      expect(mode(), RewardCalendarMode.week);
+
+      // Moving through history and merely arriving at the newest period must
+      // not also change mode in the same gesture.
+      await swipe(150);
+      expect(vm.snapshot.day, today.subtractDays(7));
+      expect(mode(), RewardCalendarMode.week);
+      await swipe(-150);
+      expect(vm.snapshot.day, today);
+      expect(mode(), RewardCalendarMode.week);
+      await commandTap(tester, find.byKey(const ValueKey('calendar-next')));
+      expect(mode(), RewardCalendarMode.month);
+      await commandTap(tester, find.byKey(const ValueKey('calendar-next')));
+      expect(mode(), RewardCalendarMode.week);
+
+      await swipe(-150);
+      final earlierInMonth = today.copyWith(day: 1);
+      await commandTap(
+        tester,
+        find.byKey(ValueKey('calendar-day-${earlierInMonth.epochDay}')),
+      );
+      await swipe(-150);
+      expect(mode(), RewardCalendarMode.week);
+      expect(vm.snapshot.day, earlierInMonth);
+      expect(vm.snapshot.balanceMinor, 0);
+      expect(vm.snapshot.completedIds, isEmpty);
+      expect(tester.takeException(), isNull);
+      await tester.pumpWidget(const SizedBox());
+    },
+  );
+
+  testWidgets(
     'negative editor rounds input on blur; records a deduction and updates forecast',
     (tester) async {
       await pump(tester);
