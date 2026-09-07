@@ -18,7 +18,7 @@ WishLoop 让它成为坚持兴趣的理由：为跑步、阅读、学习设定�
 
 ## 界面预览
 
-以下为 **Android 实际截图**，使用演示数据。账户和桌面小组件来自 v1.4.0，货币设置来自 v1.3.0，其余页面来自 v1.2.0。点击图片可查看大图。
+以下为 **Android 实际截图**，使用演示数据。预计天数小组件来自 v1.4.1，账户和深色小组件来自 v1.4.0，货币设置来自 v1.3.0，其余页面来自 v1.2.0。点击图片可查看大图。
 
 <p align="center">
   <a href="docs/screenshots/today.png"><img src="docs/screenshots/today.png" width="260" alt="紧凑首页：奖励日历、账户余额和兴趣优先列表"></a>
@@ -33,7 +33,7 @@ WishLoop 让它成为坚持兴趣的理由：为跑步、阅读、学习设定�
 </p>
 
 <p align="center">
-  <a href="docs/screenshots/home-widget.png"><img src="docs/screenshots/home-widget.png" width="260" alt="Android 4×2 桌面小组件：余额、愿望进度，以及可直接点击的兴趣 emoji 和金额"></a>
+  <a href="docs/screenshots/home-widget-estimate.png"><img src="docs/screenshots/home-widget-estimate.png" width="260" alt="Android 4×2 桌面小组件：余额、愿望进度、预计达成天数，以及可直接点击的兴趣 emoji 和金额"></a>
   <a href="docs/screenshots/categories.png"><img src="docs/screenshots/categories.png" width="260" alt="兴趣分类管理：新建、改名、删除与拖动排序"></a>
   <a href="docs/screenshots/currency-settings.png"><img src="docs/screenshots/currency-settings.png" width="260" alt="默认货币可在人民币和美元之间切换，并提供小组件添加帮助"></a>
 </p>
@@ -52,7 +52,7 @@ WishLoop 让它成为坚持兴趣的理由：为跑步、阅读、学习设定�
 再把一本书、一副耳机，或者其他真正想要的东西放进愿望清单。首页会展示你的主要愿望，让每一次打卡都有一个具体的期待。
 
 - **首页可以更紧凑。** 在首页右上角切换紧凑模式、选择兴趣优先；布局会自动记住。
-- **从 Android 桌面开始。** 4×2 小组件显示余额、愿望进度和最多四个未完成兴趣；点击 emoji 直接记录并自动补位，撤销在 App 中操作。
+- **从 Android 桌面开始。** 4×2 小组件显示余额、愿望进度、预计达成天数和最多四个未完成兴趣；点击 emoji 直接记录并自动补位，撤销在 App 中操作。
 - **按分类整理，按喜好排序。** 支持创建、改名、删除分类与分类筛选；拖动兴趣右侧的排序柄即可调整顺序，首页和小组件同步更新。
 - **用曲线回看账户变化。** 最近 14、30、180 天随时切换，平滑曲线保留每天的实际余额，点按或拖动可查看每日变化；收入、扣减、兑换和调整都计入。
 - **人民币或美元，由你选择。** 默认人民币，可在设置切换美元；统一更换虚拟记账单位，金额数值不变，不进行汇率换算。
@@ -78,7 +78,7 @@ WishLoop 让它成为坚持兴趣的理由：为跑步、阅读、学习设定�
 
 已有积累可以在“账户 → 调整余额”中补入。建议定期使用“设置 → 导出完整备份”，把备份保存到自己的文件目录。
 
-**当前版本：v1.4.0 · 支持 Android 7.0 及以上。** 目前面向个人日常使用，通过 APK 安装。
+**当前版本：v1.4.1 · 支持 Android 7.0 及以上。** 目前面向个人日常使用，通过 APK 安装。
 
 升级使用同一签名的新版 APK，可覆盖安装保留数据。如果手机已安装官方 Table Habit，两者当前包名相同、签名不同，不能直接覆盖；请先在原 App 导出数据，避免丢失记录。
 
@@ -86,7 +86,7 @@ WishLoop 让它成为坚持兴趣的理由：为跑步、阅读、学习设定�
 
 余额由完整账本求和得到；金额以整数分保存。完成、撤销和愿望兑换通过数据库事务处理，数据库升级保留已有记录。
 
-当前 v1.4.0 已通过 **1406 项 Flutter 测试**、`flutter analyze` 静态检查、release APK 构建及 Android 模拟器验证。详情见 [版本验证记录](docs/wishloop/V1.4.0.md)。实体手机上的通知及时性仍可能受到厂商省电策略影响。
+当前 v1.4.1 已通过 **1408 项 Flutter 测试**、`flutter analyze` 静态检查、release APK 构建及 Android 模拟器验证。详情见 [版本验证记录](docs/wishloop/V1.4.1.md)。实体手机上的通知及时性仍可能受到厂商省电策略影响。
 
 ## 开发与文档
 

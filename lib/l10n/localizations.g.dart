@@ -4618,6 +4618,12 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Check status: retry or open WishLoop'**
   String get wWidgetRetry;
+
+  /// No description provided for @wWidgetEstimateUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimate unavailable'**
+  String get wWidgetEstimateUnavailable;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

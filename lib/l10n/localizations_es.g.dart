@@ -2847,4 +2847,7 @@ class L10nEs extends L10n {
 
   @override
   String get wWidgetRetry => 'Check status: retry or open WishLoop';
+
+  @override
+  String get wWidgetEstimateUnavailable => 'Estimate unavailable';
 }

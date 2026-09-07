@@ -2665,6 +2665,9 @@ class L10nZh extends L10n {
 
   @override
   String get wWidgetRetry => '状态待确认，请重试或打开 App 查看';
+
+  @override
+  String get wWidgetEstimateUnavailable => '暂无法预计';
 }
 
 /// The translations for Chinese, using the Han script (`zh_Hant`).
@@ -4409,6 +4412,14 @@ class L10nZhHant extends L10nZh {
   String get habitDisplay_groupType_manual => '自訂順序';
 
   @override
+  String get wEstimateReached => '已達到目標';
+
+  @override
+  String wEstimateDays(int days) {
+    return '預計還要 $days 天';
+  }
+
+  @override
   String get wHomeLayout => '首頁佈局';
 
   @override
@@ -4538,4 +4549,7 @@ class L10nZhHant extends L10nZh {
 
   @override
   String get wWidgetRetry => '狀態待確認，請重試或開啟 App 查看';
+
+  @override
+  String get wWidgetEstimateUnavailable => '暫無法預計';
 }

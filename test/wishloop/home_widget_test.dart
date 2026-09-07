@@ -60,6 +60,7 @@ void main() {
       );
       expect((days['2026-09-12'] as Map)['hobbies'], isEmpty);
       expect(s['progress'], 500);
+      expect(s['estimate'], '预计还要 14 天');
       expect((await repo.load()).transactions, hasLength(1));
       await repo.complete(hobby);
       final updated = await WishLoopWidget.createSnapshot(
@@ -69,6 +70,7 @@ void main() {
       );
       expect(updated['theme'], 'dark');
       expect(updated['progress'], 1000);
+      expect(updated['estimate'], '已达到目标');
       expect(
         ((updated['days'] as Map)['2026-09-07'] as Map)['hobbies'],
         isEmpty,
@@ -96,10 +98,75 @@ void main() {
       await repo.complete(hobby);
       final s = await WishLoopWidget.createSnapshot(repo, l);
       expect(s['progress'], 0);
+      expect(s['estimate'], '暂无法预计');
       final days = s['days'] as Map;
       expect((days['2026-09-07'] as Map)['netMinor'], -1000);
       expect((days['2026-09-07'] as Map)['hobbies'], isEmpty);
       expect((days['2026-09-08'] as Map)['hobbies'], isEmpty);
+    },
+  );
+
+  test(
+    'widget estimate uses the trailing 14 days and refreshes after undo',
+    () async {
+      final wish = (await repo.load()).wishes.single;
+      await repo.saveWish(
+        id: wish.id,
+        name: wish.name,
+        emoji: wish.emoji,
+        note: '',
+        targetPriceMinor: 3000,
+        isPrimary: true,
+      );
+      await repo.adjust(requestId: 'seed', amountMinor: 100, title: '调整');
+      await repo.complete(hobby, onDay: repo.today.subtractDays(14));
+      expect(
+        (await WishLoopWidget.createSnapshot(repo, l))['estimate'],
+        '暂无法预计',
+      );
+      await repo.complete(hobby, onDay: repo.today.subtractDays(13));
+      // Balance 1100, recent net 500: ceil((3000 - 1100) * 14 / 500).
+      expect(
+        (await WishLoopWidget.createSnapshot(repo, l))['estimate'],
+        '预计还要 54 天',
+      );
+      await repo.undo(hobby, repo.today.subtractDays(13));
+      expect(
+        (await WishLoopWidget.createSnapshot(repo, l))['estimate'],
+        '暂无法预计',
+      );
+    },
+  );
+
+  test(
+    'widget handles a funded goal with no income and hides a redeemed goal estimate',
+    () async {
+      expect(
+        (await WishLoopWidget.createSnapshot(repo, l))['estimate'],
+        '暂无法预计',
+      );
+      await repo.adjust(requestId: 'fund', amountMinor: 1000, title: '调整');
+      expect(
+        (await WishLoopWidget.createSnapshot(repo, l))['estimate'],
+        '已达到目标',
+      );
+      final wish = (await repo.load()).wishes.single;
+      await repo.redeem(wish.id);
+      expect(
+        (await WishLoopWidget.createSnapshot(repo, l))['estimate'],
+        isEmpty,
+      );
+      // An active wish without primary status must not show a different forecast.
+      await repo.saveWish(
+        name: '书',
+        emoji: '📚',
+        note: '',
+        targetPriceMinor: 1000,
+      );
+      expect(
+        (await WishLoopWidget.createSnapshot(repo, l))['estimate'],
+        isEmpty,
+      );
     },
   );
 

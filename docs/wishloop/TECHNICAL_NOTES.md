@@ -94,7 +94,7 @@ APK：`build/app/outputs/flutter-apk/app-release.apk`。支持 Android 7.0 及�
 
 applicationId 保持 `io.github.friesi23.mhabit`。**正式上架前需要修改 package name / applicationId**。如果手机已安装官方 Table Habit，不同签名无法直接覆盖；先在原 App 导出数据，避免丢失历史。
 
-[构建环境记录](BUILD.md) · [基线结果](BASELINE.md) · [最新验证记录](V1.4.0.md) · [v1.0.0 验证](VERIFICATION.md)
+[构建环境记录](BUILD.md) · [基线结果](BASELINE.md) · [最新验证记录](V1.4.1.md) · [v1.0.0 验证](VERIFICATION.md)
 
 Android 集成测试只在专用、空白测试设备运行：
 
@@ -111,6 +111,8 @@ flutter test integration_test/widget_concurrency_test.dart --flavor f_dev -d emu
 通知测试需要系统允许通知权限。测试包括真实 SQLite、正负金额、自动小数规范、完成/撤销/再完成、历史补记、周/月手势、14 天净奖励预测、兑换、备份恢复、深色模式和系统通知。
 
 原项目商店发布及多平台工作流已移至 `docs/upstream-workflows/`，不会在此仓库执行。保留一个手动触发的 Android 检查工作流；本地签名与 CI 签名不同，日常升级请优先使用同一台构建机产物。
+
+桌面小组件复用主要愿望的 `estimatedDays` 与最近 14 天净奖励，在今日金额下方显示预计天数。近 14 天净奖励为零或负数时显示简短的“暂无法预计”；余额已足够则显示“已达到目标”。没有有效主要愿望时隐藏此行。前台或后台打卡后均从同一数据库重新计算，不增加账本字段。
 
 ## 第一阶段范围与限制
 

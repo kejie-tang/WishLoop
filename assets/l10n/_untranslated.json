@@ -260,7 +260,8 @@
     "wWidgetAddInstructions",
     "wClose",
     "wWidgetAllDone",
-    "wWidgetRetry"
+    "wWidgetRetry",
+    "wWidgetEstimateUnavailable"
   ],
 
   "cs": [
@@ -436,7 +437,8 @@
     "wWidgetAddInstructions",
     "wClose",
     "wWidgetAllDone",
-    "wWidgetRetry"
+    "wWidgetRetry",
+    "wWidgetEstimateUnavailable"
   ],
 
   "de": [
@@ -820,7 +822,8 @@
     "wWidgetAddInstructions",
     "wClose",
     "wWidgetAllDone",
-    "wWidgetRetry"
+    "wWidgetRetry",
+    "wWidgetEstimateUnavailable"
   ],
 
   "es": [
@@ -1130,7 +1133,8 @@
     "wWidgetAddInstructions",
     "wClose",
     "wWidgetAllDone",
-    "wWidgetRetry"
+    "wWidgetRetry",
+    "wWidgetEstimateUnavailable"
   ],
 
   "eu": [
@@ -1871,7 +1875,8 @@
     "wWidgetAddInstructions",
     "wClose",
     "wWidgetAllDone",
-    "wWidgetRetry"
+    "wWidgetRetry",
+    "wWidgetEstimateUnavailable"
   ],
 
   "fa": [
@@ -2275,7 +2280,8 @@
     "wWidgetAddInstructions",
     "wClose",
     "wWidgetAllDone",
-    "wWidgetRetry"
+    "wWidgetRetry",
+    "wWidgetEstimateUnavailable"
   ],
 
   "fr": [
@@ -2622,7 +2628,8 @@
     "wWidgetAddInstructions",
     "wClose",
     "wWidgetAllDone",
-    "wWidgetRetry"
+    "wWidgetRetry",
+    "wWidgetEstimateUnavailable"
   ],
 
   "he": [
@@ -2798,7 +2805,8 @@
     "wWidgetAddInstructions",
     "wClose",
     "wWidgetAllDone",
-    "wWidgetRetry"
+    "wWidgetRetry",
+    "wWidgetEstimateUnavailable"
   ],
 
   "hu": [
@@ -3062,7 +3070,8 @@
     "wWidgetAddInstructions",
     "wClose",
     "wWidgetAllDone",
-    "wWidgetRetry"
+    "wWidgetRetry",
+    "wWidgetEstimateUnavailable"
   ],
 
   "it": [
@@ -3433,7 +3442,8 @@
     "wWidgetAddInstructions",
     "wClose",
     "wWidgetAllDone",
-    "wWidgetRetry"
+    "wWidgetRetry",
+    "wWidgetEstimateUnavailable"
   ],
 
   "ja": [
@@ -3713,7 +3723,8 @@
     "wWidgetAddInstructions",
     "wClose",
     "wWidgetAllDone",
-    "wWidgetRetry"
+    "wWidgetRetry",
+    "wWidgetEstimateUnavailable"
   ],
 
   "nb": [
@@ -4452,7 +4463,8 @@
     "wWidgetAddInstructions",
     "wClose",
     "wWidgetAllDone",
-    "wWidgetRetry"
+    "wWidgetRetry",
+    "wWidgetEstimateUnavailable"
   ],
 
   "nl": [
@@ -5198,7 +5210,8 @@
     "wWidgetAddInstructions",
     "wClose",
     "wWidgetAllDone",
-    "wWidgetRetry"
+    "wWidgetRetry",
+    "wWidgetEstimateUnavailable"
   ],
 
   "pl": [
@@ -5482,7 +5495,8 @@
     "wWidgetAddInstructions",
     "wClose",
     "wWidgetAllDone",
-    "wWidgetRetry"
+    "wWidgetRetry",
+    "wWidgetEstimateUnavailable"
   ],
 
   "pt": [
@@ -5899,7 +5913,8 @@
     "wWidgetAddInstructions",
     "wClose",
     "wWidgetAllDone",
-    "wWidgetRetry"
+    "wWidgetRetry",
+    "wWidgetEstimateUnavailable"
   ],
 
   "ru": [
@@ -6182,7 +6197,8 @@
     "wWidgetAddInstructions",
     "wClose",
     "wWidgetAllDone",
-    "wWidgetRetry"
+    "wWidgetRetry",
+    "wWidgetEstimateUnavailable"
   ],
 
   "tr": [
@@ -6445,7 +6461,8 @@
     "wWidgetAddInstructions",
     "wClose",
     "wWidgetAllDone",
-    "wWidgetRetry"
+    "wWidgetRetry",
+    "wWidgetEstimateUnavailable"
   ],
 
   "uk": [
@@ -6658,7 +6675,8 @@
     "wWidgetAddInstructions",
     "wClose",
     "wWidgetAllDone",
-    "wWidgetRetry"
+    "wWidgetRetry",
+    "wWidgetEstimateUnavailable"
   ],
 
   "vi": [
@@ -6922,6 +6940,7 @@
     "wWidgetAddInstructions",
     "wClose",
     "wWidgetAllDone",
-    "wWidgetRetry"
+    "wWidgetRetry",
+    "wWidgetEstimateUnavailable"
   ]
 }

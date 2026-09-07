@@ -1786,5 +1786,6 @@
     "wWidgetAddInstructions": "先打开一次 WishLoop，再长按桌面空白处，在小组件列表中查找 WishLoop。\n\nvivo／OriginOS：进入「原子组件」，找到 WishLoop 后长按拖到桌面。\n\n组件为横向 4 列 × 2 行。点击 emoji 直接记录，误触可进入 App 撤销。旧组件的大小由桌面保留，升级后可重新添加或拖动边缘调整。\n\n后台操作受系统调度；若没有更新，可点余额打开 App 检查。",
     "wClose": "关闭",
     "wWidgetAllDone": "今天已全部记录",
-    "wWidgetRetry": "状态待确认，请重试或打开 App 查看"
+    "wWidgetRetry": "状态待确认，请重试或打开 App 查看",
+    "wWidgetEstimateUnavailable": "暂无法预计"
 }

@@ -2,7 +2,7 @@
 
 这些截图用于项目 [README](../../README.md) 的功能展示。
 
-- 版本：账户（含美元）和桌面小组件为 **1.4.0（204）** release APK；货币设置为 **1.3.0（203）**；其余页面为 **1.2.0（202）**。
+- 版本：预计天数小组件为 **1.4.1（205）**；账户（含美元）和桌面小组件为 **1.4.0（204）** release APK；货币设置为 **1.3.0（203）**；其余页面为 **1.2.0（202）**。
 - 设备：专用 Android 16 / API 36 模拟器，1080 × 2400 像素。
 - 语言：简体中文；主题：浅色及深色。
 - 采集日期：2026-09-07。
@@ -18,6 +18,7 @@
 | [wishlist.png](wishlist.png) | 愿望进度、预计天数和已兑换记录 |
 | [calendar-month.png](calendar-month.png) | 按当前月份归一化的每日净奖励 |
 | [dark-mode.png](dark-mode.png) | 深色模式下的今天页面 |
+| [home-widget-estimate.png](home-widget-estimate.png) | 小组件显示主要愿望预计天数；多个组件同步刷新 |
 | [home-widget.png](home-widget.png) | 4×2 桌面小组件，四个未完成兴趣仅显示 emoji 与金额 |
 | [home-widget-dark.png](home-widget-dark.png) | 深色模式及美元单位的桌面组件 |
 | [categories.png](categories.png) | 分类管理与排序 |

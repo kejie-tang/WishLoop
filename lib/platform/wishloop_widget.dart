@@ -89,6 +89,7 @@ class WishLoopWidget {
     final wish = s.wishes
         .where((w) => w.isPrimary && w.status == WishlistStatus.active)
         .firstOrNull;
+    final estimate = wish?.estimatedDays(s.balanceMinor, s.recent14NetMinor);
     String format(int amount, {bool signed = false}) => RewardMoney.format(
       amount,
       currency: s.currency,
@@ -140,6 +141,13 @@ class WishLoopWidget {
           ? l.wWidgetNoWish
           : '${wish.emoji} ${wish.name}  ${wish.progressTenths(s.balanceMinor) ~/ 10}.${wish.progressTenths(s.balanceMinor) % 10}%',
       'progress': wish?.progressTenths(s.balanceMinor) ?? 0,
+      'estimate': wish == null
+          ? ''
+          : estimate == 0
+          ? l.wEstimateReached
+          : estimate == null
+          ? l.wWidgetEstimateUnavailable
+          : l.wEstimateDays(estimate),
       'refresh': l.wWidgetRefresh,
       'retry': l.wWidgetRetry,
       'days': days,
