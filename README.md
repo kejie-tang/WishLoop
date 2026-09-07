@@ -4,7 +4,7 @@
 
 **所有 ¥ 金额都只是个人兴趣激励和虚拟记账单位。App 不提供真实货币奖励、提现、交易或兑换现金。**
 
-[下载 Android APK（v1.1.0）](https://github.com/kejie-tang/WishLoop/releases/tag/v1.1.0) · [v1.1.0 验证记录](docs/wishloop/V1.1.0.md)
+[下载 Android APK（v1.1.1）](https://github.com/kejie-tang/WishLoop/releases/tag/v1.1.1) · [v1.1.1 验证记录](docs/wishloop/V1.1.1.md)
 
 ## 使用
 
@@ -90,7 +90,7 @@ APK：`build/app/outputs/flutter-apk/app-release.apk`。支持 Android 7.0 及�
 
 applicationId 保持 `io.github.friesi23.mhabit`。**正式上架前需要修改 package name / applicationId**。如果手机已安装官方 Table Habit，不同签名无法直接覆盖；先在原 App 导出数据，避免丢失历史。
 
-[构建环境记录](docs/wishloop/BUILD.md) · [基线结果](docs/wishloop/BASELINE.md) · [最新验证记录](docs/wishloop/V1.1.0.md) · [v1.0.0 验证](docs/wishloop/VERIFICATION.md)
+[构建环境记录](docs/wishloop/BUILD.md) · [基线结果](docs/wishloop/BASELINE.md) · [最新验证记录](docs/wishloop/V1.1.1.md) · [v1.0.0 验证](docs/wishloop/VERIFICATION.md)
 
 Android 集成测试只在专用、空白测试设备运行：
 

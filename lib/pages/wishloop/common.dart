@@ -84,14 +84,20 @@ Future<bool> confirm(
 class WalletCard extends StatelessWidget {
   final Widget child;
   final Color? color;
-  const WalletCard({super.key, required this.child, this.color});
+  final EdgeInsetsGeometry padding;
+  const WalletCard({
+    super.key,
+    required this.child,
+    this.color,
+    this.padding = const EdgeInsets.all(20),
+  });
   @override
   Widget build(BuildContext context) => Card(
     color: color,
     elevation: 0,
     margin: const EdgeInsets.only(bottom: 14),
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-    child: Padding(padding: const EdgeInsets.all(20), child: child),
+    child: Padding(padding: padding, child: child),
   );
 }
 

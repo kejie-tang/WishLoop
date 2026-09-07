@@ -138,11 +138,34 @@ class _RewardCalendarState extends State<RewardCalendar>
         }
       },
       child: WalletCard(
+        padding: const EdgeInsets.all(14),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(l.wRewardCalendar, style: theme.textTheme.titleLarge),
-            const SizedBox(height: 12),
+            SizedBox(
+              width: double.infinity,
+              child: Wrap(
+                alignment: WrapAlignment.spaceBetween,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                spacing: 12,
+                runSpacing: 4,
+                children: [
+                  Text(l.wRewardCalendar, style: theme.textTheme.titleLarge),
+                  Text(
+                    l.wPeriodNet(
+                      money(
+                        context,
+                        range.net(widget.dailyNetMinor),
+                        signed: true,
+                      ),
+                    ),
+                    key: const ValueKey('calendar-net'),
+                    style: theme.textTheme.titleSmall,
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 6),
             Row(
               children: [
                 Expanded(
@@ -199,14 +222,7 @@ class _RewardCalendarState extends State<RewardCalendar>
                 ),
               ],
             ),
-            Text(
-              l.wPeriodNet(
-                money(context, range.net(widget.dailyNetMinor), signed: true),
-              ),
-              key: const ValueKey('calendar-net'),
-              style: theme.textTheme.titleMedium,
-            ),
-            const SizedBox(height: 12),
+            const SizedBox(height: 6),
             Row(
               children: [
                 for (var i = 0; i < 7; i++)
@@ -224,28 +240,36 @@ class _RewardCalendarState extends State<RewardCalendar>
                   ),
               ],
             ),
-            const SizedBox(height: 6),
-            Column(
-              key: _gridKey,
-              children: [
-                for (var row = 0; row < slots ~/ 7; row++)
-                  Row(
-                    children: [
-                      for (var col = 0; col < 7; col++)
-                        Expanded(
-                          child: _cell(
-                            context,
-                            row * 7 + col - leading,
-                            days,
-                            range,
-                          ),
-                        ),
-                    ],
-                  ),
-              ],
+            const SizedBox(height: 4),
+            LayoutBuilder(
+              builder: (context, constraints) {
+                final cellHeight = (constraints.maxWidth / 7 - 4).clamp(
+                  48.0,
+                  64.0,
+                );
+                return Column(
+                  key: _gridKey,
+                  children: [
+                    for (var row = 0; row < slots ~/ 7; row++)
+                      Row(
+                        children: [
+                          for (var col = 0; col < 7; col++)
+                            Expanded(
+                              child: _cell(
+                                context,
+                                row * 7 + col - leading,
+                                days,
+                                range,
+                                cellHeight,
+                              ),
+                            ),
+                        ],
+                      ),
+                  ],
+                );
+              },
             ),
-            const SizedBox(height: 10),
-            Text(l.wCalendarLegend, style: theme.textTheme.bodySmall),
+            const SizedBox(height: 6),
             Text(
               _mode == RewardCalendarMode.week
                   ? l.wExpandMonth
@@ -265,8 +289,11 @@ class _RewardCalendarState extends State<RewardCalendar>
     int index,
     List<HabitDate> days,
     RewardCalendarRange range,
+    double height,
   ) {
-    if (index < 0 || index >= days.length) return const SizedBox(height: 76);
+    if (index < 0 || index >= days.length) {
+      return SizedBox(height: height + 4);
+    }
     final day = days[index];
     final l = L10n.of(context)!;
     final theme = Theme.of(context);
@@ -313,11 +340,11 @@ class _RewardCalendarState extends State<RewardCalendar>
                   ? null
                   : () => widget.onSelected(day),
               child: SizedBox(
-                height: 72,
+                height: height,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 2,
-                    vertical: 7,
+                    vertical: 5,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -336,7 +363,7 @@ class _RewardCalendarState extends State<RewardCalendar>
                           ),
                         ),
                       ),
-                      const SizedBox(height: 4),
+                      const SizedBox(height: 3),
                       Expanded(
                         child: FittedBox(
                           fit: BoxFit.scaleDown,
