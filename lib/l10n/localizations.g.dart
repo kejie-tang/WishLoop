@@ -4378,6 +4378,156 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Enter a hobby name.'**
   String get wHobbyNameRequired;
+
+  /// No description provided for @wHomeLayout.
+  ///
+  /// In en, this message translates to:
+  /// **'Home layout'**
+  String get wHomeLayout;
+
+  /// No description provided for @wCompactMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Compact mode'**
+  String get wCompactMode;
+
+  /// No description provided for @wHobbiesFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'Hobbies before wish'**
+  String get wHobbiesFirst;
+
+  /// No description provided for @wExpandWish.
+  ///
+  /// In en, this message translates to:
+  /// **'Expand wish'**
+  String get wExpandWish;
+
+  /// No description provided for @wCollapseWish.
+  ///
+  /// In en, this message translates to:
+  /// **'Collapse wish'**
+  String get wCollapseWish;
+
+  /// No description provided for @wCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'Categories'**
+  String get wCategories;
+
+  /// No description provided for @wCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get wCategory;
+
+  /// No description provided for @wAllCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get wAllCategories;
+
+  /// No description provided for @wUncategorized.
+  ///
+  /// In en, this message translates to:
+  /// **'Uncategorized'**
+  String get wUncategorized;
+
+  /// No description provided for @wManageCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage categories'**
+  String get wManageCategories;
+
+  /// No description provided for @wAddCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'New category'**
+  String get wAddCategory;
+
+  /// No description provided for @wCategoryName.
+  ///
+  /// In en, this message translates to:
+  /// **'Category name'**
+  String get wCategoryName;
+
+  /// No description provided for @wCategoryRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a category name'**
+  String get wCategoryRequired;
+
+  /// No description provided for @wDeleteCategoryBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Hobbies will move to Uncategorized. Check-ins and ledger entries are preserved.'**
+  String get wDeleteCategoryBody;
+
+  /// No description provided for @wNoCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'Create categories to organize your hobbies'**
+  String get wNoCategories;
+
+  /// No description provided for @wReorderHobby.
+  ///
+  /// In en, this message translates to:
+  /// **'Drag to reorder'**
+  String get wReorderHobby;
+
+  /// No description provided for @wNoCategoryHobbies.
+  ///
+  /// In en, this message translates to:
+  /// **'No hobbies in this category yet'**
+  String get wNoCategoryHobbies;
+
+  /// No description provided for @wHomeWidget.
+  ///
+  /// In en, this message translates to:
+  /// **'Android home screen widget'**
+  String get wHomeWidget;
+
+  /// No description provided for @wAddHomeWidget.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to home screen'**
+  String get wAddHomeWidget;
+
+  /// No description provided for @wHomeWidgetHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'See your balance, wish progress and today’s hobbies. Tap a hobby to check in inside the app.'**
+  String get wHomeWidgetHelp;
+
+  /// No description provided for @wHomeWidgetManual.
+  ///
+  /// In en, this message translates to:
+  /// **'Long-press an empty area on your Android home screen, choose Widgets, then drag WishLoop onto the home screen.'**
+  String get wHomeWidgetManual;
+
+  /// No description provided for @wWidgetRefresh.
+  ///
+  /// In en, this message translates to:
+  /// **'Open to refresh today’s hobbies'**
+  String get wWidgetRefresh;
+
+  /// No description provided for @wWidgetEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Add your first hobby'**
+  String get wWidgetEmpty;
+
+  /// No description provided for @wWidgetNoWish.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a primary wish'**
+  String get wWidgetNoWish;
+
+  /// No description provided for @wWidgetOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open WishLoop'**
+  String get wWidgetOpen;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

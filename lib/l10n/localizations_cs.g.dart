@@ -2710,4 +2710,82 @@ class L10nCs extends L10n {
 
   @override
   String get wHobbyNameRequired => 'Enter a hobby name.';
+
+  @override
+  String get wHomeLayout => 'Home layout';
+
+  @override
+  String get wCompactMode => 'Compact mode';
+
+  @override
+  String get wHobbiesFirst => 'Hobbies before wish';
+
+  @override
+  String get wExpandWish => 'Expand wish';
+
+  @override
+  String get wCollapseWish => 'Collapse wish';
+
+  @override
+  String get wCategories => 'Categories';
+
+  @override
+  String get wCategory => 'Category';
+
+  @override
+  String get wAllCategories => 'All';
+
+  @override
+  String get wUncategorized => 'Uncategorized';
+
+  @override
+  String get wManageCategories => 'Manage categories';
+
+  @override
+  String get wAddCategory => 'New category';
+
+  @override
+  String get wCategoryName => 'Category name';
+
+  @override
+  String get wCategoryRequired => 'Enter a category name';
+
+  @override
+  String get wDeleteCategoryBody =>
+      'Hobbies will move to Uncategorized. Check-ins and ledger entries are preserved.';
+
+  @override
+  String get wNoCategories => 'Create categories to organize your hobbies';
+
+  @override
+  String get wReorderHobby => 'Drag to reorder';
+
+  @override
+  String get wNoCategoryHobbies => 'No hobbies in this category yet';
+
+  @override
+  String get wHomeWidget => 'Android home screen widget';
+
+  @override
+  String get wAddHomeWidget => 'Add to home screen';
+
+  @override
+  String get wHomeWidgetHelp =>
+      'See your balance, wish progress and today’s hobbies. Tap a hobby to check in inside the app.';
+
+  @override
+  String get wHomeWidgetManual =>
+      'Long-press an empty area on your Android home screen, choose Widgets, then drag WishLoop onto the home screen.';
+
+  @override
+  String get wWidgetRefresh => 'Open to refresh today’s hobbies';
+
+  @override
+  String get wWidgetEmpty => 'Add your first hobby';
+
+  @override
+  String get wWidgetNoWish => 'Choose a primary wish';
+
+  @override
+  String get wWidgetOpen => 'Open WishLoop';
 }

@@ -1229,5 +1229,30 @@
     "habitDisplay_groupType_manual": "自訂順序",
     "@habitDisplay_groupType_manual": {
         "description": "Group sort type: manual ordering via drag-and-drop"
-    }
+    },
+    "wHomeLayout": "首頁佈局",
+    "wCompactMode": "緊湊模式",
+    "wHobbiesFirst": "興趣優先",
+    "wExpandWish": "展開願望",
+    "wCollapseWish": "收起願望",
+    "wCategories": "興趣分類",
+    "wCategory": "分類",
+    "wAllCategories": "全部",
+    "wUncategorized": "未分類",
+    "wManageCategories": "管理分類",
+    "wAddCategory": "新增分類",
+    "wCategoryName": "分類名稱",
+    "wCategoryRequired": "請輸入分類名稱",
+    "wDeleteCategoryBody": "分類中的興趣將移到未分類，打卡和帳本記錄會保留。",
+    "wNoCategories": "建立分類，整理你的興趣",
+    "wReorderHobby": "拖曳排序",
+    "wNoCategoryHobbies": "這個分類還沒有興趣",
+    "wHomeWidget": "Android 桌面小工具",
+    "wAddHomeWidget": "新增至桌面",
+    "wHomeWidgetHelp": "查看餘額、願望進度和今日興趣，點選興趣進入 App 打卡。",
+    "wHomeWidgetManual": "長按 Android 桌面空白處 → 小工具 → WishLoop，拖到桌面即可。",
+    "wWidgetRefresh": "開啟以更新今日興趣",
+    "wWidgetEmpty": "新增你的第一個興趣",
+    "wWidgetNoWish": "設定一個主要願望",
+    "wWidgetOpen": "開啟 WishLoop"
 }

@@ -4,6 +4,7 @@
 import 'dart:convert';
 
 import '../storage/db/handlers/habit.dart';
+import 'group.dart';
 import 'habit_date.dart';
 import 'habit_form.dart';
 import 'habit_freq.dart';
@@ -53,6 +54,7 @@ class Hobby {
   );
 
   String get id => habit.uuid!;
+  String? get groupId => habit.groupId;
   String get name => habit.name ?? '';
   String get description => habit.desc ?? '';
   HabitReminder? get reminder => habit.remindCustom == null
@@ -191,6 +193,7 @@ class WishlistRedemption {
 }
 
 class HobbyWalletSnapshot {
+  final List<GroupDBCell> groups;
   final List<Hobby> hobbies;
   final List<Hobby> dayHobbies;
   final Map<int, int> dailyNetMinor;
@@ -207,6 +210,7 @@ class HobbyWalletSnapshot {
   final int monthEarnedMinor;
 
   const HobbyWalletSnapshot({
+    this.groups = const [],
     this.hobbies = const [],
     this.dayHobbies = const [],
     this.dailyNetMinor = const {},

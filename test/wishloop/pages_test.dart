@@ -9,6 +9,7 @@ import 'package:mhabit/providers/wishloop/wallet_controller.dart';
 import 'package:mhabit/storage/db/db_helper.dart';
 import 'package:mhabit/storage/hobby_wallet_repository.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 void main() {
@@ -16,6 +17,7 @@ void main() {
   late WalletController vm;
   late String hobby, wish;
   setUp(() async {
+    SharedPreferences.setMockInitialValues({'wishloop.compact': false});
     final dbPath = await databaseFactory.getDatabasesPath();
     databaseFactory = databaseFactoryFfiNoIsolate;
     await databaseFactory.setDatabasesPath(dbPath);
@@ -74,7 +76,10 @@ void main() {
             ).copyWith(textScaler: TextScaler.linear(scale)),
             child: child!,
           ),
-          home: const WishLoopHome(enableReminders: false),
+          home: const WishLoopHome(
+            enableReminders: false,
+            enableHomeWidget: false,
+          ),
         ),
       ),
     );
@@ -93,6 +98,142 @@ void main() {
     await tester.pumpAndSettle();
     expect(vm.busy, isFalse);
   }
+
+  testWidgets(
+    'compact home exposes completion without scrolling and keeps layout choice',
+    (tester) async {
+      SharedPreferences.setMockInitialValues({});
+      await pump(tester);
+      expect(
+        find.byKey(ValueKey('complete-$hobby')).hitTestable(),
+        findsOneWidget,
+      );
+      await tester.tap(find.byKey(const ValueKey('home-layout')));
+      await tester.pumpAndSettle();
+      await tester.tap(
+        find.widgetWithText(CheckedPopupMenuItem<String>, '紧凑模式'),
+      );
+      await tester.pumpAndSettle();
+      expect(
+        (await SharedPreferences.getInstance()).getBool('wishloop.compact'),
+        isFalse,
+      );
+      await tester.tap(find.byKey(const ValueKey('home-layout')));
+      await tester.pumpAndSettle();
+      await tester.tap(
+        find.widgetWithText(CheckedPopupMenuItem<String>, '兴趣优先'),
+      );
+      await tester.pumpAndSettle();
+      expect(
+        (await SharedPreferences.getInstance()).getBool(
+          'wishloop.hobbiesFirst',
+        ),
+        isTrue,
+      );
+      expect(tester.takeException(), isNull);
+      await tester.pumpWidget(const SizedBox());
+    },
+  );
+
+  testWidgets(
+    'compact dark home supports large text and completing then undoing',
+    (tester) async {
+      SharedPreferences.setMockInitialValues({});
+      await pump(tester, themeMode: ThemeMode.dark, scale: 2);
+      await tester.scrollUntilVisible(
+        find.byKey(ValueKey('complete-$hobby')),
+        200,
+        scrollable: find
+            .descendant(
+              of: find.byKey(const PageStorageKey('today-scroll')),
+              matching: find.byType(Scrollable),
+            )
+            .first,
+      );
+      await commandTap(tester, find.byKey(ValueKey('complete-$hobby')));
+      expect(vm.snapshot.balanceMinor, 500);
+      await commandTap(tester, find.byKey(ValueKey('undo-$hobby')));
+      expect(vm.snapshot.balanceMinor, 0);
+      expect(tester.takeException(), isNull);
+      await tester.pumpWidget(const SizedBox());
+    },
+  );
+
+  testWidgets('categories can be created and assigned in the hobby editor', (
+    tester,
+  ) async {
+    await pump(tester);
+    await tab(tester, 1);
+    await tester.tap(find.byKey(const ValueKey('manage-categories')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const ValueKey('add-category')));
+    await tester.pumpAndSettle();
+    await tester.enterText(find.byKey(const ValueKey('category-name')), '运动');
+    await tester.tap(find.widgetWithText(FilledButton, '保存'));
+    await tester.pumpAndSettle();
+    expect(vm.snapshot.groups.single.name, '运动');
+    await tester.tap(find.byType(BackButton));
+    await tester.pumpAndSettle();
+    final group = vm.snapshot.groups.single.uuid!;
+    await tester.tap(find.byType(PopupMenuButton<String>).last);
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('编辑兴趣'));
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.byKey(const ValueKey('hobby-category')));
+    await tester.tap(find.byKey(const ValueKey('hobby-category')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('运动').last);
+    await tester.pumpAndSettle();
+    await tester.scrollUntilVisible(
+      find.byKey(const ValueKey('save-hobby')),
+      300,
+      scrollable: find.byType(Scrollable).last,
+    );
+    await tester.tap(find.byKey(const ValueKey('save-hobby')));
+    await tester.pumpAndSettle();
+    expect(vm.snapshot.hobbies.single.groupId, group);
+    await tester.tap(find.byKey(const ValueKey('category-filter-')));
+    await tester.pumpAndSettle();
+    expect(find.byKey(ValueKey('hobby-$hobby')), findsNothing);
+    await tester.tap(find.byKey(ValueKey('category-filter-$group')));
+    await tester.pumpAndSettle();
+    expect(find.byKey(ValueKey('hobby-$hobby')), findsOneWidget);
+    await tester.pumpWidget(const SizedBox());
+  });
+
+  testWidgets('dragging hobbies changes persistent order', (tester) async {
+    final second = await vm.repository.saveHobby(
+      name: 'Vibe Coding',
+      emoji: '💻',
+      description: '',
+      durationMinutes: 30,
+      rewardMinor: 500,
+      weekdayMask: 127,
+      frequency: HabitFrequency.daily,
+    );
+    await vm.refresh();
+    await pump(tester);
+    await tab(tester, 1);
+    final from = tester.getCenter(find.byKey(ValueKey('drag-$second')));
+    final to = tester.getCenter(find.byKey(ValueKey('drag-$hobby')));
+    final gesture = await tester.startGesture(from);
+    await tester.pump(const Duration(milliseconds: 100));
+    await gesture.moveBy(const Offset(0, -12));
+    await tester.pump(const Duration(milliseconds: 100));
+    await gesture.moveTo(to);
+    await tester.pump(const Duration(milliseconds: 300));
+    await gesture.moveBy(const Offset(0, -50));
+    await tester.pump(const Duration(milliseconds: 600));
+    await gesture.up();
+    await tester.pumpAndSettle();
+    expect(vm.snapshot.hobbies.map((h) => h.id), [second, hobby]);
+    expect((await vm.repository.load()).dayHobbies.map((h) => h.id), [
+      second,
+      hobby,
+    ]);
+    expect(tester.takeException(), isNull);
+    await tester.pumpWidget(const SizedBox());
+  });
 
   for (final theme in ThemeMode.values.where((t) => t != ThemeMode.system)) {
     testWidgets('four pages render in Chinese ${theme.name}', (tester) async {

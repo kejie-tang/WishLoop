@@ -7,6 +7,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:uuid/uuid.dart';
 
 import '../common/utils.dart';
+import '../models/group.dart';
 import '../models/habit_date.dart';
 import '../models/habit_form.dart';
 import '../models/habit_freq.dart';
@@ -55,7 +56,7 @@ class HobbyWalletRepository {
     final allHobbies = (await db.rawQuery(
       '''SELECT h.* FROM mh_habits h WHERE h.status IN (1,3) OR EXISTS
         (SELECT 1 FROM mh_records r WHERE r.parent_uuid = h.uuid AND r.record_date = ?)
-        ORDER BY h.status, h.sort_position, h.id_''',
+        ORDER BY h.sort_position, h.id_''',
       [day.epochDay],
     )).map(Hobby.fromRow).toList();
     final hobbies = allHobbies.where((h) => h.habit.status != 2).toList();
@@ -95,6 +96,13 @@ class HobbyWalletRepository {
         .map((r) => r['parent_uuid'] as String)
         .toSet();
     return HobbyWalletSnapshot(
+      groups: List.unmodifiable(
+        (await db.query(
+          'mh_groups',
+          where: 'status = 1',
+          orderBy: 'sort_position, id_',
+        )).map(GroupDBCell.fromJson),
+      ),
       hobbies: List.unmodifiable(hobbies),
       dayHobbies: List.unmodifiable(
         allHobbies.where(
@@ -188,8 +196,25 @@ class HobbyWalletRepository {
   Future<bool> isDueOn(Hobby hobby, HabitDate day) =>
       _db.transaction((db) => _isDue(db, hobby, day));
 
+  /// Read-only upcoming widget rows reuse the same schedule/quota rules.
+  Future<List<Hobby>> widgetHobbiesOn(HabitDate day) =>
+      _db.transaction((db) async {
+        final result = <Hobby>[];
+        for (final row in await db.query(
+          'mh_habits',
+          where: 'status = 1',
+          orderBy: 'sort_position, id_',
+        )) {
+          final hobby = Hobby.fromRow(row);
+          if (await _isDue(db, hobby, day)) result.add(hobby);
+          if (result.length == 3) break;
+        }
+        return result;
+      });
+
   Future<String> saveHobby({
     String? id,
+    String? groupId,
     required String name,
     required String emoji,
     required String description,
@@ -218,7 +243,17 @@ class HobbyWalletRepository {
     }
     final uuid = id ?? const Uuid().v4();
     await _db.transaction((db) async {
+      if (groupId != null &&
+          (await db.query(
+            'mh_groups',
+            columns: ['uuid'],
+            where: 'uuid = ? AND status = 1',
+            whereArgs: [groupId],
+          )).isEmpty) {
+        throw const WalletException(WalletFailure.invalidInput);
+      }
       final values = <String, Object?>{
+        'group_id': groupId,
         'name': name.trim(),
         'desc': description.trim(),
         'hobby_emoji': emoji,
@@ -263,6 +298,109 @@ class HobbyWalletRepository {
     });
     return uuid;
   }
+
+  Future<String> saveGroup({String? id, required String name}) async {
+    if (name.trim().isEmpty || name.trim().length > 100) {
+      throw const WalletException(WalletFailure.invalidInput);
+    }
+    final uuid = id ?? const Uuid().v4();
+    await _db.transaction((db) async {
+      if (id == null) {
+        await db.insert('mh_groups', {
+          'uuid': uuid,
+          'name': name.trim(),
+          'status': 1,
+        });
+        await db.insert('mh_sync', {
+          'group_uuid': uuid,
+          'dirty': 1,
+          'dirty_total': 1,
+        });
+      } else {
+        if (await db.update(
+              'mh_groups',
+              {'name': name.trim()},
+              where: 'uuid = ? AND status = 1',
+              whereArgs: [id],
+            ) !=
+            1) {
+          throw const WalletException(WalletFailure.invalidInput);
+        }
+        await _markGroupDirty(db, uuid);
+      }
+    });
+    return uuid;
+  }
+
+  Future<void> deleteGroup(String id) => _db.transaction((db) async {
+    if (await db.update(
+          'mh_groups',
+          {'status': 2},
+          where: 'uuid = ? AND status = 1',
+          whereArgs: [id],
+        ) !=
+        1) {
+      return;
+    }
+    await _markGroupDirty(db, id);
+    await db.rawUpdate(
+      'UPDATE mh_sync SET dirty = dirty + 1, dirty_total = dirty_total + 1 WHERE habit_uuid IN (SELECT uuid FROM mh_habits WHERE group_id = ?)',
+      [id],
+    );
+    await db.update(
+      'mh_habits',
+      {'group_id': null},
+      where: 'group_id = ?',
+      whereArgs: [id],
+    );
+  });
+
+  Future<void> _markGroupDirty(DatabaseExecutor db, String id) => db.rawUpdate(
+    'UPDATE mh_sync SET dirty = dirty + 1, dirty_total = dirty_total + 1 WHERE group_uuid = ?',
+    [id],
+  );
+
+  /// Replaces only the slots occupied by the visible subset. Hidden/archived
+  /// hobbies keep their relative positions when a category is reordered.
+  Future<void> reorderHobbies(List<String> orderedIds) =>
+      _reorder('mh_habits', orderedIds);
+  Future<void> reorderGroups(List<String> orderedIds) =>
+      _reorder('mh_groups', orderedIds);
+
+  Future<void> _reorder(
+    String table,
+    List<String> orderedIds,
+  ) => _db.transaction((db) async {
+    final selected = orderedIds.toSet();
+    final rows = await db.query(
+      table,
+      columns: ['uuid'],
+      where: table == 'mh_habits' ? 'status IN (1,3)' : 'status = 1',
+      orderBy: 'sort_position, id_',
+    );
+    final all = rows.map((r) => r['uuid'] as String).toList();
+    if (selected.length != orderedIds.length ||
+        !all.toSet().containsAll(selected)) {
+      throw const WalletException(WalletFailure.invalidInput);
+    }
+    var next = 0;
+    final reordered = [
+      for (final id in all) selected.contains(id) ? orderedIds[next++] : id,
+    ];
+    for (var i = 0; i < reordered.length; i++) {
+      await db.update(
+        table,
+        {'sort_position': i.toDouble()},
+        where: 'uuid = ?',
+        whereArgs: [reordered[i]],
+      );
+      final key = table == 'mh_habits' ? 'habit_uuid' : 'group_uuid';
+      await db.rawUpdate(
+        'UPDATE mh_sync SET dirty = dirty + 1, dirty_total = dirty_total + 1 WHERE $key = ?',
+        [reordered[i]],
+      );
+    }
+  });
 
   Future<void> setHobbyStatus(String id, HabitStatus status) async {
     if (!{

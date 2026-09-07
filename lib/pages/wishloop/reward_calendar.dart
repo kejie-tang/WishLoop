@@ -16,6 +16,7 @@ class RewardCalendar extends StatefulWidget {
   final Map<int, int> dailyNetMinor;
   final ValueChanged<HabitDate> onSelected;
   final bool enabled;
+  final bool compact;
   const RewardCalendar({
     super.key,
     required this.today,
@@ -23,6 +24,7 @@ class RewardCalendar extends StatefulWidget {
     required this.dailyNetMinor,
     required this.onSelected,
     this.enabled = true,
+    this.compact = false,
   });
   @override
   State<RewardCalendar> createState() => _RewardCalendarState();
@@ -150,7 +152,7 @@ class _RewardCalendarState extends State<RewardCalendar>
         }
       },
       child: WalletCard(
-        padding: const EdgeInsets.all(14),
+        padding: EdgeInsets.all(widget.compact ? 10 : 14),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -162,7 +164,12 @@ class _RewardCalendarState extends State<RewardCalendar>
                 spacing: 12,
                 runSpacing: 4,
                 children: [
-                  Text(l.wRewardCalendar, style: theme.textTheme.titleLarge),
+                  Text(
+                    l.wRewardCalendar,
+                    style: widget.compact
+                        ? theme.textTheme.titleMedium
+                        : theme.textTheme.titleLarge,
+                  ),
                   Text(
                     l.wPeriodNet(
                       money(
@@ -293,15 +300,17 @@ class _RewardCalendarState extends State<RewardCalendar>
                 );
               },
             ),
-            const SizedBox(height: 6),
-            Text(
-              _mode == RewardCalendarMode.week
-                  ? l.wExpandMonth
-                  : l.wCollapseWeek,
-              style: theme.textTheme.bodySmall?.copyWith(
-                color: theme.colorScheme.onSurfaceVariant,
+            if (!widget.compact) ...[
+              const SizedBox(height: 6),
+              Text(
+                _mode == RewardCalendarMode.week
+                    ? l.wExpandMonth
+                    : l.wCollapseWeek,
+                style: theme.textTheme.bodySmall?.copyWith(
+                  color: theme.colorScheme.onSurfaceVariant,
+                ),
               ),
-            ),
+            ],
           ],
         ),
       ),

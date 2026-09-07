@@ -1,0 +1,5 @@
+<resources>
+    <string name="widget_description">Balance, wish progress and today’s hobbies. Tap to check in.</string>
+    <string name="widget_open">Open WishLoop to set up your widget</string>
+    <string name="widget_refresh">Open to refresh today’s hobbies</string>
+</resources>

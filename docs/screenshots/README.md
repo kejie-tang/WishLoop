@@ -2,7 +2,7 @@
 
 这些截图用于项目 [README](../../README.md) 的功能展示。
 
-- 版本：WishLoop **1.1.5（201）** release APK。
+- 版本：WishLoop **1.2.0（202）** release APK。
 - 设备：专用 Android 16 / API 36 模拟器，1080 × 2400 像素。
 - 语言：简体中文；主题：浅色及深色。
 - 采集日期：2026-09-07。
@@ -10,12 +10,14 @@
 
 | 图片 | 展示内容 |
 | --- | --- |
-| [today.png](today.png) | 周奖励日历、兴趣账户和主要愿望 |
-| [hobbies.png](hobbies.png) | 正数奖励与负数习惯 |
+| [today.png](today.png) | 紧凑首页、周奖励日历和兴趣优先布局 |
+| [hobbies.png](hobbies.png) | 分类、拖动排序、正数奖励与负数习惯 |
 | [wallet.png](wallet.png) | 余额、当月净奖励和账本流水 |
 | [wishlist.png](wishlist.png) | 愿望进度、预计天数和已兑换记录 |
 | [calendar-month.png](calendar-month.png) | 按当前月份归一化的每日净奖励 |
 | [dark-mode.png](dark-mode.png) | 深色模式下的今天页面 |
+| [home-widget.png](home-widget.png) | Android 桌面小组件 |
+| [categories.png](categories.png) | 分类管理与排序 |
 
 更新截图时，先安装对应版本 APK，使用专用模拟器和演示数据进入相应页面，再执行：
 

@@ -1,6 +1,10 @@
 package io.github.friesi23.mhabit
 
 import android.app.Activity
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
+import android.os.Build
+import android.os.Bundle
 import android.content.Intent
 import java.io.File
 import io.flutter.embedding.android.FlutterActivity
@@ -16,6 +20,8 @@ class MainActivity : FlutterActivity() {
     private var animationScaleHandler: AnimationScaleStreamHandler? = null
     private var backupResult: MethodChannel.Result? = null
     private var backupSource: File? = null
+    private var widgetChannel: MethodChannel? = null
+    private var widgetReady = false
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
@@ -27,6 +33,26 @@ class MainActivity : FlutterActivity() {
         EventChannel(
             flutterEngine.dartExecutor.binaryMessenger, ANIMATION_SCALE_CHANNEL
         ).setStreamHandler(handler)
+
+        widgetChannel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, WishLoopWidgetProvider.CHANNEL).also { channel ->
+            channel.setMethodCallHandler { call, result ->
+                try {
+                    when (call.method) {
+                        "updateSnapshot" -> { WishLoopWidgetProvider.save(this, requireNotNull(call.arguments as? String)); result.success(null) }
+                        "consumeLaunch" -> { widgetReady = true; result.success(consumeWidgetLaunch()) }
+                        "pinWidget" -> {
+                            val manager = AppWidgetManager.getInstance(this)
+                            result.success(Build.VERSION.SDK_INT >= 26 && manager.isRequestPinAppWidgetSupported && manager.requestPinAppWidget(ComponentName(this, WishLoopWidgetProvider::class.java), Bundle().apply {
+                                putParcelable(AppWidgetManager.EXTRA_APPWIDGET_PREVIEW, WishLoopWidgetProvider.preview(this@MainActivity))
+                            }, null))
+                        }
+                        else -> result.notImplemented()
+                    }
+                } catch (error: Exception) {
+                    result.error("WIDGET_FAILED", error.message, null)
+                }
+            }
+        }
 
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger,
             "io.github.friesi23.mhabit/wishloop_backup").setMethodCallHandler { call, result ->
@@ -53,6 +79,21 @@ class MainActivity : FlutterActivity() {
                 }
             }
         }
+    }
+
+    private fun consumeWidgetLaunch(): Map<String, String>? {
+        val target = intent.getStringExtra(WishLoopWidgetProvider.TARGET) ?: return null
+        val hobby = intent.getStringExtra(WishLoopWidgetProvider.HOBBY) ?: ""
+        intent.removeExtra(WishLoopWidgetProvider.TARGET)
+        intent.removeExtra(WishLoopWidgetProvider.HOBBY)
+        if (target !in listOf("today", "wallet", "wishes")) return null
+        return mapOf("target" to target, "hobbyId" to hobby)
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        if (widgetReady) consumeWidgetLaunch()?.let { widgetChannel?.invokeMethod("open", it) }
     }
 
     @Deprecated("Activity result callback retained for FlutterActivity compatibility")

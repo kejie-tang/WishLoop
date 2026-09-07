@@ -18,10 +18,10 @@ WishLoop 让它成为坚持兴趣的理由：为跑步、阅读、学习设定�
 
 ## 界面预览
 
-以下为 **v1.1.5 的 Android 实际截图**，使用演示数据。点击图片可查看大图。
+以下为 **v1.2.0 的 Android 实际截图**，使用演示数据。点击图片可查看大图。
 
 <p align="center">
-  <a href="docs/screenshots/today.png"><img src="docs/screenshots/today.png" width="260" alt="今天页面：周奖励日历、兴趣账户余额和主要愿望进度"></a>
+  <a href="docs/screenshots/today.png"><img src="docs/screenshots/today.png" width="260" alt="紧凑首页：奖励日历、账户余额和兴趣优先列表"></a>
   <a href="docs/screenshots/hobbies.png"><img src="docs/screenshots/hobbies.png" width="260" alt="兴趣页面：跑步完成获得奖励，熬夜记录发生后扣减"></a>
   <a href="docs/screenshots/wallet.png"><img src="docs/screenshots/wallet.png" width="260" alt="账户页面：余额、本月净奖励，以及收入、扣减和愿望兑换流水"></a>
 </p>
@@ -29,7 +29,12 @@ WishLoop 让它成为坚持兴趣的理由：为跑步、阅读、学习设定�
 <p align="center">
   <a href="docs/screenshots/wishlist.png"><img src="docs/screenshots/wishlist.png" width="260" alt="愿望页面：目标金额、当前进度、预计天数及兑换记录"></a>
   <a href="docs/screenshots/calendar-month.png"><img src="docs/screenshots/calendar-month.png" width="260" alt="月奖励日历：用红绿深浅显示每日净奖励，支持选择历史日期"></a>
-  <a href="docs/screenshots/dark-mode.png"><img src="docs/screenshots/dark-mode.png" width="260" alt="深色模式下的今天页面、奖励日历和主要愿望"></a>
+  <a href="docs/screenshots/dark-mode.png"><img src="docs/screenshots/dark-mode.png" width="260" alt="深色模式下的紧凑首页、奖励日历和兴趣列表"></a>
+</p>
+
+<p align="center">
+  <a href="docs/screenshots/home-widget.png"><img src="docs/screenshots/home-widget.png" width="260" alt="Android 桌面小组件：余额、愿望进度和按自定义顺序排列的今日兴趣"></a>
+  <a href="docs/screenshots/categories.png"><img src="docs/screenshots/categories.png" width="260" alt="兴趣分类管理：新建、改名、删除与拖动排序"></a>
 </p>
 
 ## 给坚持一个看得见的理由
@@ -45,12 +50,17 @@ WishLoop 让它成为坚持兴趣的理由：为跑步、阅读、学习设定�
 
 再把一本书、一副耳机，或者其他真正想要的东西放进愿望清单。首页会展示你的主要愿望，让每一次打卡都有一个具体的期待。
 
+- **首页可以更紧凑。** 在首页右上角切换紧凑模式、选择兴趣优先；布局会自动记住。
+- **从 Android 桌面开始。** 小组件显示余额、愿望进度和今日兴趣，点击兴趣即可进入 App 完成或撤销。
+- **按分类整理，按喜好排序。** 支持创建、改名、删除分类与分类筛选；拖动兴趣右侧的排序柄即可调整顺序，首页和小组件同步更新。
 - **奖励与扣减都由你设定。** 支持正数、零和负数金额；输入自动规范为两位小数。
 - **按自己的节奏坚持。** 支持每天、每周、每月、自定义周期和指定星期，可设置预计时长与提醒。
 - **漏记了，也能补上。** 周/月日历支持左右翻页、选择过去日期补记或撤销；颜色深浅随当前周/月的数据变化。
 - **愿望进度随账户更新。** 根据最近 14 天净奖励估算还需多少天；近期没有净增长时显示“暂无法预计”。
 - **记错可以撤销。** 完成记录与奖励关联，撤销会恢复对应金额；重复点击不会重复奖励，愿望也只能兑换一次。
 - **数据留在你的手机。** 无账号、无后端、无云同步；支持完整备份、恢复，以及导入 Table Habit 的兴趣记录。
+
+桌面小组件随尺寸显示最多三个今日兴趣；点击余额或愿望可进入相应页面。
 
 所有愿望共用一个兴趣账户。兑换需要余额充足并二次确认；兑换后，其他愿望的进度也会随余额更新。
 
@@ -61,9 +71,11 @@ WishLoop 让它成为坚持兴趣的理由：为跑步、阅读、学习设定�
 3. **添加两三个兴趣。** 填好名称、频率、时长和每次奖励；想记录不好的习惯时，可把金额设为负数。
 4. **从今天的一次完成开始。** 在“今天”打卡，查看奖励金与愿望进度；需要时从日历补记或撤销。
 
+桌面小组件可从“设置 → Android 桌面小组件”添加，也可以长按桌面空白处，从系统小组件列表选择 WishLoop。分类从“兴趣 → 管理分类”创建，再在兴趣编辑页分配。
+
 已有积累可以在“账户 → 调整余额”中补入。建议定期使用“设置 → 导出完整备份”，把备份保存到自己的文件目录。
 
-**当前版本：v1.1.5 · 支持 Android 7.0 及以上。** 目前面向个人日常使用，通过 APK 安装。
+**当前版本：v1.2.0 · 支持 Android 7.0 及以上。** 目前面向个人日常使用，通过 APK 安装。
 
 升级使用同一签名的新版 APK，可覆盖安装保留数据。如果手机已安装官方 Table Habit，两者当前包名相同、签名不同，不能直接覆盖；请先在原 App 导出数据，避免丢失记录。
 
@@ -71,7 +83,7 @@ WishLoop 让它成为坚持兴趣的理由：为跑步、阅读、学习设定�
 
 余额由完整账本求和得到；金额以整数分保存。完成、撤销和愿望兑换通过数据库事务处理，数据库升级保留已有记录。
 
-当前 v1.1.5 已通过 **1370 项测试**、`flutter analyze` 静态检查、release APK 构建及 Android 模拟器验证。详情见 [版本验证记录](docs/wishloop/V1.1.5.md)。实体手机上的通知及时性仍可能受到厂商省电策略影响。
+当前 v1.2.0 已通过 **1383 项测试**、`flutter analyze` 静态检查、release APK 构建及 Android 模拟器验证。详情见 [版本验证记录](docs/wishloop/V1.2.0.md)。实体手机上的通知及时性仍可能受到厂商省电策略影响。
 
 ## 开发与文档
 

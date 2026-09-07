@@ -20,11 +20,15 @@ class WishProgress extends StatelessWidget {
   final WishlistItem wish;
   final int balance;
   final int recent14NetMinor;
+  final bool compact;
+  final Widget? trailing;
   const WishProgress({
     super.key,
     required this.wish,
     required this.balance,
     this.recent14NetMinor = 0,
+    this.compact = false,
+    this.trailing,
   });
   @override
   Widget build(BuildContext context) {
@@ -34,11 +38,20 @@ class WishProgress extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          '${wish.emoji}  ${wish.name}',
-          style: Theme.of(context).textTheme.titleLarge,
+        Row(
+          children: [
+            Expanded(
+              child: Text(
+                '${wish.emoji}  ${wish.name}',
+                style: compact
+                    ? Theme.of(context).textTheme.titleMedium
+                    : Theme.of(context).textTheme.titleLarge,
+              ),
+            ),
+            ?trailing,
+          ],
         ),
-        const SizedBox(height: 16),
+        SizedBox(height: compact ? 0 : 16),
         Text(
           l.wWishAmounts(
             money(context, balance),
@@ -46,17 +59,19 @@ class WishProgress extends StatelessWidget {
           ),
           style: Theme.of(context).textTheme.titleMedium,
         ),
-        const SizedBox(height: 12),
+        SizedBox(height: compact ? 6 : 12),
         LinearProgressIndicator(
           value: wish.progress(balance),
-          minHeight: 8,
+          minHeight: compact ? 4 : 8,
           borderRadius: BorderRadius.circular(8),
         ),
-        const SizedBox(height: 8),
-        Align(
-          alignment: AlignmentDirectional.centerEnd,
-          child: Text('${tenths ~/ 10}.${tenths % 10}%'),
-        ),
+        if (!compact) ...[
+          const SizedBox(height: 8),
+          Align(
+            alignment: AlignmentDirectional.centerEnd,
+            child: Text('${tenths ~/ 10}.${tenths % 10}%'),
+          ),
+        ],
         const SizedBox(height: 8),
         Text(
           estimate == 0

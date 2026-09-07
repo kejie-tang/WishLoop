@@ -12,7 +12,9 @@ import 'package:provider/provider.dart';
 
 import '../../common/app_info.dart';
 import '../../l10n/localizations.dart';
+import '../../platform/wishloop_widget.dart';
 import '../../providers/app_ui/app_language.dart';
+import '../../providers/app_ui/app_theme.dart';
 import '../../providers/wishloop/wallet_controller.dart';
 import '../../providers/workflow/app_reminder.dart';
 import '../../providers/workflow/habits_file_importer.dart';
@@ -152,6 +154,25 @@ class _WishLoopSettingsState extends State<WishLoopSettings> with XShare {
           children: [
             if (_working) const LinearProgressIndicator(),
             const AppSettingThemeModeTile(),
+            if (defaultTargetPlatform == TargetPlatform.android)
+              ListTile(
+                key: const ValueKey('add-home-widget'),
+                leading: const Icon(Icons.widgets_outlined),
+                title: Text(l.wHomeWidget),
+                subtitle: Text(l.wHomeWidgetHelp),
+                onTap: () => _work(() async {
+                  final widget = WishLoopWidget();
+                  await widget.refresh(
+                    context.read<WalletController>().repository,
+                    l,
+                    theme: context.read<AppThemeViewModel>().themeType.name,
+                  );
+                  final requested = await WishLoopWidget.pin();
+                  if (!requested && mounted) {
+                    feedback(context, l.wHomeWidgetManual);
+                  }
+                }),
+              ),
             ListTile(
               leading: const Icon(Icons.language),
               title: Text(l.appSetting_changeLanguageDialog_titleText),

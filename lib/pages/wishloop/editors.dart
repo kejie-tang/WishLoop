@@ -36,10 +36,17 @@ class _HobbyEditorState extends State<HobbyEditor> {
   late bool _daily, _remind;
   late TimeOfDay _time;
   bool _saving = false;
+  String? _groupId;
   @override
   void initState() {
     super.initState();
     final h = widget.hobby;
+    _groupId =
+        context.read<WalletController>().snapshot.groups.any(
+          (g) => g.uuid == h?.groupId,
+        )
+        ? h?.groupId
+        : null;
     _name = TextEditingController(text: h?.name);
     _emoji = TextEditingController(text: h?.emoji ?? '🌱');
     _description = TextEditingController(text: h?.description);
@@ -122,6 +129,7 @@ class _HobbyEditorState extends State<HobbyEditor> {
       await vm.run(
         () => vm.repository.saveHobby(
           id: widget.hobby?.id,
+          groupId: _groupId,
           name: _name.text,
           emoji: _emoji.text.trim(),
           description: _description.text,
@@ -189,7 +197,7 @@ class _HobbyEditorState extends State<HobbyEditor> {
                 for (final emoji in [
                   '🏃',
                   '🇬🇧',
-                  '🤖',
+                  '💻',
                   '📚',
                   '🎨',
                   '🎹',
@@ -200,6 +208,23 @@ class _HobbyEditorState extends State<HobbyEditor> {
                     onPressed: () => _emoji.text = emoji,
                   ),
               ],
+            ),
+            const SizedBox(height: 20),
+            DropdownButtonFormField<String>(
+              key: const ValueKey('hobby-category'),
+              initialValue: _groupId ?? '',
+              isExpanded: true,
+              decoration: InputDecoration(labelText: l.wCategory),
+              items: [
+                DropdownMenuItem(value: '', child: Text(l.wUncategorized)),
+                for (final group
+                    in context.watch<WalletController>().snapshot.groups)
+                  DropdownMenuItem(
+                    value: group.uuid!,
+                    child: Text(group.name!, overflow: TextOverflow.ellipsis),
+                  ),
+              ],
+              onChanged: (v) => setState(() => _groupId = v == '' ? null : v),
             ),
             const SizedBox(height: 20),
             TextFormField(

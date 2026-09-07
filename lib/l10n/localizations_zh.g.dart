@@ -2534,6 +2534,81 @@ class L10nZh extends L10n {
 
   @override
   String get wHobbyNameRequired => '请填写兴趣名称。';
+
+  @override
+  String get wHomeLayout => '首页布局';
+
+  @override
+  String get wCompactMode => '紧凑模式';
+
+  @override
+  String get wHobbiesFirst => '兴趣优先';
+
+  @override
+  String get wExpandWish => '展开愿望';
+
+  @override
+  String get wCollapseWish => '收起愿望';
+
+  @override
+  String get wCategories => '兴趣分类';
+
+  @override
+  String get wCategory => '分类';
+
+  @override
+  String get wAllCategories => '全部';
+
+  @override
+  String get wUncategorized => '未分类';
+
+  @override
+  String get wManageCategories => '管理分类';
+
+  @override
+  String get wAddCategory => '新建分类';
+
+  @override
+  String get wCategoryName => '分类名称';
+
+  @override
+  String get wCategoryRequired => '请输入分类名称';
+
+  @override
+  String get wDeleteCategoryBody => '分类中的兴趣将移到未分类，打卡和账户记录会保留。';
+
+  @override
+  String get wNoCategories => '创建分类，整理你的兴趣';
+
+  @override
+  String get wReorderHobby => '拖动排序';
+
+  @override
+  String get wNoCategoryHobbies => '这个分类还没有兴趣';
+
+  @override
+  String get wHomeWidget => 'Android 桌面小组件';
+
+  @override
+  String get wAddHomeWidget => '添加到桌面';
+
+  @override
+  String get wHomeWidgetHelp => '查看余额、愿望进度和今日兴趣，点击兴趣进入 App 打卡。';
+
+  @override
+  String get wHomeWidgetManual => '长按 Android 桌面空白处 → 小组件 → WishLoop，拖到桌面即可。';
+
+  @override
+  String get wWidgetRefresh => '打开更新今日兴趣';
+
+  @override
+  String get wWidgetEmpty => '添加你的第一个兴趣';
+
+  @override
+  String get wWidgetNoWish => '设置一个主要愿望';
+
+  @override
+  String get wWidgetOpen => '打开 WishLoop';
 }
 
 /// The translations for Chinese, using the Han script (`zh_Hant`).
@@ -4276,4 +4351,79 @@ class L10nZhHant extends L10nZh {
 
   @override
   String get habitDisplay_groupType_manual => '自訂順序';
+
+  @override
+  String get wHomeLayout => '首頁佈局';
+
+  @override
+  String get wCompactMode => '緊湊模式';
+
+  @override
+  String get wHobbiesFirst => '興趣優先';
+
+  @override
+  String get wExpandWish => '展開願望';
+
+  @override
+  String get wCollapseWish => '收起願望';
+
+  @override
+  String get wCategories => '興趣分類';
+
+  @override
+  String get wCategory => '分類';
+
+  @override
+  String get wAllCategories => '全部';
+
+  @override
+  String get wUncategorized => '未分類';
+
+  @override
+  String get wManageCategories => '管理分類';
+
+  @override
+  String get wAddCategory => '新增分類';
+
+  @override
+  String get wCategoryName => '分類名稱';
+
+  @override
+  String get wCategoryRequired => '請輸入分類名稱';
+
+  @override
+  String get wDeleteCategoryBody => '分類中的興趣將移到未分類，打卡和帳本記錄會保留。';
+
+  @override
+  String get wNoCategories => '建立分類，整理你的興趣';
+
+  @override
+  String get wReorderHobby => '拖曳排序';
+
+  @override
+  String get wNoCategoryHobbies => '這個分類還沒有興趣';
+
+  @override
+  String get wHomeWidget => 'Android 桌面小工具';
+
+  @override
+  String get wAddHomeWidget => '新增至桌面';
+
+  @override
+  String get wHomeWidgetHelp => '查看餘額、願望進度和今日興趣，點選興趣進入 App 打卡。';
+
+  @override
+  String get wHomeWidgetManual => '長按 Android 桌面空白處 → 小工具 → WishLoop，拖到桌面即可。';
+
+  @override
+  String get wWidgetRefresh => '開啟以更新今日興趣';
+
+  @override
+  String get wWidgetEmpty => '新增你的第一個興趣';
+
+  @override
+  String get wWidgetNoWish => '設定一個主要願望';
+
+  @override
+  String get wWidgetOpen => '開啟 WishLoop';
 }
