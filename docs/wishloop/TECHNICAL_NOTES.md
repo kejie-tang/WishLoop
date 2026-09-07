@@ -30,7 +30,7 @@ v10 中 `EARN` 表示一次兴趣记录的净变动，可为正数、零或负�
 
 ## 账户变化曲线与货币
 
-账户页面可选择最近 14、30、180 天，包含今天。曲线展示每天结束时的账户余额，点按或拖动可查看指定日期的余额与当日变化。期间变化等于该区间全部账本变动之和。
+账户页面可选择最近 14、30、180 天，包含今天。连线使用轻度平滑并启用过冲抑制，不改变账本数据点或点选数值。曲线展示每天结束时的账户余额，点按或拖动可查看指定日期的余额与当日变化。期间变化等于该区间全部账本变动之和。
 
 统计覆盖完整账本，不受“最近记录”最多 200 条的展示限制。包括 EARN、SPEND、ADJUSTMENT，空白日期结转余额；区间前已有金额作为期初余额。打卡按 `hw_checkins.day` 归属日期，调整和兑换按本地日期归属。选择首页的历史日期不改变账户曲线的今天基准。补记和撤销后重新从账本计算。
 
@@ -67,6 +67,14 @@ v11 新增单行 `hw_settings(id, currency)` 表；保留现有 `hw_transactions
 
 不要只使用上游的习惯导出格式备份 WishLoop：它不包含账本。上游 JSON 导入入口仅用于迁移兴趣及历史记录，导入失败会回滚；匹配的记录可能被更新。
 
+## 桌面直接打卡
+
+原生组件声明 4 列 × 2 行，显示最多四个按兴趣排序的当日未完成项，仅展示 emoji 和带正负号的金额。点击通过私有 PendingIntent 广播进入短时 JobService，启动无界面的 FlutterEngine，再调用 `WishLoopWidgetAction → HobbyWalletRepository.complete`。数据库仍是同一个本地文件；独立连接随后台引擎关闭，不另建账本。
+
+后台完成沿用完成记录、原兴趣记录和 EARN 的同一事务。组件请求的日期及金额在事务内再次验证；重复完成不会增加流水。后台提交后重建展示缓存并通知已运行的页面刷新。原生递增代数防止较旧的页面快照覆盖后台新快照。请求在调用 Dart 前持久标记为已领取；中断后不自动重放，待用户核对或再次明确点击。桌面缩放或系统进程生命周期不会成为账本事实来源。数据库仍为 v11，没有增加表或字段。
+
+Android 复用 sqflite 原生单线程，通过一个 Java 源文件补丁使调度器在事务期间只处理该连接的消息，提交、回滚或关闭后再处理其他连接，避免 BEGIN 阻塞另一连接的 COMMIT。另设 5 秒 SQLite 锁等待。没有更换插件或 SQLite，也不使用已弃用的线程配置 API；补丁附带上游源码哈希校验和 BSD 许可证，详见 [sqflite 补丁说明](../../android/sqflite_patch/PATCHES.md)。
+
 ## Android 构建与测试
 
 本次开发环境：Flutter **3.47.2** / Dart **3.13.2** / JDK **17**，Android API 36 模拟器。
@@ -86,12 +94,18 @@ APK：`build/app/outputs/flutter-apk/app-release.apk`。支持 Android 7.0 及�
 
 applicationId 保持 `io.github.friesi23.mhabit`。**正式上架前需要修改 package name / applicationId**。如果手机已安装官方 Table Habit，不同签名无法直接覆盖；先在原 App 导出数据，避免丢失历史。
 
-[构建环境记录](BUILD.md) · [基线结果](BASELINE.md) · [最新验证记录](V1.3.0.md) · [v1.0.0 验证](VERIFICATION.md)
+[构建环境记录](BUILD.md) · [基线结果](BASELINE.md) · [最新验证记录](V1.4.0.md) · [v1.0.0 验证](VERIFICATION.md)
 
 Android 集成测试只在专用、空白测试设备运行：
 
 ```sh
 flutter test integration_test/android_mvp_test.dart -d emulator-5554
+```
+
+新增桌面并发回归可单独运行，不修改 release App 的演示数据：
+
+```sh
+flutter test integration_test/widget_concurrency_test.dart --flavor f_dev -d emulator-5554
 ```
 
 通知测试需要系统允许通知权限。测试包括真实 SQLite、正负金额、自动小数规范、完成/撤销/再完成、历史补记、周/月手势、14 天净奖励预测、兑换、备份恢复、深色模式和系统通知。

@@ -2593,7 +2593,7 @@ class L10nZh extends L10n {
   String get wAddHomeWidget => '添加到桌面';
 
   @override
-  String get wHomeWidgetHelp => '查看余额、愿望进度和今日兴趣，点击兴趣进入 App 打卡。';
+  String get wHomeWidgetHelp => '4×2 小组件，点击 emoji 直接记录，自动补入下一个未完成兴趣。';
 
   @override
   String get wHomeWidgetManual => '长按 Android 桌面空白处 → 小组件 → WishLoop，拖到桌面即可。';
@@ -2655,10 +2655,16 @@ class L10nZh extends L10n {
 
   @override
   String get wWidgetAddInstructions =>
-      '先打开一次 WishLoop，再长按桌面空白处，在小组件列表中查找 WishLoop。\n\nvivo／OriginOS：进入「原子组件」，找到 WishLoop 后长按拖到桌面。\n\n如果应用内添加按钮没有弹出确认框，可用上述桌面入口手动添加。组件大小与后台刷新时机会受桌面和省电设置影响。';
+      '先打开一次 WishLoop，再长按桌面空白处，在小组件列表中查找 WishLoop。\n\nvivo／OriginOS：进入「原子组件」，找到 WishLoop 后长按拖到桌面。\n\n组件为横向 4 列 × 2 行。点击 emoji 直接记录，误触可进入 App 撤销。旧组件的大小由桌面保留，升级后可重新添加或拖动边缘调整。\n\n后台操作受系统调度；若没有更新，可点余额打开 App 检查。';
 
   @override
   String get wClose => '关闭';
+
+  @override
+  String get wWidgetAllDone => '今天已全部记录';
+
+  @override
+  String get wWidgetRetry => '状态待确认，请重试或打开 App 查看';
 }
 
 /// The translations for Chinese, using the Han script (`zh_Hant`).
@@ -4460,7 +4466,7 @@ class L10nZhHant extends L10nZh {
   String get wAddHomeWidget => '新增至桌面';
 
   @override
-  String get wHomeWidgetHelp => '查看餘額、願望進度和今日興趣，點選興趣進入 App 打卡。';
+  String get wHomeWidgetHelp => '4×2 小元件，點擊 emoji 直接記錄，自動補入下一個未完成興趣。';
 
   @override
   String get wHomeWidgetManual => '長按 Android 桌面空白處 → 小工具 → WishLoop，拖到桌面即可。';
@@ -4522,8 +4528,14 @@ class L10nZhHant extends L10nZh {
 
   @override
   String get wWidgetAddInstructions =>
-      '先開啟一次 WishLoop，再長按桌面空白處，在小元件清單中尋找 WishLoop。\n\nvivo／OriginOS：進入「原子元件」，找到 WishLoop 後長按拖到桌面。\n\n如果應用程式內新增按鈕沒有彈出確認框，可用上述桌面入口手動新增。元件大小與背景更新時機會受桌面和省電設定影響。';
+      '先開啟一次 WishLoop，再長按桌面空白處，在小元件清單中尋找 WishLoop。\n\nvivo／OriginOS：進入「原子元件」，找到 WishLoop 後長按拖到桌面。\n\n元件為橫向 4 列 × 2 行。點擊 emoji 直接記錄，誤觸可進入 App 撤銷。舊元件的大小由桌面保留，升級後可重新新增或拖動邊緣調整。\n\n背景操作受系統排程；若沒有更新，可點餘額開啟 App 檢查。';
 
   @override
   String get wClose => '關閉';
+
+  @override
+  String get wWidgetAllDone => '今天已全部記錄';
+
+  @override
+  String get wWidgetRetry => '狀態待確認，請重試或開啟 App 查看';
 }

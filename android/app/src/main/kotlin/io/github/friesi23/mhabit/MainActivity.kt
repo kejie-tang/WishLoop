@@ -14,6 +14,8 @@ import io.flutter.plugin.common.MethodChannel
 
 class MainActivity : FlutterActivity() {
     companion object {
+        private var widgetEvents: MethodChannel? = null
+        fun widgetUpdated() { widgetEvents?.invokeMethod("changed", null) }
         private const val ANIMATION_SCALE_CHANNEL = "global.app.animation/scale_stream"
     }
 
@@ -35,10 +37,12 @@ class MainActivity : FlutterActivity() {
         ).setStreamHandler(handler)
 
         widgetChannel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, WishLoopWidgetProvider.CHANNEL).also { channel ->
+            widgetEvents = channel
             channel.setMethodCallHandler { call, result ->
                 try {
                     when (call.method) {
-                        "updateSnapshot" -> { WishLoopWidgetProvider.save(this, requireNotNull(call.arguments as? String)); result.success(null) }
+                        "beginSnapshot" -> result.success(WidgetSnapshotOrder.next())
+                        "updateSnapshot" -> { WishLoopWidgetProvider.saveArguments(this, call.arguments); result.success(null) }
                         "consumeLaunch" -> { widgetReady = true; result.success(consumeWidgetLaunch()) }
                         "pinWidget" -> {
                             val manager = AppWidgetManager.getInstance(this)
@@ -125,6 +129,7 @@ class MainActivity : FlutterActivity() {
     }
 
     override fun onDestroy() {
+        if (widgetEvents === widgetChannel) widgetEvents = null
         animationScaleHandler?.dispose()
         animationScaleHandler = null
         super.onDestroy()

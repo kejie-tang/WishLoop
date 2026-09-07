@@ -64,9 +64,11 @@ class _WishLoopHomeState extends State<WishLoopHome>
     if (widget.enableHomeWidget &&
         defaultTargetPlatform == TargetPlatform.android) {
       _homeWidget = WishLoopWidget();
-      _homeWidget!.start(_openWidget).catchError((Object e, StackTrace stack) {
-        debugPrint('WishLoop widget startup failed: $e\n$stack');
-      });
+      _homeWidget!
+          .start(_openWidget, onChanged: () => _vm.refresh())
+          .catchError((Object e, StackTrace stack) {
+            debugPrint('WishLoop widget startup failed: $e\n$stack');
+          });
     }
     _dayTimer = Timer.periodic(const Duration(seconds: 20), (_) {
       if (_day != _vm.repository.today) {

@@ -258,7 +258,7 @@ class HobbyWalletRepository {
         )) {
           final hobby = Hobby.fromRow(row);
           if (await _isDue(db, hobby, day)) result.add(hobby);
-          if (result.length == 3) break;
+          if (result.length == 4) break;
         }
         return result;
       });
@@ -473,11 +473,16 @@ class HobbyWalletRepository {
   }
 
   /// Returns the reward only for a new completion. Duplicate taps return null.
-  Future<int?> complete(String hobbyId, {HabitDate? onDay}) => _db.transaction((
-    db,
-  ) async {
+  Future<int?> complete(
+    String hobbyId, {
+    HabitDate? onDay,
+    bool requireToday = false,
+    int? expectedRewardMinor,
+  }) => _db.transaction((db) async {
     final day = onDay ?? today;
-    if (day.epochDay > today.epochDay || day.year < 1900) {
+    if ((requireToday && day != today) ||
+        day.epochDay > today.epochDay ||
+        day.year < 1900) {
       throw const WalletException(WalletFailure.invalidInput);
     }
     final id = genRecordUUID(hobbyId, day.epochDay);
@@ -497,6 +502,10 @@ class HobbyWalletRepository {
       throw const WalletException(WalletFailure.missingHobby);
     }
     final hobby = Hobby.fromRow(rows.single);
+    if (expectedRewardMinor != null &&
+        expectedRewardMinor != hobby.rewardMinor) {
+      throw const WalletException(WalletFailure.invalidInput);
+    }
     if (!await _isDue(
       db,
       hobby,

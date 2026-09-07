@@ -1,5 +1,6 @@
 <resources>
-    <string name="widget_description">Balance, wish progress and today’s hobbies. Tap to check in.</string>
+    <string name="widget_description">4×2 widget. Tap a hobby emoji to check in directly.</string>
     <string name="widget_open">Open WishLoop to set up your widget</string>
     <string name="widget_refresh">Open to refresh today’s hobbies</string>
+    <string name="widget_retry">Check status. Retry or open WishLoop.</string>
 </resources>

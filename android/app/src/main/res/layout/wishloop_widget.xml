@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/widget_root" android:layout_width="match_parent" android:layout_height="match_parent"
-    android:orientation="vertical" android:padding="16dp" android:background="@drawable/widget_background_light">
+    android:orientation="vertical" android:padding="12dp" android:background="@drawable/widget_background_light">
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
-        <TextView android:id="@+id/widget_title" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="@string/appName" android:textSize="13sp" android:textStyle="bold" android:maxLines="1" />
+        <TextView android:id="@+id/widget_balance" android:layout_width="0dp" android:layout_weight="1" android:layout_height="32dp" android:gravity="center_vertical" android:text="—" android:textSize="24sp" android:textStyle="bold" android:maxLines="1" android:ellipsize="end" android:autoSizeTextType="uniform" android:autoSizeMinTextSize="12sp" android:autoSizeMaxTextSize="24sp" />
         <TextView android:id="@+id/widget_net" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="12sp" android:maxLines="1" />
     </LinearLayout>
-    <TextView android:text="—" android:id="@+id/widget_balance" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="26sp" android:textStyle="bold" android:maxLines="1" android:ellipsize="end" android:paddingTop="2dp" android:paddingBottom="4dp" />
     <LinearLayout android:id="@+id/widget_goal" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
-        <TextView android:id="@+id/widget_wish" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="13sp" android:maxLines="1" android:ellipsize="end" />
-        <ProgressBar android:id="@+id/widget_progress" style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="4dp" android:layout_marginTop="6dp" android:max="1000" android:progressTint="#A66F50" android:progressBackgroundTint="#DDD2C8" />
+        <TextView android:id="@+id/widget_wish" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="11sp" android:maxLines="1" android:ellipsize="end" />
+        <ProgressBar android:id="@+id/widget_progress" style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="3dp" android:layout_marginTop="3dp" android:max="1000" android:progressTint="#A66F50" android:progressBackgroundTint="#DDD2C8" />
     </LinearLayout>
-    <LinearLayout android:id="@+id/widget_hobbies" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="vertical" android:layout_marginTop="8dp">
-        <TextView android:id="@+id/widget_hobby_0" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:gravity="center_vertical" android:textSize="14sp" android:maxLines="1" android:ellipsize="end" />
-        <TextView android:id="@+id/widget_hobby_1" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:gravity="center_vertical" android:textSize="14sp" android:maxLines="1" android:ellipsize="end" />
-        <TextView android:id="@+id/widget_hobby_2" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:gravity="center_vertical" android:textSize="14sp" android:maxLines="1" android:ellipsize="end" />
-        <TextView android:id="@+id/widget_empty" android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center_vertical" android:textSize="13sp" android:maxLines="2" android:ellipsize="end" android:text="@string/widget_open" />
+    <LinearLayout android:id="@+id/widget_hobbies" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal" android:layout_marginTop="7dp">
+        <TextView android:id="@+id/widget_hobby_0" style="@style/WishLoopWidgetHobby" />
+        <TextView android:id="@+id/widget_hobby_1" style="@style/WishLoopWidgetHobby" />
+        <TextView android:id="@+id/widget_hobby_2" style="@style/WishLoopWidgetHobby" />
+        <TextView android:id="@+id/widget_hobby_3" style="@style/WishLoopWidgetHobby" />
+        <TextView android:id="@+id/widget_empty" android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:textSize="12sp" android:maxLines="2" android:ellipsize="end" android:text="@string/widget_open" />
     </LinearLayout>
+    <TextView android:id="@+id/widget_status" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="10sp" android:maxLines="1" android:ellipsize="end" android:visibility="gone" />
 </LinearLayout>

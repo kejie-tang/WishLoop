@@ -26,6 +26,8 @@ import 'theme/linux_bundled_font.dart';
 import 'utils/local_timezone.dart';
 import 'widgets/bingding.dart';
 
+export 'platform/wishloop_widget_background.dart' show wishLoopWidgetBackground;
+
 Future<void> main() async {
   if (Platform.isIOS) {
     FixedIos26FlutterBinding.ensureInitialized();

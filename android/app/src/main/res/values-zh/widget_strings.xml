@@ -1,5 +1,6 @@
 <resources>
-    <string name="widget_description">余额、愿望进度和今日兴趣，点击进入 App 打卡。</string>
+    <string name="widget_description">4×2 小组件，点击兴趣 emoji 直接记录。</string>
     <string name="widget_open">打开 WishLoop，开始记录兴趣</string>
     <string name="widget_refresh">打开更新今日兴趣</string>
+    <string name="widget_retry">状态待确认，请重试或打开 App 查看</string>
 </resources>

@@ -168,7 +168,10 @@ class _WalletBalanceChartState extends State<WalletBalanceChart> {
                       ],
                       color: color,
                       barWidth: 2.5,
-                      isCurved: false,
+                      isCurved: true,
+                      curveSmoothness: .18,
+                      preventCurveOverShooting: true,
+                      preventCurveOvershootingThreshold: 0,
                       dotData: FlDotData(
                         show: true,
                         checkToShowDot: (spot, _) => spot.x == index,

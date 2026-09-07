@@ -1249,7 +1249,7 @@
     "wNoCategoryHobbies": "這個分類還沒有興趣",
     "wHomeWidget": "Android 桌面小工具",
     "wAddHomeWidget": "新增至桌面",
-    "wHomeWidgetHelp": "查看餘額、願望進度和今日興趣，點選興趣進入 App 打卡。",
+    "wHomeWidgetHelp": "4×2 小元件，點擊 emoji 直接記錄，自動補入下一個未完成興趣。",
     "wHomeWidgetManual": "長按 Android 桌面空白處 → 小工具 → WishLoop，拖到桌面即可。",
     "wWidgetRefresh": "開啟以更新今日興趣",
     "wWidgetEmpty": "新增你的第一個興趣",
@@ -1301,6 +1301,8 @@
         }
     },
     "wWidgetAddHelp": "小元件新增說明",
-    "wWidgetAddInstructions": "先開啟一次 WishLoop，再長按桌面空白處，在小元件清單中尋找 WishLoop。\n\nvivo／OriginOS：進入「原子元件」，找到 WishLoop 後長按拖到桌面。\n\n如果應用程式內新增按鈕沒有彈出確認框，可用上述桌面入口手動新增。元件大小與背景更新時機會受桌面和省電設定影響。",
-    "wClose": "關閉"
+    "wWidgetAddInstructions": "先開啟一次 WishLoop，再長按桌面空白處，在小元件清單中尋找 WishLoop。\n\nvivo／OriginOS：進入「原子元件」，找到 WishLoop 後長按拖到桌面。\n\n元件為橫向 4 列 × 2 行。點擊 emoji 直接記錄，誤觸可進入 App 撤銷。舊元件的大小由桌面保留，升級後可重新新增或拖動邊緣調整。\n\n背景操作受系統排程；若沒有更新，可點餘額開啟 App 檢查。",
+    "wClose": "關閉",
+    "wWidgetAllDone": "今天已全部記錄",
+    "wWidgetRetry": "狀態待確認，請重試或開啟 App 查看"
 }

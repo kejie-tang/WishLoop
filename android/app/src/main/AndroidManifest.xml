@@ -46,6 +46,8 @@
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/wishloop_widget_info" />
         </receiver>
+        <service android:name=".WishLoopWidgetJob" android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
         <!-- #region: for flutter_local_notifications required-->
         <receiver android:exported="false"
             android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver" />

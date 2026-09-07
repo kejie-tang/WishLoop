@@ -11,6 +11,21 @@ rootProject.buildDir = '../build'
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
     project.evaluationDependsOn(':app')
+    if (project.name == 'sqflite_android') {
+        project.plugins.withId('com.android.library') {
+            // Local source overlay; never edit the user's global pub cache.
+            // Fail visibly on plugin changes so this patch cannot silently drift.
+            def original = project.file('src/main/java/com/tekartik/sqflite/DatabaseWorkerPool.java')
+            def hash = java.security.MessageDigest.getInstance('SHA-256').digest(original.bytes).encodeHex().toString()
+            if (hash != '468dc8a589901fe419d4bd489bd7aea3482033ecd5cee7f95464825cbb0ae109') {
+                throw new GradleException('Review android/sqflite_patch before upgrading sqflite_android.')
+            }
+            project.android.sourceSets.main.java {
+                srcDir rootProject.file('sqflite_patch/src/main/java')
+                exclude { entry -> entry.file.canonicalPath == original.canonicalPath }
+            }
+        }
+    }
 }
 
 tasks.register('clean', Delete) {

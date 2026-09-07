@@ -261,6 +261,8 @@ class _DBHelper implements DBHelper {
         }
       },
       onConfigure: (db) async {
+        // Let another engine finish its short transaction before taking the lock.
+        await db.rawQuery('PRAGMA busy_timeout = 5000');
         // SQLite cannot change foreign_keys from inside onUpgrade's transaction.
         final rebuilding = {9, 10}.contains(await db.getVersion());
         await db.execute('PRAGMA foreign_keys = ${rebuilding ? 'OFF' : 'ON'}');

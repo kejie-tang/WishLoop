@@ -27,7 +27,7 @@ class WidgetLaunch {
   }
 }
 
-/// Presentation-only Android cache and navigation. It cannot mutate the ledger.
+/// Android presentation bridge. Background actions use the same repository.
 class WishLoopWidget {
   static const channel = MethodChannel(
     'io.github.friesi23.mhabit/wishloop_widget',
@@ -36,8 +36,12 @@ class WishLoopWidget {
   Future<void>? _sync;
   bool _disposed = false;
 
-  Future<void> start(void Function(WidgetLaunch) onOpen) async {
+  Future<void> start(
+    void Function(WidgetLaunch) onOpen, {
+    void Function()? onChanged,
+  }) async {
     channel.setMethodCallHandler((call) async {
+      if (call.method == 'changed' && !_disposed) onChanged?.call();
       if (call.method == 'open' && !_disposed) {
         final launch = WidgetLaunch.parse(call.arguments);
         if (launch != null) onOpen(launch);
@@ -62,13 +66,14 @@ class WishLoopWidget {
     while (_pendingSnapshot != null && !_disposed) {
       final build = _pendingSnapshot!;
       _pendingSnapshot = null;
+      final generation = await channel.invokeMethod<int>('beginSnapshot');
       final snapshot = await build();
       // Coalesce newer requests instead of publishing an already stale frame.
       if (_pendingSnapshot == null && !_disposed) {
-        await channel.invokeMethod<void>(
-          'updateSnapshot',
-          jsonEncode(snapshot),
-        );
+        await channel.invokeMethod<void>('updateSnapshot', {
+          'snapshot': jsonEncode(snapshot),
+          'generation': generation,
+        });
       }
     }
   }
@@ -98,24 +103,36 @@ class WishLoopWidget {
       final day = today.addDays(offset);
       final hobbies = offset == 0
           ? s.dayHobbies
+                .where(
+                  (h) =>
+                      s.dueIds.contains(h.id) && !s.completedIds.contains(h.id),
+                )
+                .toList()
           : await repo.widgetHobbiesOn(day);
       days[day.toIso8601String().substring(0, 10)] = {
         'net':
             '${l.wToday} ${format(offset == 0 ? s.dayNetMinor : 0, signed: true)}',
         'netMinor': offset == 0 ? s.dayNetMinor : 0,
-        'empty': s.hobbies.isEmpty ? l.wWidgetEmpty : l.wEmptyToday,
+        'empty': s.hobbies.isEmpty
+            ? l.wWidgetEmpty
+            : (offset == 0 && s.dayHobbies.isNotEmpty
+                  ? l.wWidgetAllDone
+                  : l.wEmptyToday),
         'hobbies': [
-          for (final h in hobbies.take(3))
+          for (final h in hobbies.take(4))
             {
               'id': h.id,
-              'text':
-                  '${offset == 0 && s.completedIds.contains(h.id) ? '✓' : h.emoji} ${h.name}  ${format(offset == 0 && s.completedIds.contains(h.id) ? (s.dayCompletions[h.id] ?? 0) : h.rewardMinor, signed: true)}',
+              'emoji': h.emoji,
+              'amount': format(h.rewardMinor, signed: true),
+              'amountMinor': h.rewardMinor,
+              // Accessible names remain available to screen readers only.
+              'label': '${h.name} ${format(h.rewardMinor, signed: true)}',
             },
         ],
       };
     }
     return {
-      'version': 1,
+      'version': 2,
       'theme': theme,
       'walletLabel': l.wWallet,
       'balance': format(s.balanceMinor),
@@ -124,6 +141,7 @@ class WishLoopWidget {
           : '${wish.emoji} ${wish.name}  ${wish.progressTenths(s.balanceMinor) ~/ 10}.${wish.progressTenths(s.balanceMinor) % 10}%',
       'progress': wish?.progressTenths(s.balanceMinor) ?? 0,
       'refresh': l.wWidgetRefresh,
+      'retry': l.wWidgetRetry,
       'days': days,
     };
   }

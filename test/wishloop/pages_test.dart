@@ -114,6 +114,8 @@ void main() {
     await tab(tester, 2);
     LineChart chart() => tester.widget<LineChart>(find.byType(LineChart));
     expect(chart().data.lineBarsData.single.spots.length, 14);
+    expect(chart().data.lineBarsData.single.isCurved, isTrue);
+    expect(chart().data.lineBarsData.single.preventCurveOverShooting, isTrue);
     for (final days in [30, 180, 14]) {
       await commandTap(tester, find.text('$days天'));
       expect(chart().data.lineBarsData.single.spots.length, days);

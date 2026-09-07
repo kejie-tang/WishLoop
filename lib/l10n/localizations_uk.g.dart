@@ -2777,7 +2777,7 @@ class L10nUk extends L10n {
 
   @override
   String get wHomeWidgetHelp =>
-      'See your balance, wish progress and today’s hobbies. Tap a hobby to check in inside the app.';
+      '4×2 widget. Tap an emoji to check in; the next unfinished hobby takes its place.';
 
   @override
   String get wHomeWidgetManual =>
@@ -2841,8 +2841,14 @@ class L10nUk extends L10n {
 
   @override
   String get wWidgetAddInstructions =>
-      'Open WishLoop once, then long-press an empty area on the home screen and find WishLoop in the widget list.\n\nvivo / OriginOS: open Atomic components, find WishLoop, then drag it onto the home screen.\n\nIf the in-app button does not show a confirmation, use the home screen picker. Widget sizing and background refresh depend on the launcher and power settings.';
+      'Open WishLoop once, then long-press an empty home screen area and find WishLoop in the widget list.\n\nvivo / OriginOS: open Atomic components and drag WishLoop onto the home screen.\n\nThe widget is 4 columns × 2 rows. Tap an emoji to check in; undo mistakes inside the app. Existing widgets keep their size: resize or add them again after updating.\n\nBackground actions depend on system scheduling. If the widget does not update, tap the balance to check in the app.';
 
   @override
   String get wClose => 'Close';
+
+  @override
+  String get wWidgetAllDone => 'Everything is recorded for today';
+
+  @override
+  String get wWidgetRetry => 'Check status: retry or open WishLoop';
 }

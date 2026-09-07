@@ -258,7 +258,9 @@
     "wChartPeriodChange",
     "wWidgetAddHelp",
     "wWidgetAddInstructions",
-    "wClose"
+    "wClose",
+    "wWidgetAllDone",
+    "wWidgetRetry"
   ],
 
   "cs": [
@@ -432,7 +434,9 @@
     "wChartPeriodChange",
     "wWidgetAddHelp",
     "wWidgetAddInstructions",
-    "wClose"
+    "wClose",
+    "wWidgetAllDone",
+    "wWidgetRetry"
   ],
 
   "de": [
@@ -814,7 +818,9 @@
     "wChartPeriodChange",
     "wWidgetAddHelp",
     "wWidgetAddInstructions",
-    "wClose"
+    "wClose",
+    "wWidgetAllDone",
+    "wWidgetRetry"
   ],
 
   "es": [
@@ -1122,7 +1128,9 @@
     "wChartPeriodChange",
     "wWidgetAddHelp",
     "wWidgetAddInstructions",
-    "wClose"
+    "wClose",
+    "wWidgetAllDone",
+    "wWidgetRetry"
   ],
 
   "eu": [
@@ -1861,7 +1869,9 @@
     "wChartPeriodChange",
     "wWidgetAddHelp",
     "wWidgetAddInstructions",
-    "wClose"
+    "wClose",
+    "wWidgetAllDone",
+    "wWidgetRetry"
   ],
 
   "fa": [
@@ -2263,7 +2273,9 @@
     "wChartPeriodChange",
     "wWidgetAddHelp",
     "wWidgetAddInstructions",
-    "wClose"
+    "wClose",
+    "wWidgetAllDone",
+    "wWidgetRetry"
   ],
 
   "fr": [
@@ -2608,7 +2620,9 @@
     "wChartPeriodChange",
     "wWidgetAddHelp",
     "wWidgetAddInstructions",
-    "wClose"
+    "wClose",
+    "wWidgetAllDone",
+    "wWidgetRetry"
   ],
 
   "he": [
@@ -2782,7 +2796,9 @@
     "wChartPeriodChange",
     "wWidgetAddHelp",
     "wWidgetAddInstructions",
-    "wClose"
+    "wClose",
+    "wWidgetAllDone",
+    "wWidgetRetry"
   ],
 
   "hu": [
@@ -3044,7 +3060,9 @@
     "wChartPeriodChange",
     "wWidgetAddHelp",
     "wWidgetAddInstructions",
-    "wClose"
+    "wClose",
+    "wWidgetAllDone",
+    "wWidgetRetry"
   ],
 
   "it": [
@@ -3413,7 +3431,9 @@
     "wChartPeriodChange",
     "wWidgetAddHelp",
     "wWidgetAddInstructions",
-    "wClose"
+    "wClose",
+    "wWidgetAllDone",
+    "wWidgetRetry"
   ],
 
   "ja": [
@@ -3691,7 +3711,9 @@
     "wChartPeriodChange",
     "wWidgetAddHelp",
     "wWidgetAddInstructions",
-    "wClose"
+    "wClose",
+    "wWidgetAllDone",
+    "wWidgetRetry"
   ],
 
   "nb": [
@@ -4428,7 +4450,9 @@
     "wChartPeriodChange",
     "wWidgetAddHelp",
     "wWidgetAddInstructions",
-    "wClose"
+    "wClose",
+    "wWidgetAllDone",
+    "wWidgetRetry"
   ],
 
   "nl": [
@@ -5172,7 +5196,9 @@
     "wChartPeriodChange",
     "wWidgetAddHelp",
     "wWidgetAddInstructions",
-    "wClose"
+    "wClose",
+    "wWidgetAllDone",
+    "wWidgetRetry"
   ],
 
   "pl": [
@@ -5454,7 +5480,9 @@
     "wChartPeriodChange",
     "wWidgetAddHelp",
     "wWidgetAddInstructions",
-    "wClose"
+    "wClose",
+    "wWidgetAllDone",
+    "wWidgetRetry"
   ],
 
   "pt": [
@@ -5869,7 +5897,9 @@
     "wChartPeriodChange",
     "wWidgetAddHelp",
     "wWidgetAddInstructions",
-    "wClose"
+    "wClose",
+    "wWidgetAllDone",
+    "wWidgetRetry"
   ],
 
   "ru": [
@@ -6150,7 +6180,9 @@
     "wChartPeriodChange",
     "wWidgetAddHelp",
     "wWidgetAddInstructions",
-    "wClose"
+    "wClose",
+    "wWidgetAllDone",
+    "wWidgetRetry"
   ],
 
   "tr": [
@@ -6411,7 +6443,9 @@
     "wChartPeriodChange",
     "wWidgetAddHelp",
     "wWidgetAddInstructions",
-    "wClose"
+    "wClose",
+    "wWidgetAllDone",
+    "wWidgetRetry"
   ],
 
   "uk": [
@@ -6622,7 +6656,9 @@
     "wChartPeriodChange",
     "wWidgetAddHelp",
     "wWidgetAddInstructions",
-    "wClose"
+    "wClose",
+    "wWidgetAllDone",
+    "wWidgetRetry"
   ],
 
   "vi": [
@@ -6884,6 +6920,8 @@
     "wChartPeriodChange",
     "wWidgetAddHelp",
     "wWidgetAddInstructions",
-    "wClose"
+    "wClose",
+    "wWidgetAllDone",
+    "wWidgetRetry"
   ]
 }

@@ -55,8 +55,8 @@ void main() {
       expect(days, hasLength(7));
       expect((days['2026-09-07'] as Map)['netMinor'], 0);
       expect(
-        ((days['2026-09-07'] as Map)['hobbies'] as List).single['text'],
-        '💻 Vibe Coding  +5.00',
+        ((days['2026-09-07'] as Map)['hobbies'] as List).single['amount'],
+        '+5.00',
       );
       expect((days['2026-09-12'] as Map)['hobbies'], isEmpty);
       expect(s['progress'], 500);
@@ -70,9 +70,8 @@ void main() {
       expect(updated['theme'], 'dark');
       expect(updated['progress'], 1000);
       expect(
-        (((updated['days'] as Map)['2026-09-07'] as Map)['hobbies'] as List)
-            .single['text'],
-        '✓ Vibe Coding  +5.00',
+        ((updated['days'] as Map)['2026-09-07'] as Map)['hobbies'],
+        isEmpty,
       );
       vm.dispose();
     },
@@ -99,10 +98,7 @@ void main() {
       expect(s['progress'], 0);
       final days = s['days'] as Map;
       expect((days['2026-09-07'] as Map)['netMinor'], -1000);
-      expect(
-        ((days['2026-09-07'] as Map)['hobbies'] as List).single['text'],
-        contains('−10.00'),
-      );
+      expect((days['2026-09-07'] as Map)['hobbies'], isEmpty);
       expect((days['2026-09-08'] as Map)['hobbies'], isEmpty);
     },
   );
@@ -140,9 +136,11 @@ void main() {
       final snapshots = <Map<String, dynamic>>[];
       TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
           .setMockMethodCallHandler(WishLoopWidget.channel, (call) async {
+            if (call.method == 'beginSnapshot') return snapshots.length + 1;
             if (call.method == 'updateSnapshot') {
               snapshots.add(
-                jsonDecode(call.arguments as String) as Map<String, dynamic>,
+                jsonDecode((call.arguments as Map)['snapshot'] as String)
+                    as Map<String, dynamic>,
               );
               if (snapshots.length == 1) {
                 entered.complete();
