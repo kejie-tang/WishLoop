@@ -329,6 +329,55 @@ void main() {
   );
 
   testWidgets(
+    'empty hobby name is identified above a valid negative integer amount',
+    (tester) async {
+      await pump(tester);
+      await tab(tester, 1);
+      await tester.tap(find.text('添加兴趣'));
+      await tester.pumpAndSettle();
+      await tester.scrollUntilVisible(
+        find.byKey(const ValueKey('hobby-reward')),
+        250,
+        scrollable: find.byType(Scrollable).first,
+      );
+      await tester.enterText(find.byKey(const ValueKey('hobby-reward')), '-10');
+      FocusManager.instance.primaryFocus?.unfocus();
+      await tester.pumpAndSettle();
+      await tester.scrollUntilVisible(
+        find.byKey(const ValueKey('save-hobby')),
+        250,
+        scrollable: find.byType(Scrollable).first,
+      );
+      await commandTap(tester, find.byKey(const ValueKey('save-hobby')));
+      expect(find.byType(HobbyEditor), findsOneWidget);
+      expect(find.text('请填写兴趣名称。'), findsOneWidget);
+      expect(
+        find.byKey(const ValueKey('hobby-name')).hitTestable(),
+        findsOneWidget,
+      );
+      expect(find.byType(SnackBar), findsNothing);
+      expect(vm.snapshot.hobbies.length, 1);
+      await tester.enterText(find.byKey(const ValueKey('hobby-name')), '熬夜');
+      await tester.pumpAndSettle();
+      expect(find.text('请填写兴趣名称。'), findsNothing);
+      await tester.scrollUntilVisible(
+        find.byKey(const ValueKey('save-hobby')),
+        250,
+        scrollable: find.byType(Scrollable).first,
+      );
+      await commandTap(tester, find.byKey(const ValueKey('save-hobby')));
+      expect(find.byType(HobbyEditor), findsNothing);
+      expect(
+        vm.snapshot.hobbies.singleWhere((h) => h.name == '熬夜').rewardMinor,
+        -1000,
+      );
+      expect(vm.snapshot.balanceMinor, 0);
+      expect(tester.takeException(), isNull);
+      await tester.pumpWidget(const SizedBox());
+    },
+  );
+
+  testWidgets(
     'negative editor rounds input on blur; records a deduction and updates forecast',
     (tester) async {
       await pump(tester);

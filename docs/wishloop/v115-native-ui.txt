@@ -1,0 +1,270 @@
+
+hobbies-before
+兴趣 [42,173][158,246] android.view.View
+设置 [943,147][1070,273] android.widget.Button
+🌱
+跑步
+约 30 分钟
+每日
+完成奖励 +5.00 [53,304][1028,771] android.view.View
+显示菜单 [849,357][975,483] android.widget.Button
+🌱
+熬夜
+约 30 分钟
+每日
+发生扣减 −3.46 [53,771][1028,1239] android.view.View
+显示菜单 [849,824][975,950] android.widget.Button
+添加兴趣 [711,1938][1038,2085] android.widget.Button
+今天
+第 1 个标签，共 4 个 [0,2127][270,2337] android.widget.Button
+兴趣
+第 2 个标签，共 4 个 [270,2127][540,2337] android.widget.Button
+账户
+第 3 个标签，共 4 个 [540,2127][810,2337] android.widget.Button
+愿望
+第 4 个标签，共 4 个 [810,2127][1080,2337] android.widget.Button
+
+editor
+返回 [11,147][137,273] android.widget.Button
+添加兴趣 [189,173][420,246] android.view.View
+名称 [53,336][1028,535] android.widget.EditText
+还可输入 100 个字符 [938,493][1028,535] android.view.View
+🌱 [53,567][1028,766] android.widget.EditText
+还可输入 15 个字符 [957,724][1028,766] android.view.View
+🏃 [53,766][217,900] android.widget.Button
+🇬🇧 [243,766][408,900] android.widget.Button
+🤖 [435,766][599,900] android.widget.Button
+📚 [625,766][790,900] android.widget.Button
+🎨 [816,766][981,900] android.widget.Button
+🎹 [53,900][217,1034] android.widget.Button
+🌱 [243,900][408,1034] android.widget.Button
+描述（可选） [53,1086][1028,1286] android.widget.EditText
+还可输入 2,000 个字符 [920,1244][1028,1286] android.view.View
+30 [53,1317][1028,1464] android.widget.EditText
+5.00 [53,1517][1028,1758] android.widget.EditText
+正数用于奖励，负数用于记录不好的习惯并扣减。金额自动四舍五入到两位小数。 [53,1674][1028,1758] android.view.View
+频率
+每天 [53,1821][1028,1968] android.widget.Button
+指定星期 [53,2026][1028,2089] android.view.View
+一 [53,2089][231,2215] android.widget.Button
+二 [252,2089][431,2215] android.widget.Button
+三 [452,2089][631,2215] android.widget.Button
+四 [652,2089][831,2215] android.widget.Button
+五 [53,2215][231,2341] android.widget.Button
+六 [252,2215][431,2341] android.widget.Button
+日 [452,2215][631,2341] android.widget.Button
+按所选星期打卡，每天最多奖励一次；周 / 月 / 自定义周期达到次数后休息。 [53,2373][1028,2400] android.view.View
+
+negative-input
+返回 [11,147][137,273] android.widget.Button
+添加兴趣 [189,173][420,246] android.view.View
+名称 [53,283][1028,422] android.widget.EditText
+还可输入 100 个字符 [938,380][1028,422] android.view.View
+🌱 [53,454][1028,653] android.widget.EditText
+还可输入 15 个字符 [957,611][1028,653] android.view.View
+🏃 [53,653][217,787] android.widget.Button
+🇬🇧 [243,653][408,787] android.widget.Button
+🤖 [435,653][599,787] android.widget.Button
+📚 [625,653][790,787] android.widget.Button
+🎨 [816,653][981,787] android.widget.Button
+🎹 [53,787][217,921] android.widget.Button
+🌱 [243,787][408,921] android.widget.Button
+描述（可选） [53,974][1028,1173] android.widget.EditText
+还可输入 2,000 个字符 [920,1131][1028,1173] android.view.View
+30 [53,1205][1028,1352] android.widget.EditText
+-10 [53,1404][1028,1646] android.widget.EditText
+正数用于奖励，负数用于记录不好的习惯并扣减。金额自动四舍五入到两位小数。 [53,1562][1028,1646] android.view.View
+频率
+每天 [53,1709][1028,1856] android.widget.Button
+指定星期 [53,1913][1028,1976] android.view.View
+一 [53,1976][231,2102] android.widget.Button
+二 [252,1976][431,2102] android.widget.Button
+三 [452,1976][631,2102] android.widget.Button
+四 [652,1976][831,2102] android.widget.Button
+五 [53,2102][231,2228] android.widget.Button
+六 [252,2102][431,2228] android.widget.Button
+日 [452,2102][631,2228] android.widget.Button
+按所选星期打卡，每天最多奖励一次；周 / 月 / 自定义周期达到次数后休息。 [53,2260][1028,2347] android.view.View
+兴趣提醒
+20:00 [53,2389][1028,2400] android.widget.Switch
+
+save-visible
+返回 [11,147][137,273] android.widget.Button
+添加兴趣 [189,173][420,246] android.view.View
+🎹 [53,283][217,374] android.widget.Button
+🌱 [243,283][408,374] android.widget.Button
+描述（可选） [53,426][1028,626] android.widget.EditText
+还可输入 2,000 个字符 [920,584][1028,626] android.view.View
+30 [53,657][1028,804] android.widget.EditText
+-10 [53,857][1028,1098] android.widget.EditText
+正数用于奖励，负数用于记录不好的习惯并扣减。金额自动四舍五入到两位小数。 [53,1014][1028,1098] android.view.View
+频率
+每天 [53,1161][1028,1308] android.widget.Button
+指定星期 [53,1366][1028,1429] android.view.View
+一 [53,1429][231,1555] android.widget.Button
+二 [252,1429][431,1555] android.widget.Button
+三 [452,1429][631,1555] android.widget.Button
+四 [652,1429][831,1555] android.widget.Button
+五 [53,1555][231,1681] android.widget.Button
+六 [252,1555][431,1681] android.widget.Button
+日 [452,1555][631,1681] android.widget.Button
+按所选星期打卡，每天最多奖励一次；周 / 月 / 自定义周期达到次数后休息。 [53,1712][1028,1799] android.view.View
+兴趣提醒
+20:00 [53,1841][1028,2030] android.widget.Switch
+在预计完成时间提醒自己。Android 可能因省电策略延后通知。 [53,2030][1028,2075] android.view.View
+保存 [53,2148][1028,2274] android.widget.Button
+
+name-error
+返回 [11,147][137,273] android.widget.Button
+添加兴趣 [189,173][420,246] android.view.View
+名称, 请填写兴趣名称。 [53,336][1028,535] android.widget.EditText
+请填写兴趣名称。 [53,493][313,535] android.view.View
+还可输入 100 个字符 [938,496][1028,538] android.view.View
+🌱 [53,567][1028,766] android.widget.EditText
+还可输入 15 个字符 [957,724][1028,766] android.view.View
+🏃 [53,766][217,900] android.widget.Button
+🇬🇧 [243,766][408,900] android.widget.Button
+🤖 [435,766][599,900] android.widget.Button
+📚 [625,766][790,900] android.widget.Button
+🎨 [816,766][981,900] android.widget.Button
+🎹 [53,900][217,1034] android.widget.Button
+🌱 [243,900][408,1034] android.widget.Button
+描述（可选） [53,1086][1028,1286] android.widget.EditText
+还可输入 2,000 个字符 [920,1244][1028,1286] android.view.View
+30 [53,1317][1028,1464] android.widget.EditText
+-10 [53,1517][1028,1758] android.widget.EditText
+正数用于奖励，负数用于记录不好的习惯并扣减。金额自动四舍五入到两位小数。 [53,1674][1028,1758] android.view.View
+频率
+每天 [53,1821][1028,1968] android.widget.Button
+指定星期 [53,2026][1028,2089] android.view.View
+一 [53,2089][231,2215] android.widget.Button
+二 [252,2089][431,2215] android.widget.Button
+三 [452,2089][631,2215] android.widget.Button
+四 [652,2089][831,2215] android.widget.Button
+五 [53,2215][231,2341] android.widget.Button
+六 [252,2215][431,2341] android.widget.Button
+日 [452,2215][631,2341] android.widget.Button
+按所选星期打卡，每天最多奖励一次；周 / 月 / 自定义周期达到次数后休息。 [53,2373][1028,2400] android.view.View
+
+name-corrected
+返回 [11,147][137,273] android.widget.Button
+添加兴趣 [189,173][420,246] android.view.View
+Negative10 [53,336][1028,535] android.widget.EditText
+还可输入 90 个字符 [920,493][1028,535] android.view.View
+🌱 [53,567][1028,766] android.widget.EditText
+还可输入 15 个字符 [957,724][1028,766] android.view.View
+🏃 [53,766][217,900] android.widget.Button
+🇬🇧 [243,766][408,900] android.widget.Button
+🤖 [435,766][599,900] android.widget.Button
+📚 [625,766][790,900] android.widget.Button
+🎨 [816,766][981,900] android.widget.Button
+🎹 [53,900][217,1034] android.widget.Button
+🌱 [243,900][408,1034] android.widget.Button
+描述（可选） [53,1086][1028,1286] android.widget.EditText
+还可输入 2,000 个字符 [920,1244][1028,1286] android.view.View
+30 [53,1317][1028,1464] android.widget.EditText
+-10.00 [53,1517][1028,1758] android.widget.EditText
+正数用于奖励，负数用于记录不好的习惯并扣减。金额自动四舍五入到两位小数。 [53,1674][1028,1758] android.view.View
+频率
+每天 [53,1821][1028,1968] android.widget.Button
+指定星期 [53,2026][1028,2089] android.view.View
+一 [53,2089][231,2215] android.widget.Button
+二 [252,2089][431,2215] android.widget.Button
+三 [452,2089][631,2215] android.widget.Button
+四 [652,2089][831,2215] android.widget.Button
+五 [53,2215][231,2341] android.widget.Button
+六 [252,2215][431,2341] android.widget.Button
+日 [452,2215][631,2341] android.widget.Button
+按所选星期打卡，每天最多奖励一次；周 / 月 / 自定义周期达到次数后休息。 [53,2373][1028,2400] android.view.View
+
+save-after-name
+返回 [11,147][137,273] android.widget.Button
+添加兴趣 [189,173][420,246] android.view.View
+🎹 [53,283][217,374] android.widget.Button
+🌱 [243,283][408,374] android.widget.Button
+描述（可选） [53,426][1028,626] android.widget.EditText
+还可输入 2,000 个字符 [920,584][1028,626] android.view.View
+30 [53,657][1028,804] android.widget.EditText
+-10.00 [53,857][1028,1098] android.widget.EditText
+正数用于奖励，负数用于记录不好的习惯并扣减。金额自动四舍五入到两位小数。 [53,1014][1028,1098] android.view.View
+频率
+每天 [53,1161][1028,1308] android.widget.Button
+指定星期 [53,1366][1028,1429] android.view.View
+一 [53,1429][231,1555] android.widget.Button
+二 [252,1429][431,1555] android.widget.Button
+三 [452,1429][631,1555] android.widget.Button
+四 [652,1429][831,1555] android.widget.Button
+五 [53,1555][231,1681] android.widget.Button
+六 [252,1555][431,1681] android.widget.Button
+日 [452,1555][631,1681] android.widget.Button
+按所选星期打卡，每天最多奖励一次；周 / 月 / 自定义周期达到次数后休息。 [53,1712][1028,1799] android.view.View
+兴趣提醒
+20:00 [53,1841][1028,2030] android.widget.Switch
+在预计完成时间提醒自己。Android 可能因省电策略延后通知。 [53,2030][1028,2075] android.view.View
+保存 [53,2148][1028,2274] android.widget.Button
+
+negative-saved
+兴趣 [42,173][158,246] android.view.View
+设置 [943,147][1070,273] android.widget.Button
+🌱
+跑步
+约 30 分钟
+每日
+完成奖励 +5.00 [53,304][1028,771] android.view.View
+显示菜单 [849,357][975,483] android.widget.Button
+🌱
+熬夜
+约 30 分钟
+每日
+发生扣减 −3.46 [53,771][1028,1239] android.view.View
+显示菜单 [849,824][975,950] android.widget.Button
+🌱
+Negative10
+约 30 分钟
+每日
+发生扣减 −10.00 [53,1239][1028,1706] android.view.View
+显示菜单 [849,1291][975,1417] android.widget.Button
+添加兴趣 [711,1938][1038,2085] android.widget.Button
+今天
+第 1 个标签，共 4 个 [0,2127][270,2337] android.widget.Button
+兴趣
+第 2 个标签，共 4 个 [270,2127][540,2337] android.widget.Button
+账户
+第 3 个标签，共 4 个 [540,2127][810,2337] android.widget.Button
+愿望
+第 4 个标签，共 4 个 [810,2127][1080,2337] android.widget.Button
+
+balance-after-save
+兴趣账户 [42,173][273,246] android.view.View
+设置 [943,147][1070,273] android.widget.Button
+兴趣账户
+¥6.16
+本月净奖励  +11.16 [53,304][1028,931] android.view.View
+调整余额 [105,716][426,842] android.widget.Button
+最近记录 [53,931][1028,1005] android.view.View
+2026年9月7日 [53,1042][1028,1160] android.view.View
+跑步
+兴趣收入 · 14:13
++5.00 [53,1160][1028,1320] android.view.View
+一本喜欢的书
+愿望兑换 · 13:38
+−5.00 [53,1320][1028,1480] android.view.View
+2026年9月6日 [53,1480][1028,1598] android.view.View
+熬夜
+习惯扣减 · 12:00
+−3.46 [53,1598][1028,1758] android.view.View
+2026年9月5日 [53,1758][1028,1876] android.view.View
+跑步
+兴趣收入 · 12:00
++5.00 [53,1876][1028,2037] android.view.View
+熬夜
+习惯扣减 · 12:00
+−3.46 [53,2037][1028,2127] android.view.View
+今天
+第 1 个标签，共 4 个 [0,2127][270,2337] android.widget.Button
+兴趣
+第 2 个标签，共 4 个 [270,2127][540,2337] android.widget.Button
+账户
+第 3 个标签，共 4 个 [540,2127][810,2337] android.widget.Button
+愿望
+第 4 个标签，共 4 个 [810,2127][1080,2337] android.widget.Button

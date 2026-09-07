@@ -219,7 +219,8 @@
     "wEstimateDays",
     "wEstimateUnavailable",
     "wSwitchToMonth",
-    "wSwitchToWeek"
+    "wSwitchToWeek",
+    "wHobbyNameRequired"
   ],
 
   "cs": [
@@ -354,7 +355,8 @@
     "wEstimateDays",
     "wEstimateUnavailable",
     "wSwitchToMonth",
-    "wSwitchToWeek"
+    "wSwitchToWeek",
+    "wHobbyNameRequired"
   ],
 
   "de": [
@@ -697,7 +699,8 @@
     "wEstimateDays",
     "wEstimateUnavailable",
     "wSwitchToMonth",
-    "wSwitchToWeek"
+    "wSwitchToWeek",
+    "wHobbyNameRequired"
   ],
 
   "es": [
@@ -966,7 +969,8 @@
     "wEstimateDays",
     "wEstimateUnavailable",
     "wSwitchToMonth",
-    "wSwitchToWeek"
+    "wSwitchToWeek",
+    "wHobbyNameRequired"
   ],
 
   "eu": [
@@ -1666,7 +1670,8 @@
     "wEstimateDays",
     "wEstimateUnavailable",
     "wSwitchToMonth",
-    "wSwitchToWeek"
+    "wSwitchToWeek",
+    "wHobbyNameRequired"
   ],
 
   "fa": [
@@ -2029,7 +2034,8 @@
     "wEstimateDays",
     "wEstimateUnavailable",
     "wSwitchToMonth",
-    "wSwitchToWeek"
+    "wSwitchToWeek",
+    "wHobbyNameRequired"
   ],
 
   "fr": [
@@ -2335,7 +2341,8 @@
     "wEstimateDays",
     "wEstimateUnavailable",
     "wSwitchToMonth",
-    "wSwitchToWeek"
+    "wSwitchToWeek",
+    "wHobbyNameRequired"
   ],
 
   "he": [
@@ -2470,7 +2477,8 @@
     "wEstimateDays",
     "wEstimateUnavailable",
     "wSwitchToMonth",
-    "wSwitchToWeek"
+    "wSwitchToWeek",
+    "wHobbyNameRequired"
   ],
 
   "hu": [
@@ -2693,7 +2701,8 @@
     "wEstimateDays",
     "wEstimateUnavailable",
     "wSwitchToMonth",
-    "wSwitchToWeek"
+    "wSwitchToWeek",
+    "wHobbyNameRequired"
   ],
 
   "it": [
@@ -3023,7 +3032,8 @@
     "wEstimateDays",
     "wEstimateUnavailable",
     "wSwitchToMonth",
-    "wSwitchToWeek"
+    "wSwitchToWeek",
+    "wHobbyNameRequired"
   ],
 
   "ja": [
@@ -3262,7 +3272,8 @@
     "wEstimateDays",
     "wEstimateUnavailable",
     "wSwitchToMonth",
-    "wSwitchToWeek"
+    "wSwitchToWeek",
+    "wHobbyNameRequired"
   ],
 
   "nb": [
@@ -3960,7 +3971,8 @@
     "wEstimateDays",
     "wEstimateUnavailable",
     "wSwitchToMonth",
-    "wSwitchToWeek"
+    "wSwitchToWeek",
+    "wHobbyNameRequired"
   ],
 
   "nl": [
@@ -4665,7 +4677,8 @@
     "wEstimateDays",
     "wEstimateUnavailable",
     "wSwitchToMonth",
-    "wSwitchToWeek"
+    "wSwitchToWeek",
+    "wHobbyNameRequired"
   ],
 
   "pl": [
@@ -4908,7 +4921,8 @@
     "wEstimateDays",
     "wEstimateUnavailable",
     "wSwitchToMonth",
-    "wSwitchToWeek"
+    "wSwitchToWeek",
+    "wHobbyNameRequired"
   ],
 
   "pt": [
@@ -5284,7 +5298,8 @@
     "wEstimateDays",
     "wEstimateUnavailable",
     "wSwitchToMonth",
-    "wSwitchToWeek"
+    "wSwitchToWeek",
+    "wHobbyNameRequired"
   ],
 
   "ru": [
@@ -5526,7 +5541,8 @@
     "wEstimateDays",
     "wEstimateUnavailable",
     "wSwitchToMonth",
-    "wSwitchToWeek"
+    "wSwitchToWeek",
+    "wHobbyNameRequired"
   ],
 
   "tr": [
@@ -5748,7 +5764,8 @@
     "wEstimateDays",
     "wEstimateUnavailable",
     "wSwitchToMonth",
-    "wSwitchToWeek"
+    "wSwitchToWeek",
+    "wHobbyNameRequired"
   ],
 
   "uk": [
@@ -5920,7 +5937,8 @@
     "wEstimateDays",
     "wEstimateUnavailable",
     "wSwitchToMonth",
-    "wSwitchToWeek"
+    "wSwitchToWeek",
+    "wHobbyNameRequired"
   ],
 
   "vi": [
@@ -6143,6 +6161,7 @@
     "wEstimateDays",
     "wEstimateUnavailable",
     "wSwitchToMonth",
-    "wSwitchToWeek"
+    "wSwitchToWeek",
+    "wHobbyNameRequired"
   ]
 }

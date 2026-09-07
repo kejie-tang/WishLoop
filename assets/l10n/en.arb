@@ -2205,5 +2205,6 @@
     },
     "wEstimateUnavailable": "No estimate: net rewards over the last 14 days are not positive",
     "wSwitchToMonth": "Switch to month view",
-    "wSwitchToWeek": "Switch to week view"
+    "wSwitchToWeek": "Switch to week view",
+    "wHobbyNameRequired": "Enter a hobby name."
 }

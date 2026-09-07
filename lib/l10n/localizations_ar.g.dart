@@ -2666,4 +2666,7 @@ class L10nAr extends L10n {
 
   @override
   String get wSwitchToWeek => 'Switch to week view';
+
+  @override
+  String get wHobbyNameRequired => 'Enter a hobby name.';
 }

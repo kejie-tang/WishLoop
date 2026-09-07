@@ -23,6 +23,7 @@ class HobbyEditor extends StatefulWidget {
 
 class _HobbyEditorState extends State<HobbyEditor> {
   final _form = GlobalKey<FormState>();
+  final _scroll = ScrollController();
   late final TextEditingController _name,
       _emoji,
       _description,
@@ -59,6 +60,7 @@ class _HobbyEditorState extends State<HobbyEditor> {
 
   @override
   void dispose() {
+    _scroll.dispose();
     for (final c in [
       _name,
       _emoji,
@@ -74,7 +76,27 @@ class _HobbyEditorState extends State<HobbyEditor> {
   }
 
   Future<void> _save() async {
-    if (_saving || !_form.currentState!.validate()) return;
+    if (_saving) return;
+    // The name field may be off-screen and unmounted by the lazy ListView.
+    // Check its controller before validating the currently mounted fields.
+    if (_name.text.trim().isEmpty) {
+      await _scroll.animateTo(
+        0,
+        duration: const Duration(milliseconds: 250),
+        curve: Curves.easeOut,
+      );
+      if (mounted) _form.currentState!.validate();
+      return;
+    }
+    final invalidFields = _form.currentState!.validateGranularly();
+    if (invalidFields.isNotEmpty) {
+      await Scrollable.ensureVisible(
+        invalidFields.first.context,
+        alignment: 0.2,
+        duration: const Duration(milliseconds: 250),
+      );
+      return;
+    }
     if (_weekdays == 0) {
       feedback(context, L10n.of(context)!.wInvalid);
       return;
@@ -140,6 +162,7 @@ class _HobbyEditorState extends State<HobbyEditor> {
       body: Form(
         key: _form,
         child: ListView(
+          controller: _scroll,
           padding: const EdgeInsets.all(20),
           children: [
             TextFormField(
@@ -147,8 +170,9 @@ class _HobbyEditorState extends State<HobbyEditor> {
               controller: _name,
               decoration: InputDecoration(labelText: l.wName),
               maxLength: 100,
+              autovalidateMode: AutovalidateMode.onUserInteractionIfError,
               validator: (v) =>
-                  v == null || v.trim().isEmpty ? l.wInvalid : null,
+                  v == null || v.trim().isEmpty ? l.wHobbyNameRequired : null,
             ),
             const SizedBox(height: 12),
             TextFormField(

@@ -2531,6 +2531,9 @@ class L10nZh extends L10n {
 
   @override
   String get wSwitchToWeek => '切换到周视图';
+
+  @override
+  String get wHobbyNameRequired => '请填写兴趣名称。';
 }
 
 /// The translations for Chinese, using the Han script (`zh_Hant`).

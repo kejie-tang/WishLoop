@@ -1710,5 +1710,6 @@
     "wEstimateDays": "预计还要 {days} 天",
     "wEstimateUnavailable": "暂无法预计：近14天净奖励未增长",
     "wSwitchToMonth": "切换到月视图",
-    "wSwitchToWeek": "切换到周视图"
+    "wSwitchToWeek": "切换到周视图",
+    "wHobbyNameRequired": "请填写兴趣名称。"
 }

@@ -4372,6 +4372,12 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Switch to week view'**
   String get wSwitchToWeek;
+
+  /// No description provided for @wHobbyNameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a hobby name.'**
+  String get wHobbyNameRequired;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {
