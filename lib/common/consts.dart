@@ -59,11 +59,12 @@ const String appSyncFailedZipFile = "app_sync_failed.zip";
 /// - add mh_groups table and mh_habits.group_id column
 /// ## version 8
 /// - add mh_groups.sort_position column (manual group sort)
-const int appDBVersion = 8;
+// Hobby Wallet: additive virtual ledger and wishlist migration.
+const int appDBVersion = 9;
 //#endregion
 
 //#region app-theme
-const Color appDefaultThemeMainColor = Color(0xFF006493);
+const Color appDefaultThemeMainColor = Color(0xFF8A5944);
 const AppThemeType appDefaultThemeType = AppThemeType.followSystem;
 const int appCalendarBarMaxOccupyPrt = 70;
 const int appCalendarBarMinOccupyPrt = 20;

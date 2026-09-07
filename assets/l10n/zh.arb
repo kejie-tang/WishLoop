@@ -4,7 +4,7 @@
     "@localeScriptName": {
         "description": "The human-readable name of the language used for the locale."
     },
-    "appName": "桌上习惯",
+    "appName": "WishLoop",
     "common_listSeparator": "，",
     "@common_listSeparator": {
         "description": "Separator used between items in compact localized lists."
@@ -1138,8 +1138,8 @@
     "batchCheckin_close_confirmDialog_body": "未保存的打卡状态更改将不会生效。",
     "batchCheckin_close_confirmDialog_confirmButton_text": "确认",
     "batchCheckin_close_confirmDialog_cancelButton_text": "取消",
-    "appReminder_dailyReminder_title": "🏝 你今天坚持了自己的习惯吗？",
-    "appReminder_dailyReminder_body": "点击进入应用并按时打卡。",
+    "appReminder_dailyReminder_title": "WishLoop",
+    "appReminder_dailyReminder_body": "留一点时间给喜欢的事，今天也值得为自己坚持。",
     "common_habitColorType_cc1": "紫罗兰",
     "common_habitColorType_cc2": "红色",
     "common_habitColorType_cc3": "紫色",
@@ -1507,5 +1507,184 @@
     "habitDisplay_groupType_manual": "自定义",
     "@habitDisplay_groupType_manual": {
         "description": "Group sort type: manual ordering via drag-and-drop"
+    },
+    "wToday": "今天",
+    "wHobbies": "兴趣",
+    "wWallet": "兴趣账户",
+    "wWalletTab": "账户",
+    "wWishlist": "愿望",
+    "wTodayReward": "今日奖励",
+    "wMonthReward": "本月奖励",
+    "wSubtitle": "把每一次坚持，存成喜欢的生活。",
+    "wCurrentWish": "当前愿望",
+    "wTodayHobbies": "今天的兴趣",
+    "wAllDone": "今天的坚持，已经存好了。",
+    "wEmptyToday": "今天没有待完成的兴趣，给自己一点自由时间。",
+    "wEmptyHobbies": "从一件喜欢的小事开始",
+    "wEmptyHobbiesBody": "添加兴趣，设定每次完成的小奖励。",
+    "wEmptyWishes": "给坚持一个期待",
+    "wEmptyWishesBody": "把真正想要的东西放在这里，慢慢靠近它。",
+    "wEmptyLedger": "每一次坚持，都会在这里留下记录。",
+    "wAddHobby": "添加兴趣",
+    "wEditHobby": "编辑兴趣",
+    "wAddWish": "添加愿望",
+    "wEditWish": "编辑愿望",
+    "wName": "名称",
+    "wEmoji": "Emoji / 图标",
+    "wDescription": "描述（可选）",
+    "wDuration": "预计时长（分钟）",
+    "wReward": "每次完成奖励（¥）",
+    "wFrequency": "频率",
+    "wWeekdays": "指定星期",
+    "wTimes": "周期内次数",
+    "wDays": "周期天数",
+    "wDaily": "每天",
+    "wWeekly": "每周",
+    "wMonthly": "每月",
+    "wCustom": "自定义周期",
+    "wFrequencyHint": "按所选星期打卡，每天最多奖励一次；周 / 月 / 自定义周期达到次数后休息。",
+    "wComplete": "完成",
+    "wCompleted": "已完成 ✓",
+    "wUndo": "撤销",
+    "wSave": "保存",
+    "wCancel": "取消",
+    "wDelete": "删除",
+    "wArchive": "归档",
+    "wRestoreHobby": "恢复兴趣",
+    "wArchived": "已归档",
+    "wShowArchived": "显示已归档兴趣",
+    "wAdjust": "调整余额",
+    "wAdjustHelp": "输入调整金额，正数增加、负数扣减。每次调整都会保留记录。",
+    "wAmount": "调整金额（¥）",
+    "wReason": "调整原因",
+    "wRecent": "最近记录",
+    "wLedgerLimit": "显示最近 200 条；完整记录保存在数据备份中。",
+    "wEarn": "兴趣收入",
+    "wSpend": "愿望兑换",
+    "wAdjustment": "人工调整",
+    "wTargetPrice": "目标金额（¥）",
+    "wNote": "备注（可选）",
+    "wPrimary": "设为当前主要愿望",
+    "wRedeem": "兑换奖励",
+    "wConfirmRedeem": "确认兑换",
+    "wReady": "🎉 你已经攒够奖励了",
+    "wRedeemed": "已兑换",
+    "wSettings": "设置",
+    "wCurrency": "默认货币",
+    "wCurrencyValue": "CNY ¥ · 虚拟记账单位",
+    "wDisclaimer": "兴趣账户中的金额仅用于个人兴趣激励和虚拟记账。\nApp 不提供真实货币奖励、提现或兑换服务。",
+    "wAbout": "关于 WishLoop",
+    "wAboutBody": "WishLoop · 兴趣账户\n通过坚持兴趣，为自己积累喜欢的奖励。\n基于 Table Habit，遵循 Apache-2.0 开源许可证。",
+    "wBackup": "导出完整备份",
+    "wBackupHelp": "包含兴趣、打卡、账本和愿望；主题及语言保留在本机。",
+    "wImport": "恢复完整备份",
+    "wImportConfirm": "恢复将替换当前全部兴趣、打卡、账本和愿望。请先导出当前备份；无效文件不会修改现有数据。",
+    "wImportDone": "备份已恢复",
+    "wBackupDone": "备份已保存",
+    "wLegacyImport": "导入 Table Habit 数据",
+    "wLegacyHelp": "保留原兴趣与打卡，历史记录不补发奖励。",
+    "wLegacyConfirm": "将合并导入兴趣和历史打卡，匹配的记录可能更新。建议先导出完整备份。",
+    "wLegacyDone": "导入完成，请检查兴趣列表；历史打卡不补发奖励。",
+    "wNotifications": "通知与提醒",
+    "wReminder": "兴趣提醒",
+    "wReminderHelp": "在预计完成时间提醒自己。Android 可能因省电策略延后通知。",
+    "wReminderDenied": "未能启用提醒，请在系统设置中允许 WishLoop 发送通知。",
+    "wTestNotification": "发送测试通知",
+    "wTestSent": "测试通知已发送",
+    "wRetry": "重试",
+    "wError": "操作未完成，请重试。数据保持原状。",
+    "wLoadError": "暂时无法读取数据，请重试。",
+    "wInvalid": "请输入有效内容，金额最多保留两位小数。",
+    "wInsufficient": "奖励金不足，暂时无法兑换。",
+    "wAlreadyRedeemed": "这个愿望已经兑换过了。",
+    "wSaved": "已保存",
+    "wUndoDone": "已撤销完成及对应奖励",
+    "wNegativeBalance": "撤销或调整后余额可能为负，后续奖励会继续累积。",
+    "wDeleteConfirm": "删除后不会抹去已经获得的奖励记录。",
+    "wNotificationsOff": "提醒未启用",
+    "wNotificationBody": "留一点时间给喜欢的事，今天也值得为自己坚持。",
+    "wMinutes": "约 {value} 分钟",
+    "@wMinutes": {
+        "placeholders": {
+            "value": {
+                "type": "int"
+            }
+        }
+    },
+    "wRewardLabel": "完成奖励 {amount}",
+    "@wRewardLabel": {
+        "placeholders": {
+            "amount": {
+                "type": "String"
+            }
+        }
+    },
+    "wCompleteFeedback": "{name}完成，奖励 {amount} 🎉",
+    "@wCompleteFeedback": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            },
+            "amount": {
+                "type": "String"
+            }
+        }
+    },
+    "wWishAmounts": "{balance} / {target}",
+    "@wWishAmounts": {
+        "placeholders": {
+            "balance": {
+                "type": "String"
+            },
+            "target": {
+                "type": "String"
+            }
+        }
+    },
+    "wShortfall": "还差 {amount}",
+    "@wShortfall": {
+        "placeholders": {
+            "amount": {
+                "type": "String"
+            }
+        }
+    },
+    "wRedeemTitle": "兑换 {name}？",
+    "@wRedeemTitle": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "wRedeemBody": "将从兴趣账户扣除：\n{price}\n\n兑换后账户余额：\n{balance}\n\n这是一笔虚拟记账，实际购买由你自行决定。",
+    "@wRedeemBody": {
+        "placeholders": {
+            "price": {
+                "type": "String"
+            },
+            "balance": {
+                "type": "String"
+            }
+        }
+    },
+    "wRedeemedAt": "兑换于 {date}",
+    "@wRedeemedAt": {
+        "placeholders": {
+            "date": {
+                "type": "String"
+            }
+        }
+    },
+    "wReminderBody": "今天的{name}还没完成，完成后奖励 {amount}。",
+    "@wReminderBody": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            },
+            "amount": {
+                "type": "String"
+            }
+        }
     }
 }

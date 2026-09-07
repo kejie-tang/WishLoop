@@ -1,310 +1,105 @@
-<!-- <p align="center">
-  <img src="assets/logo/icon-1024x1024.png" alt="Table Habit Logo" width="96" />
-</p>  -->
+# WishLoop · 兴趣账户
 
-<h1 align="center">Table Habit</h1>
-<p align="center"><em>Track micro habits. Grow every day.</em></p>
+一个仅供 Android 自用的离线 App：完成喜欢的事，记录虚拟奖励，慢慢实现自己的愿望。
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/README/images/feature-hero-showcase-dark.png" />
-    <source media="(prefers-color-scheme: light)" srcset="docs/README/images/feature-hero-showcase.png" />
-    <img src="docs/README/images/feature-hero-showcase.png" alt="Table Habit — cross-platform habit tracker" width="800" />
-  </picture>
-</p>
+**所有 ¥ 金额都只是个人兴趣激励和虚拟记账单位。App 不提供真实货币奖励、提现、交易或兑换现金。**
 
-<p align="center">
-  <a href="https://github.com/FriesI23/mhabit/releases"><img src="https://img.shields.io/github/v/release/FriesI23/mhabit?style=flat-square&label=stable&color=success" alt="Stable version"></a>
-  <a href="https://github.com/FriesI23/mhabit/releases"><img src="https://img.shields.io/github/v/release/FriesI23/mhabit?style=flat-square&include_prereleases&label=pre-release&color=orange" alt="Pre-release version"></a>
-  <a href="https://github.com/FriesI23/mhabit/actions/workflows/release-app.yml"><img src="https://img.shields.io/github/actions/workflow/status/FriesI23/mhabit/release-app.yml?style=flat-square&label=CI" alt="Build status"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/FriesI23/mhabit?style=flat-square&color=blue" alt="Apache 2.0 License"></a>
-  <br>
-  <img src="https://img.shields.io/badge/Flutter-3.35.7-02569B?style=flat-square&logo=Flutter&logoColor=white" alt="Built with Flutter 3.35.7">
-  <img src="https://img.shields.io/badge/WebDAV-supported-brightgreen?style=flat-square" alt="WebDAV sync supported">
-  <a href="https://hosted.weblate.org/engage/mhabit/"><img src="https://hosted.weblate.org/widget/mhabit/app/svg-badge.svg" alt="Translation status"></a>
-  <a href="https://discord.gg/medWsVYpb4"><img src="https://img.shields.io/badge/Discord-7289DA?style=flat-square&logo=discord&logoColor=white" alt="Discord community"></a>
-</p>
+[下载 Android APK（v1.0.0）](https://github.com/kejie-tang/WishLoop/releases/tag/v1.0.0) · [完整验证记录](docs/wishloop/VERIFICATION.md)
 
----
+## 使用
 
-**Table Habit** is a **free and open-source** habit tracker that helps you build
-micro habits with a unique scoring system, rich growth charts, and
-**cross-device WebDAV sync**. Available on Android, iOS, macOS, Windows, and
-Linux — **no ads, no account required**. See the translation badge above for supported languages. Licensed under Apache 2.0.
+- **今天**：今日奖励、兴趣账户余额、主要愿望进度、按频率安排的兴趣。完成后立即入账，可撤销。
+- **兴趣**：创建、编辑、归档、恢复、删除；支持 Emoji、描述、时长、奖励金额、每天/每周/每月/自定义周期及指定星期。
+- **账户**：余额、当月奖励、最近 200 条流水、正负人工调整。完整历史保存在数据库和备份中。
+- **愿望**：目标价格、备注、主要愿望、进度、余额不足提示、二次确认兑换及兑换历史。
+- **设置**：右上角进入；主题、语言、每日提醒、通知测试、完整备份、恢复、Table Habit 导入、关于。
 
-<p align="center">
-  <a href="https://github.com/FriesI23/mhabit/releases/latest"><img src="https://raw.githubusercontent.com/Kunzisoft/Github-badge/4711835e032fe2735dc80c1329beb4685899aa91/get-it-on-github.svg" alt="Download Table Habit from GitHub Releases" height="60"></a>
-  &nbsp;
-  <a href="https://f-droid.org/packages/io.github.friesi23.mhabit"><img src="https://f-droid.org/badge/get-it-on.png" alt="Get Table Habit on F-Droid" height="60"></a>
-  &nbsp;
-  <a href="https://flathub.org/apps/io.github.friesi23.mhabit"><img src="docs/README/images/flathub-get-it-on.svg" alt="Get Table Habit on Flathub" height="60"></a>
-</p>
-<p align="center">
-  <a href="https://play.google.com/store/apps/details?id=io.github.friesi23.mhabit"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Get Table Habit on Google Play" height="60"></a>
-  &nbsp;
-  <a href="https://apps.apple.com/app/table-habit/id6744886469"><img src="docs/README/images/apple-get-it-on.svg" alt="Get Table Habit on the App Store" height="60"></a>
-  &nbsp;
-  <a href="https://testflight.apple.com/join/aJ5PWqaR"><img src="docs/README/images/testflight-get-it-on.svg" alt="Join Table Habit TestFlight beta" height="60"></a>
-  &nbsp;
-  <a href="https://apps.microsoft.com/detail/9NG22PL73NGZ"><img src="docs/README/images/msstore-get-it-on.svg" alt="Get Table Habit on Microsoft Store" height="60"></a>
-</p>
+首次使用默认为简体中文；可切换英文或沿用原项目其他语言（新增功能在其他语言下使用英文）。支持浅色、深色、跟随系统。
 
-<details>
-<summary><b>✨ Specs</b> — Free · Offline-first · WebDAV Sync</summary>
+## 数据与正确性
 
-| Feature           | Description                                                                                                  |
-| ----------------- | ------------------------------------------------------------------------------------------------------------ |
-| **Price**         | Free — no ads, no in-app purchases                                                                           |
-| **License**       | Apache 2.0                                                                                                   |
-| **Platforms**     | Android · iOS · macOS · Windows · Linux                                                                      |
-| **Sync**          | WebDAV (Nextcloud, Koofr, self-hosted)                                                                       |
-| **Languages**     | See the translation badge above for live count — Arabic, Chinese, Czech, French, German, Hebrew, Japanese, … |
-| **Offline-first** | Fully functional without internet                                                                            |
-| **Account**       | Not required — no sign-up, no telemetry                                                                      |
-| **Tech Stack**    | Flutter · Dart · SQLite · Provider                                                                           |
+复用 Table Habit 的 **Provider + sqflite SQLite + SharedPreferences + Material 3 + ARB**，没有更换状态管理或数据库。
 
-</details>
+`UI → WalletController → HobbyWalletRepository → 原 SQLite 数据库`
 
-## Why Table Habit?
+完成兴趣时，同一个 SQLite 事务会写入原有 `mh_records`、对应的 `hw_checkins`，以及一条 `EARN` 账本记录。唯一键 `(habit_uuid, day)` 和 `(source_type, source_id)` 双重防重复；每天最多获得一次奖励。
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/README/images/feature-growth-chart-dark.webp" />
-    <source media="(prefers-color-scheme: light)" srcset="docs/README/images/feature-growth-chart.webp" />
-    <img src="docs/README/images/feature-growth-chart.webp" alt="Habit scoring growth chart" style="width:32%; height:auto" />
-  </picture>
-  &nbsp;
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/README/images/feature-sync-settings-dark.png" />
-    <source media="(prefers-color-scheme: light)" srcset="docs/README/images/feature-sync-settings.png" />
-    <img src="docs/README/images/feature-sync-settings.png" alt="WebDAV sync configuration" style="width:32%; height:auto" />
-  </picture>
-  &nbsp;
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/README/images/feature-customization-01-dark.png" />
-    <source media="(prefers-color-scheme: light)" srcset="docs/README/images/feature-customization-01.png" />
-    <img src="docs/README/images/feature-customization-01.png" alt="Custom colors and habit grouping" style="width:32%; height:auto" />
-  </picture>
-</p>
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/README/images/feature-customization-02-dark.png" />
-    <source media="(prefers-color-scheme: light)" srcset="docs/README/images/feature-customization-02.png" />
-    <img src="docs/README/images/feature-customization-02.png" alt="Collapsible habit group on home page" style="width:32%; height:auto" />
-  </picture>
-  &nbsp;
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/README/images/feature-offline-empty-dark.png" />
-    <source media="(prefers-color-scheme: light)" srcset="docs/README/images/feature-offline-empty.png" />
-    <img src="docs/README/images/feature-offline-empty.png" alt="Offline-first — no account needed" style="width:32%; height:auto" />
-  </picture>
-  &nbsp;
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/README/images/feature-edit-habit-dark.png" />
-    <source media="(prefers-color-scheme: light)" srcset="docs/README/images/feature-edit-habit.png" />
-    <img src="docs/README/images/feature-edit-habit.png" alt="Habit edit screen" style="width:32%; height:auto" />
-  </picture>
-</p>
+余额的唯一事实来源是 `SUM(hw_transactions.amount_minor)`。金额使用整数分，默认 CNY，输入解析和金额运算不经过 double。double 仅用于原有完成数值、图形进度等非金额数据。
 
-- **📊 Smart Scoring — Not Just Streaks**
-  Quantifies your consistency beyond daily check-ins. Growth curves show your long-term progress with separate scoring models for "do" and "don't" habits.
+撤销会删除对应收入及完成关联，恢复之前的部分完成记录（如存在）。修改兴趣奖励不改变已发生收入。归档或删除兴趣保留已经获得的奖励。兑换后再撤销收入允许余额为负，账本仍然准确。
 
-- **🔄 WebDAV Sync — Own Your Data**
-  Sync seamlessly across devices via Nextcloud, Koofr, or self-hosted servers. Zero vendor lock-in and complete data privacy — your habit data always stays yours.
+愿望兑换在事务中重新校验余额与状态，写入唯一的负数 `SPEND`，同时保存兑换时间并标记已兑换。重复点击、并发调用和两个愿望竞争同一余额都不能重复扣款或超支。
 
-- **🎨 Deep Customization**
-  Per-habit custom colors with built-in swatches and a full color picker. Collapsible habit grouping with drag-and-drop reorder, plus Material 3 + Dynamic Color theming.
+频率沿用 `HabitFrequency`：每周按周一开始的自然周、每月按自然月、自定义周期以原兴趣开始日期为锚点；达到周期次数后休息。指定星期是额外的打卡限制。
 
-- **🔓 100% Open Source · Privacy First**
-  Apache 2.0 licensed. No ads, no telemetry, no account required. Native JSON import/export, Loop Habit Tracker migration, and fully functional offline.
+## 数据库迁移
 
-- **🌍 Truly Global**
-  Community-driven translations via Weblate with full RTL support (Arabic, Hebrew, Persian). 18+ languages and growing.
+原数据库 **v8 → v9**，保留原有兴趣、打卡、分组及同步元数据，不删除数据库、不重新创建原表。
 
-- **🖥️ Cross-Platform**
-  Android, iOS, macOS, Windows, Linux. Available on Google Play, App Store, F-Droid, Flathub, and Microsoft Store.
+新增 `mh_habits` 列：
 
-### 🌍 Global & Cross-Platform
+| 列 | 类型/默认值 | 含义 |
+|---|---|---|
+| `hobby_emoji` | TEXT / 🌱 | 兴趣图标 |
+| `reward_minor` | INTEGER / 0 | 每次奖励，整数分 |
+| `duration_minutes` | INTEGER / 30 | 预计时长 |
+| `weekday_mask` | INTEGER / 127 | 周一到周日位掩码 |
 
-- **🌍 Truly Global:** Community-driven translations via Weblate with full RTL support (Arabic, Hebrew, Persian). 18+ languages and growing.
-- **🖥️ Cross-Platform:** Android, iOS, macOS, Windows, Linux. Available on Google Play, App Store, F-Droid, Flathub, and Microsoft Store.
+新增表：`hw_checkins`、`hw_transactions`、`hw_wishlist`、`hw_redemptions`。
 
-## Installation
+`hw_transactions` 含 id、amount_minor、type（EARN/SPEND/ADJUSTMENT）、source_type（CHECK_IN/WISHLIST/MANUAL）、source_id、title、timestamp、currency。CHECK_IN 对应原 `mh_records`；修改/删除原记录的触发器会清理关联收入。
 
-### Quick Install (CLI)
+旧兴趣默认每次奖励 ¥0，编辑后开始计算新奖励；旧历史打卡不补发收入。
 
-```bash
-# macOS — Homebrew
-brew tap FriesI23/brew-repo
-brew install table-habit
+## 备份
 
-# macOS — Mac App Store (via mas)
-mas install 6744886469
+设置 → 导出完整备份 → Android 系统文件选择器 → 保存到 Downloads 或自己的文件目录。
 
-# Windows — Scoop
-scoop bucket add friesi23-bucket https://github.com/FriesI23/scoop-bucket
-scoop install friesi23-bucket/mhabit
+备份包含原四张表和全部新增表，包括全部流水（不限 200 条）、愿望与兑换。JSON 文件包含版本与 SHA-256 校验。恢复会二次确认，验证表结构、外键、账本关系，事务失败会完整回滚。主题、语言及系统通知许可保留本机设置。
 
-# Linux — Flatpak
-flatpak install flathub io.github.friesi23.mhabit
+不要只使用上游的习惯导出格式备份 WishLoop：它不包含账本。上游 JSON 导入入口仅用于迁移兴趣及历史记录，导入失败会回滚；匹配的记录可能被更新。
+
+## Android 构建与测试
+
+本次开发环境：Flutter **3.47.2** / Dart **3.13.2** / JDK **17**，Android API 36 模拟器。
+
+```sh
+flutter pub get
+flutter gen-l10n
+dart format .
+flutter analyze
+flutter test
+flutter build apk --release
 ```
 
-> **More options**: [AltStore][altstore-source] · [SideStore][sidestore-source] · [IzzyOnDroid][lzzyondroid-myapp] · [Obtainium][obtainium-myapp] · [TestFlight Beta][ios-testflight-pre-release]
->
-> Full installation guide: **[Wiki – Installation][wiki-installation]**
+APK：`build/app/outputs/flutter-apk/app-release.apk`。支持 Android 7.0 及以上；Android 显示名称统一继承 `android/app/src/main/res/values/strings.xml` 中的 WishLoop。
 
-<details>
-<summary>All Distribution Channels</summary>
+保留原 `f_generic` 默认 flavor 及 APK 路径复制逻辑。没有正式 keystore 时，release 使用本机 debug keystore 签名，适合个人安装。保管签名密钥，后续升级使用同一密钥，否则 Android 无法覆盖安装。不要把密钥上传 GitHub。
 
-| Platform    | Stable Channels                                                                        | Beta / Sideload                                                                                                                     |
-| ----------- | -------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **Android** | [Google Play][play-myapp] · [F-Droid][fdroid-myapp] · [IzzyOnDroid][lzzyondroid-myapp] | [GitHub APK][github-myapp] · [Obtainium][obtainium-myapp]                                                                           |
-| **iOS**     | [App Store][appstore-myapp]                                                            | [TestFlight][ios-testflight-pre-release] · [AltStore][altstore-source] · [SideStore][sidestore-source] · [GitHub IPA][github-myapp] |
-| **macOS**   | [App Store][appstore-myapp] · [Homebrew][homebrew-tap-wiki]                            | [TestFlight][ios-testflight-pre-release] · [GitHub DMG][github-myapp]                                                               |
-| **Windows** | [Microsoft Store][msstore-myapp] · [Scoop][scoop-bucket-wiki]                          | [GitHub MSIX][github-myapp]                                                                                                         |
-| **Linux**   | [Flathub][flathub-source]                                                              | [GitHub Flatpak][github-myapp]                                                                                                      |
+applicationId 保持 `io.github.friesi23.mhabit`。**正式上架前需要修改 package name / applicationId**。如果手机已安装官方 Table Habit，不同签名无法直接覆盖；先在原 App 导出数据，避免丢失历史。
 
-</details>
+[构建环境记录](docs/wishloop/BUILD.md) · [基线结果](docs/wishloop/BASELINE.md) · [验证记录](docs/wishloop/VERIFICATION.md)
 
-## Translation
+Android 集成测试只在专用、空白测试设备运行：
 
-Table Habit is available in many languages thanks to our amazing community
-translators on Weblate (see badge above for live count).
-
-<a href="https://hosted.weblate.org/engage/mhabit/">
-  <img src="https://hosted.weblate.org/widget/mhabit/app/multi-auto.svg" alt="Table Habit translation progress on Weblate" />
-</a>
-
-Help translate Table Habit into your language:
-[**Join Weblate**][weblate-engage] or submit a PR to
-the `weblate-translation` branch.
-
-## Roadmap
-
-| Status | Feature                       | Notes                                              |
-| :----: | ----------------------------- | -------------------------------------------------- |
-|   ✅   | **Custom Colors**             | Per-habit swatches + color picker ([v1.25.1+164])  |
-|   ✅   | **Loop Habit Tracker Import** | CSV import from Loop Habit Tracker ([v1.25.7+172]) |
-|   ✅   | **Habit Groups**              | Drag-and-drop reorder, collapsible ([v1.26.1+174]) |
-|   🟨   | **Android Widget**            | In progress                                        |
-|   🟨   | **iOS Widget**                | In progress                                        |
-|   ⬜   | **More Sync Backends**        | Beyond WebDAV — planned                            |
-
-[v1.25.1+164]: https://github.com/FriesI23/mhabit/releases/tag/v1.25.1+164
-[v1.25.7+172]: https://github.com/FriesI23/mhabit/releases/tag/v1.25.7+172
-[v1.26.1+174]: https://github.com/FriesI23/mhabit/releases/tag/v1.26.1+174
-
-## Contributing
-
-Contributions make open source great! Here's how you can help:
-
-- **Code**: Pick an [open issue][github-issues], follow the
-  [Flutter style guide][flutter-style-guide],
-  and open a PR.
-- **Documentation**: Wiki pages live in `docs/wiki/` — edit them and open a
-  PR. CI auto-syncs to the [GitHub Wiki][github-wiki].
-- **Translations**: Join [Weblate][weblate-engage]
-  or edit `.arb` files in `lib/l10n/`.
-- **Bug Reports**: Open a [GitHub Issue][github-issues].
-
-<details>
-<summary>Development Quickstart</summary>
-
-```bash
-# Clone and bootstrap
-git clone https://github.com/FriesI23/mhabit.git
-cd mhabit
-make bootstrap   # or: make init
-
-# Code generation (after changing l10n, colors, or annotations)
-make gen
-
-# Lint, fix, verify
-make aio         # gen + fix + verify-generated
-make test        # run all tests
+```sh
+flutter test integration_test/android_mvp_test.dart -d emulator-5554
 ```
 
-See **[Build from Source][wiki-build]**
-on the wiki for platform-specific build instructions.
+通知测试需要系统允许通知权限。测试包括真实 SQLite、表单创建、完成/撤销/再完成、兑换、备份恢复、深色模式和系统通知。
 
-</details>
+原项目商店发布及多平台工作流已移至 `docs/upstream-workflows/`，不会在此仓库执行。保留一个手动触发的 Android 检查工作流；本地签名与 CI 签名不同，日常升级请优先使用同一台构建机产物。
 
-## Support
+## 第一阶段范围与限制
 
-Table Habit is a one-person indie project. If you find it useful, consider
-supporting its development:
+- 仅验证 Android；没有账号、后端、云同步、支付、广告、AI、分析 SDK。Release manifest 移除网络访问权限。
+- 旧功能代码与测试保留以减少重构；新入口不启动云同步，也不展示商店、捐赠等入口。
+- Android 通知使用系统非精确定时，省电策略可能延迟；兴趣提醒沿用上游的下一次提醒机制，每次打开/编辑/打卡后重排，设置中的每日提醒独立重复。真机厂商策略仍需观察。
+- 不是实际购买工具：兑换只记录虚拟支出，真正购买由自己决定。
+- 应用图标暂沿用参考项目，正式品牌图标后续再做。
 
-<p align="center">
-  <a href="https://www.buymeacoffee.com/d49cb87qgww"><img src="https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me A Coffee"></a>
-</p>
+## 来源与许可证
 
-<details>
-<summary>Crypto &amp; QR Codes</summary>
+基于 [FriesI23/mhabit (Table Habit)](https://github.com/FriesI23/mhabit)，保留原作者版权、Apache-2.0 [LICENSE](LICENSE) 与 [第三方声明](LICENSE_THIRDPARTY.md)。WishLoop 修改包括奖励账本、愿望、离线 Android 入口、简体中文文案、全量备份与相关测试。[参考项目原 README](docs/wishloop/UPSTREAM_README.md)。
 
-|                         Alipay                          |                           WeChat Pay                           |
-| :-----------------------------------------------------: | :------------------------------------------------------------: |
-| ![Alipay QR Code](docs/README/images/donate-alipay.jpg) | ![WeChat Pay QR Code](docs/README/images/donate-wechatpay.png) |
-
-- **ETH**: [`0x35FC877Ef0234FbeABc51ad7fC64D9c1bE161f8F`](https://etherscan.io/address/0x35FC877Ef0234FbeABc51ad7fC64D9c1bE161f8F)
-- **BTC**: [`bc1qz2vjews2fcscmvmcm5ctv47mj6236x9p26zk49`](https://blockchair.com/bitcoin/address/bc1qz2vjews2fcscmvmcm5ctv47mj6236x9p26zk49)
-
-</details>
-
-> Visit **[Donors][page-donors]** to see
-> everyone who has supported this project. Thank you!
-
----
-
-<p align="center">
-  <a href="https://www.star-history.com/?repos=FriesI23%2Fmhabit&type=timeline&legend=top-left">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=FriesI23/mhabit&type=timeline&theme=dark&legend=bottom-right&sealed_token=fJ4rf36qijj-ANK0NYzI3auzBG9tMZvs_KIPWB2neWlD8QpuUftraBuUxrSIrGDNrmvmqPyzMhjZYmxpHI4UDHPXbBa8t9MSidLYzELT3K7FSWW0_H4qfUj8TItgfAy20IclznC8yspp2raSY0J_CqNFgt-yJhQ66r2TuU_hMFLR0EcNV7lf6mzkcUqG" />
-      <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=FriesI23/mhabit&type=timeline&legend=bottom-right&sealed_token=fJ4rf36qijj-ANK0NYzI3auzBG9tMZvs_KIPWB2neWlD8QpuUftraBuUxrSIrGDNrmvmqPyzMhjZYmxpHI4UDHPXbBa8t9MSidLYzELT3K7FSWW0_H4qfUj8TItgfAy20IclznC8yspp2raSY0J_CqNFgt-yJhQ66r2TuU_hMFLR0EcNV7lf6mzkcUqG" />
-      <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=FriesI23/mhabit&type=timeline&legend=bottom-right&sealed_token=fJ4rf36qijj-ANK0NYzI3auzBG9tMZvs_KIPWB2neWlD8QpuUftraBuUxrSIrGDNrmvmqPyzMhjZYmxpHI4UDHPXbBa8t9MSidLYzELT3K7FSWW0_H4qfUj8TItgfAy20IclznC8yspp2raSY0J_CqNFgt-yJhQ66r2TuU_hMFLR0EcNV7lf6mzkcUqG" width="640" />
-    </picture>
-  </a>
-</p>
-
-## License
-
-```
-Copyright 2023-2026 Fries_I23
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-```
-
-<p align="center">
-  <sub>Made with ❤️ by <a href="https://github.com/FriesI23">Fries_I23</a>
-  and <a href="https://github.com/FriesI23/mhabit/graphs/contributors">contributors</a></sub>
-</p>
-
-[altstore-source]: https://friesi23.icu/altstore-repo/pages/altstore.html
-[sidestore-source]: https://friesi23.icu/altstore-repo/pages/sidestore.html
-[lzzyondroid-myapp]: https://apt.izzysoft.de/fdroid/index/apk/io.github.friesi23.mhabit
-[obtainium-myapp]: https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22io.github.friesi23.mhabit%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2FFriesI23%2Fmhabit%22%2C%22author%22%3A%22FriesI23%22%2C%22name%22%3A%22Table%20Habit%22%2C%22additionalSettings%22%3A%22%7B%5C%22includePrereleases%5C%22%3Atrue%2C%5C%22fallbackToOlderReleases%5C%22%3Atrue%2C%5C%22filterReleaseTitlesByRegEx%5C%22%3A%5C%22%5C%22%2C%5C%22filterReleaseNotesByRegEx%5C%22%3A%5C%22%5C%22%2C%5C%22verifyLatestTag%5C%22%3Afalse%2C%5C%22sortMethodChoice%5C%22%3A%5C%22smartname-datefallback%5C%22%2C%5C%22useLatestAssetDateAsReleaseDate%5C%22%3Afalse%2C%5C%22releaseTitleAsVersion%5C%22%3Afalse%2C%5C%22trackOnly%5C%22%3Afalse%2C%5C%22versionExtractionRegEx%5C%22%3A%5C%22%5E%28pre-%29%3Fv%28%5C%5C%5C%5Cd%2B%5C%5C%5C%5C.%5C%5C%5C%5Cd%2B%5C%5C%5C%5C.%5C%5C%5C%5Cd%2B%29%5C%5C%5C%5C%2B%28%5C%5C%5C%5Cd%2B%29%24%5C%22%2C%5C%22matchGroupToUse%5C%22%3A%5C%22%242%5C%22%2C%5C%22versionDetection%5C%22%3Afalse%2C%5C%22releaseDateAsVersion%5C%22%3Afalse%2C%5C%22useVersionCodeAsOSVersion%5C%22%3Afalse%2C%5C%22apkFilterRegEx%5C%22%3A%5C%22%5C%22%2C%5C%22invertAPKFilter%5C%22%3Afalse%2C%5C%22autoApkFilterByArch%5C%22%3Atrue%2C%5C%22appName%5C%22%3A%5C%22Table%20Habit%5C%22%2C%5C%22appAuthor%5C%22%3A%5C%22Friesi23%5C%22%2C%5C%22shizukuPretendToBeGooglePlay%5C%22%3Afalse%2C%5C%22allowInsecure%5C%22%3Afalse%2C%5C%22exemptFromBackgroundUpdates%5C%22%3Afalse%2C%5C%22skipUpdateNotifications%5C%22%3Afalse%2C%5C%22about%5C%22%3A%5C%22%5C%22%2C%5C%22refreshBeforeDownload%5C%22%3Atrue%2C%5C%22includeZips%5C%22%3Afalse%2C%5C%22zippedApkFilterRegEx%5C%22%3A%5C%22%5C%22%7D%22%2C%22categories%22%3A%5B%22Health%22%5D%2C%22overrideSource%22%3A%22GitHub%22%2C%22allowIdChange%22%3Atrue%7D
-[ios-testflight-pre-release]: https://testflight.apple.com/join/aJ5PWqaR
-[wiki-installation]: https://github.com/FriesI23/mhabit/wiki/Installation
-[github-issues]: https://github.com/FriesI23/mhabit/issues
-[flutter-style-guide]: https://github.com/flutter/flutter/blob/master/docs/contributing/Style-guide-for-Flutter-repo.md
-[github-wiki]: https://github.com/FriesI23/mhabit/wiki
-[weblate-engage]: https://hosted.weblate.org/engage/mhabit/
-[wiki-build]: https://github.com/FriesI23/mhabit/wiki/Dev꞉-Build-From-Source
-[page-donors]: https://github.com/FriesI23/mhabit/wiki/Donors
-[play-myapp]: https://play.google.com/store/apps/details?id=io.github.friesi23.mhabit&referrer=utm_source%3Dappbadge
-[fdroid-myapp]: https://f-droid.org/packages/io.github.friesi23.mhabit
-[appstore-myapp]: https://apps.apple.com/app/table-habit/id6744886469
-[msstore-myapp]: https://apps.microsoft.com/detail/9NG22PL73NGZ?referrer=appbadge&mode=direct
-[github-myapp]: https://github.com/FriesI23/mhabit/releases/latest
-[flathub-source]: https://flathub.org/apps/io.github.friesi23.mhabit
-[homebrew-tap-wiki]: https://github.com/FriesI23/mhabit/wiki/Installation#homebrew---custom-tap
-[scoop-bucket-wiki]: https://github.com/FriesI23/mhabit/wiki/Installation#scoop---custom-bucket
+`vendor/great_list_view` 是工作区已有的 Dart 3.13 兼容补丁，说明见 [PATCHES.md](vendor/great_list_view/PATCHES.md)。

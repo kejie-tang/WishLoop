@@ -1,0 +1,27 @@
+WishLoop [42,173][298,246] android.view.View
+设置 [943,147][1070,273] android.widget.Button
+9月7日星期一 [53,304][1028,359] android.view.View
+把每一次坚持，存成喜欢的生活。 [53,375][1028,427] android.view.View
+今日奖励
+¥5.00
+兴趣账户
+¥483.00 [53,490][1028,1057] android.view.View
+16, 当前愿望
+🎁  Sony W－H1000XM6
+¥483.00 / ¥2,999.00
+16.1% [53,1057][1028,1603] android.widget.ProgressBar
+今天的兴趣 [53,1635][1028,1708] android.view.View
+🌱
+跑步
+约 30 分钟
+完成奖励 +¥5.00
+已完成 ✓ [53,1750][1028,2127] android.view.View
+撤销 [807,2081][975,2127] android.widget.Button
+今天
+第 1 个标签，共 4 个 [0,2127][270,2337] android.widget.Button
+兴趣
+第 2 个标签，共 4 个 [270,2127][540,2337] android.widget.Button
+账户
+第 3 个标签，共 4 个 [540,2127][810,2337] android.widget.Button
+愿望
+第 4 个标签，共 4 个 [810,2127][1080,2337] android.widget.Button

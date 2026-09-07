@@ -1,0 +1,13 @@
+00:00 +0: loading /Users/kjtang/Documents/app/hobby_reward/integration_test/android_mvp_test.dart
+Running Gradle task 'assembleF_genericDebug'...
+Copying /Users/kjtang/Documents/app/hobby_reward/build/app/outputs/apk/f_generic/debug/app-f_generic-debug.apk to /Users/kjtang/Documents/app/hobby_reward/build/app/outputs/flutter-apk/app-debug.apk
+Running Gradle task 'assembleF_genericDebug'...                    36.9s
+✓ Built build/app/outputs/flutter-apk/app-f_generic-debug.apk
+Installing build/app/outputs/flutter-apk/app-f_generic-debug.apk...        869ms
+00:00 +0: Android: edit, earn, undo, redeem, persist, backup, theme, notify
+MVP: launch ready
+MVP: hobby saved
+MVP: wish saved
+MVP: earn / undo / redeem passed
+00:24 +1: (tearDownAll)
+00:24 +1: All tests passed!

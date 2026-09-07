@@ -4,7 +4,7 @@
     "@localeScriptName": {
         "description": "A területi beállításhoz használt nyelv ember által olvasható neve."
     },
-    "appName": "Table Habit",
+    "appName": "WishLoop",
     "habitEdit_saveButton_text": "Mentés",
     "habitEdit_habitName_hintText": "Szokás neve ...",
     "habitEdit_colorPicker_title": "Válassz színt",

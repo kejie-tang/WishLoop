@@ -4,7 +4,7 @@
     "@localeScriptName": {
         "description": "The human-readable name of the language used for the locale."
     },
-    "appName": "רשימת הרגלים",
+    "appName": "WishLoop",
     "habitEdit_saveButton_text": "שמירה",
     "habitEdit_habitName_hintText": "שם ההרגל",
     "habitEdit_colorPicker_title": "נא לבחור צבע",

@@ -12,7 +12,7 @@ class L10nPl extends L10n {
   String get localeScriptName => 'Polski';
 
   @override
-  String get appName => 'Table Habit';
+  String get appName => 'WishLoop';
 
   @override
   String get common_listSeparator => ', ';
@@ -2281,4 +2281,353 @@ class L10nPl extends L10n {
 
   @override
   String get habitDisplay_groupType_manual => 'Moja kolejność';
+
+  @override
+  String get wToday => 'Today';
+
+  @override
+  String get wHobbies => 'Hobbies';
+
+  @override
+  String get wWallet => 'Hobby wallet';
+
+  @override
+  String get wWalletTab => 'Wallet';
+
+  @override
+  String get wWishlist => 'Wishes';
+
+  @override
+  String get wTodayReward => 'Today’s rewards';
+
+  @override
+  String get wMonthReward => 'This month’s rewards';
+
+  @override
+  String get wSubtitle => 'Save a little dedication for the things you love.';
+
+  @override
+  String get wCurrentWish => 'Your next reward';
+
+  @override
+  String get wTodayHobbies => 'Today’s hobbies';
+
+  @override
+  String get wAllDone => 'Today’s dedication is safely saved.';
+
+  @override
+  String get wEmptyToday =>
+      'Nothing scheduled today. Enjoy some time for yourself.';
+
+  @override
+  String get wEmptyHobbies => 'Start with one thing you love';
+
+  @override
+  String get wEmptyHobbiesBody =>
+      'Add a hobby and choose a small reward for each check-in.';
+
+  @override
+  String get wEmptyWishes => 'Something to look forward to';
+
+  @override
+  String get wEmptyWishesBody =>
+      'Add something you truly want, then work toward it one day at a time.';
+
+  @override
+  String get wEmptyLedger => 'Every small step will leave a record here.';
+
+  @override
+  String get wAddHobby => 'Add hobby';
+
+  @override
+  String get wEditHobby => 'Edit hobby';
+
+  @override
+  String get wAddWish => 'Add wish';
+
+  @override
+  String get wEditWish => 'Edit wish';
+
+  @override
+  String get wName => 'Name';
+
+  @override
+  String get wEmoji => 'Emoji / icon';
+
+  @override
+  String get wDescription => 'Description (optional)';
+
+  @override
+  String get wDuration => 'Duration (minutes)';
+
+  @override
+  String get wReward => 'Reward per check-in (¥)';
+
+  @override
+  String get wFrequency => 'Frequency';
+
+  @override
+  String get wWeekdays => 'Days of the week';
+
+  @override
+  String get wTimes => 'Times per period';
+
+  @override
+  String get wDays => 'Days per period';
+
+  @override
+  String get wDaily => 'Daily';
+
+  @override
+  String get wWeekly => 'Weekly';
+
+  @override
+  String get wMonthly => 'Monthly';
+
+  @override
+  String get wCustom => 'Custom period';
+
+  @override
+  String get wFrequencyHint =>
+      'Check in on selected weekdays, at most once a day. Rest after reaching the period’s target.';
+
+  @override
+  String get wComplete => 'Complete';
+
+  @override
+  String get wCompleted => 'Completed ✓';
+
+  @override
+  String get wUndo => 'Undo';
+
+  @override
+  String get wSave => 'Save';
+
+  @override
+  String get wCancel => 'Cancel';
+
+  @override
+  String get wDelete => 'Delete';
+
+  @override
+  String get wArchive => 'Archive';
+
+  @override
+  String get wRestoreHobby => 'Unarchive';
+
+  @override
+  String get wArchived => 'Archived';
+
+  @override
+  String get wShowArchived => 'Show archived hobbies';
+
+  @override
+  String get wAdjust => 'Adjust balance';
+
+  @override
+  String get wAdjustHelp =>
+      'Enter a positive amount to add or a negative amount to subtract. Every adjustment is recorded.';
+
+  @override
+  String get wAmount => 'Adjustment (¥)';
+
+  @override
+  String get wReason => 'Reason';
+
+  @override
+  String get wRecent => 'Recent activity';
+
+  @override
+  String get wLedgerLimit =>
+      'Showing the latest 200 entries. Full history is included in backups.';
+
+  @override
+  String get wEarn => 'Hobby reward';
+
+  @override
+  String get wSpend => 'Wish redeemed';
+
+  @override
+  String get wAdjustment => 'Adjustment';
+
+  @override
+  String get wTargetPrice => 'Target price (¥)';
+
+  @override
+  String get wNote => 'Note (optional)';
+
+  @override
+  String get wPrimary => 'Make this my primary wish';
+
+  @override
+  String get wRedeem => 'Redeem reward';
+
+  @override
+  String get wConfirmRedeem => 'Confirm redemption';
+
+  @override
+  String get wReady => '🎉 Your reward is within reach';
+
+  @override
+  String get wRedeemed => 'Redeemed';
+
+  @override
+  String get wSettings => 'Settings';
+
+  @override
+  String get wCurrency => 'Default currency';
+
+  @override
+  String get wCurrencyValue => 'CNY ¥ · Virtual bookkeeping unit';
+
+  @override
+  String get wDisclaimer =>
+      'Amounts in your hobby wallet are only for personal motivation and virtual bookkeeping.\nThe app does not provide real money rewards, withdrawals or currency exchange.';
+
+  @override
+  String get wAbout => 'About WishLoop';
+
+  @override
+  String get wAboutBody =>
+      'WishLoop · Hobby Wallet\nBuild lasting hobbies and reward yourself.\nBased on Table Habit, licensed under Apache-2.0.';
+
+  @override
+  String get wBackup => 'Export full backup';
+
+  @override
+  String get wBackupHelp =>
+      'Includes hobbies, check-ins, ledger and wishes. Theme and language stay on this device.';
+
+  @override
+  String get wImport => 'Restore full backup';
+
+  @override
+  String get wImportConfirm =>
+      'Restore replaces all current hobbies, check-ins, ledger and wishes. Export a backup first. Invalid files leave your data unchanged.';
+
+  @override
+  String get wImportDone => 'Backup restored';
+
+  @override
+  String get wBackupDone => 'Backup saved';
+
+  @override
+  String get wLegacyImport => 'Import Table Habit data';
+
+  @override
+  String get wLegacyHelp =>
+      'Keep existing hobbies and check-ins. Historical records do not earn retroactive rewards.';
+
+  @override
+  String get wLegacyConfirm =>
+      'Merge hobbies and historical check-ins. Matching records may be updated. Export a full backup first.';
+
+  @override
+  String get wLegacyDone =>
+      'Import finished. Check your hobbies; historical check-ins do not earn rewards.';
+
+  @override
+  String get wNotifications => 'Notifications & reminders';
+
+  @override
+  String get wReminder => 'Hobby reminder';
+
+  @override
+  String get wReminderHelp =>
+      'A gentle reminder at your chosen time. Android battery settings may delay delivery.';
+
+  @override
+  String get wReminderDenied =>
+      'Could not enable reminders. Allow WishLoop notifications in Android settings.';
+
+  @override
+  String get wTestNotification => 'Send test notification';
+
+  @override
+  String get wTestSent => 'Test notification sent';
+
+  @override
+  String get wRetry => 'Retry';
+
+  @override
+  String get wError => 'The action could not be completed. Please try again.';
+
+  @override
+  String get wLoadError => 'Could not load your data. Please retry.';
+
+  @override
+  String get wInvalid =>
+      'Enter a valid value. Amounts allow up to two decimal places.';
+
+  @override
+  String get wInsufficient => 'Not enough rewards to redeem this wish.';
+
+  @override
+  String get wAlreadyRedeemed => 'This wish has already been redeemed.';
+
+  @override
+  String get wSaved => 'Saved';
+
+  @override
+  String get wUndoDone => 'Check-in and its reward undone';
+
+  @override
+  String get wNegativeBalance =>
+      'Undoing or adjusting can make your balance negative. Future rewards will continue to add up.';
+
+  @override
+  String get wDeleteConfirm =>
+      'Deleting does not erase rewards you have already earned.';
+
+  @override
+  String get wNotificationsOff => 'Reminders are off';
+
+  @override
+  String get wNotificationBody =>
+      'Make a little time for something you love today.';
+
+  @override
+  String wMinutes(int value) {
+    return 'About $value min';
+  }
+
+  @override
+  String wRewardLabel(String amount) {
+    return 'Reward $amount';
+  }
+
+  @override
+  String wCompleteFeedback(String name, String amount) {
+    return '$name complete. Reward $amount 🎉';
+  }
+
+  @override
+  String wWishAmounts(String balance, String target) {
+    return '$balance / $target';
+  }
+
+  @override
+  String wShortfall(String amount) {
+    return '$amount to go';
+  }
+
+  @override
+  String wRedeemTitle(String name) {
+    return 'Redeem $name?';
+  }
+
+  @override
+  String wRedeemBody(String price, String balance) {
+    return 'Deduct from your hobby wallet:\n$price\n\nBalance after redemption:\n$balance\n\nThis is a virtual ledger entry. Any real purchase is your own decision.';
+  }
+
+  @override
+  String wRedeemedAt(String date) {
+    return 'Redeemed $date';
+  }
+
+  @override
+  String wReminderBody(String name, String amount) {
+    return 'You haven’t completed $name today. Your reward: $amount.';
+  }
 }

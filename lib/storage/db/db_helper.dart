@@ -34,6 +34,7 @@ import '../utils.dart';
 import 'handlers/habit.dart';
 import 'handlers/record.dart';
 import 'handlers/sync.dart';
+import 'hobby_wallet_schema.dart';
 import 'sql.dart';
 import 'table.dart';
 
@@ -94,6 +95,7 @@ class _DBHelper implements DBHelper {
     await db.execute(CustomSql.autoAddSortPostionWhenAddNewHabit);
     await db.execute(CustomSql.autoAddSortPostionWhenAddNewGroup);
     await db.execute(CustomSql.autoUpdateSyncModifyTimeTrigger);
+    await HobbyWalletSchema.migrate(db);
   }
 
   Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {
@@ -247,9 +249,12 @@ class _DBHelper implements DBHelper {
       dbPath,
       version: appDBVersion,
       onCreate: _onCreate,
-      onUpgrade: _onUpgrade,
+      onUpgrade: (db, oldVersion, newVersion) async {
+        await _onUpgrade(db, oldVersion, newVersion);
+        if (oldVersion < 9) await HobbyWalletSchema.migrate(db);
+      },
       onConfigure: (db) async {
-        db.execute("PRAGMA foreign_keys = ON");
+        await db.execute("PRAGMA foreign_keys = ON");
       },
       singleInstance: false,
     );

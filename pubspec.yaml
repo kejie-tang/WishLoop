@@ -19,7 +19,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.27.5+194-pre
+version: 1.0.0+195
 
 environment:
   sdk: ">=3.12.0 <4.0.0"
@@ -235,6 +235,8 @@ dependencies:
   mhabit_adaptive_ui: any
 
 dev_dependencies:
+  integration_test:
+    sdk: flutter
   flutter_test:
     sdk: flutter
 
@@ -358,3 +360,8 @@ msix_config:
     # calc: uuidv5: const.appID + "Table Habit"
     clsid: 03eef6f9-f653-5273-a0d6-111e2a8945b9
     display_name: Table Habit
+
+# Dart 3.13 compatibility patch; see vendor/great_list_view/PATCHES.md.
+dependency_overrides:
+  great_list_view:
+    path: vendor/great_list_view

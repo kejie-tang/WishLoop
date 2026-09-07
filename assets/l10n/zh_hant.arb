@@ -4,7 +4,7 @@
     "@localeScriptName": {
         "description": "The human-readable name of the language used for the locale."
     },
-    "appName": "桌上習慣",
+    "appName": "WishLoop",
     "common_listSeparator": "，",
     "@common_listSeparator": {
         "description": "Separator used between items in compact localized lists."

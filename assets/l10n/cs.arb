@@ -4,7 +4,7 @@
     "@localeScriptName": {
         "description": "The human-readable name of the language used for the locale."
     },
-    "appName": "Table Habit",
+    "appName": "WishLoop",
     "habitEdit_saveButton_text": "Uložit",
     "habitEdit_habitName_hintText": "Název návyku …",
     "habitEdit_colorPicker_title": "Zvolte barvu",

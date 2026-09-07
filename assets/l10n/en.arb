@@ -4,7 +4,7 @@
     "@localeScriptName": {
         "description": "The human-readable name of the language used for the locale."
     },
-    "appName": "Table Habit",
+    "appName": "WishLoop",
     "@appName": {},
     "common_listSeparator": ", ",
     "@common_listSeparator": {
@@ -1496,9 +1496,9 @@
     "@batchCheckin_close_confirmDialog_confirmButton_text": {},
     "batchCheckin_close_confirmDialog_cancelButton_text": "cancel",
     "@batchCheckin_close_confirmDialog_cancelButton_text": {},
-    "appReminder_dailyReminder_title": "🏝 Did you stick to your habits today?",
+    "appReminder_dailyReminder_title": "WishLoop",
     "@appReminder_dailyReminder_title": {},
-    "appReminder_dailyReminder_body": "click to enter app and punch in on time.",
+    "appReminder_dailyReminder_body": "Make a little time for something you love today.",
     "@appReminder_dailyReminder_body": {},
     "common_habitColorType_cc1": "Deep lilac",
     "@common_habitColorType_cc1": {},
@@ -1947,5 +1947,184 @@
     "habitDisplay_groupType_manual": "Manual",
     "@habitDisplay_groupType_manual": {
         "description": "Group sort type: manual ordering via drag-and-drop"
+    },
+    "wToday": "Today",
+    "wHobbies": "Hobbies",
+    "wWallet": "Hobby wallet",
+    "wWalletTab": "Wallet",
+    "wWishlist": "Wishes",
+    "wTodayReward": "Today’s rewards",
+    "wMonthReward": "This month’s rewards",
+    "wSubtitle": "Save a little dedication for the things you love.",
+    "wCurrentWish": "Your next reward",
+    "wTodayHobbies": "Today’s hobbies",
+    "wAllDone": "Today’s dedication is safely saved.",
+    "wEmptyToday": "Nothing scheduled today. Enjoy some time for yourself.",
+    "wEmptyHobbies": "Start with one thing you love",
+    "wEmptyHobbiesBody": "Add a hobby and choose a small reward for each check-in.",
+    "wEmptyWishes": "Something to look forward to",
+    "wEmptyWishesBody": "Add something you truly want, then work toward it one day at a time.",
+    "wEmptyLedger": "Every small step will leave a record here.",
+    "wAddHobby": "Add hobby",
+    "wEditHobby": "Edit hobby",
+    "wAddWish": "Add wish",
+    "wEditWish": "Edit wish",
+    "wName": "Name",
+    "wEmoji": "Emoji / icon",
+    "wDescription": "Description (optional)",
+    "wDuration": "Duration (minutes)",
+    "wReward": "Reward per check-in (¥)",
+    "wFrequency": "Frequency",
+    "wWeekdays": "Days of the week",
+    "wTimes": "Times per period",
+    "wDays": "Days per period",
+    "wDaily": "Daily",
+    "wWeekly": "Weekly",
+    "wMonthly": "Monthly",
+    "wCustom": "Custom period",
+    "wFrequencyHint": "Check in on selected weekdays, at most once a day. Rest after reaching the period’s target.",
+    "wComplete": "Complete",
+    "wCompleted": "Completed ✓",
+    "wUndo": "Undo",
+    "wSave": "Save",
+    "wCancel": "Cancel",
+    "wDelete": "Delete",
+    "wArchive": "Archive",
+    "wRestoreHobby": "Unarchive",
+    "wArchived": "Archived",
+    "wShowArchived": "Show archived hobbies",
+    "wAdjust": "Adjust balance",
+    "wAdjustHelp": "Enter a positive amount to add or a negative amount to subtract. Every adjustment is recorded.",
+    "wAmount": "Adjustment (¥)",
+    "wReason": "Reason",
+    "wRecent": "Recent activity",
+    "wLedgerLimit": "Showing the latest 200 entries. Full history is included in backups.",
+    "wEarn": "Hobby reward",
+    "wSpend": "Wish redeemed",
+    "wAdjustment": "Adjustment",
+    "wTargetPrice": "Target price (¥)",
+    "wNote": "Note (optional)",
+    "wPrimary": "Make this my primary wish",
+    "wRedeem": "Redeem reward",
+    "wConfirmRedeem": "Confirm redemption",
+    "wReady": "🎉 Your reward is within reach",
+    "wRedeemed": "Redeemed",
+    "wSettings": "Settings",
+    "wCurrency": "Default currency",
+    "wCurrencyValue": "CNY ¥ · Virtual bookkeeping unit",
+    "wDisclaimer": "Amounts in your hobby wallet are only for personal motivation and virtual bookkeeping.\nThe app does not provide real money rewards, withdrawals or currency exchange.",
+    "wAbout": "About WishLoop",
+    "wAboutBody": "WishLoop · Hobby Wallet\nBuild lasting hobbies and reward yourself.\nBased on Table Habit, licensed under Apache-2.0.",
+    "wBackup": "Export full backup",
+    "wBackupHelp": "Includes hobbies, check-ins, ledger and wishes. Theme and language stay on this device.",
+    "wImport": "Restore full backup",
+    "wImportConfirm": "Restore replaces all current hobbies, check-ins, ledger and wishes. Export a backup first. Invalid files leave your data unchanged.",
+    "wImportDone": "Backup restored",
+    "wBackupDone": "Backup saved",
+    "wLegacyImport": "Import Table Habit data",
+    "wLegacyHelp": "Keep existing hobbies and check-ins. Historical records do not earn retroactive rewards.",
+    "wLegacyConfirm": "Merge hobbies and historical check-ins. Matching records may be updated. Export a full backup first.",
+    "wLegacyDone": "Import finished. Check your hobbies; historical check-ins do not earn rewards.",
+    "wNotifications": "Notifications & reminders",
+    "wReminder": "Hobby reminder",
+    "wReminderHelp": "A gentle reminder at your chosen time. Android battery settings may delay delivery.",
+    "wReminderDenied": "Could not enable reminders. Allow WishLoop notifications in Android settings.",
+    "wTestNotification": "Send test notification",
+    "wTestSent": "Test notification sent",
+    "wRetry": "Retry",
+    "wError": "The action could not be completed. Please try again.",
+    "wLoadError": "Could not load your data. Please retry.",
+    "wInvalid": "Enter a valid value. Amounts allow up to two decimal places.",
+    "wInsufficient": "Not enough rewards to redeem this wish.",
+    "wAlreadyRedeemed": "This wish has already been redeemed.",
+    "wSaved": "Saved",
+    "wUndoDone": "Check-in and its reward undone",
+    "wNegativeBalance": "Undoing or adjusting can make your balance negative. Future rewards will continue to add up.",
+    "wDeleteConfirm": "Deleting does not erase rewards you have already earned.",
+    "wNotificationsOff": "Reminders are off",
+    "wNotificationBody": "Make a little time for something you love today.",
+    "wMinutes": "About {value} min",
+    "@wMinutes": {
+        "placeholders": {
+            "value": {
+                "type": "int"
+            }
+        }
+    },
+    "wRewardLabel": "Reward {amount}",
+    "@wRewardLabel": {
+        "placeholders": {
+            "amount": {
+                "type": "String"
+            }
+        }
+    },
+    "wCompleteFeedback": "{name} complete. Reward {amount} 🎉",
+    "@wCompleteFeedback": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            },
+            "amount": {
+                "type": "String"
+            }
+        }
+    },
+    "wWishAmounts": "{balance} / {target}",
+    "@wWishAmounts": {
+        "placeholders": {
+            "balance": {
+                "type": "String"
+            },
+            "target": {
+                "type": "String"
+            }
+        }
+    },
+    "wShortfall": "{amount} to go",
+    "@wShortfall": {
+        "placeholders": {
+            "amount": {
+                "type": "String"
+            }
+        }
+    },
+    "wRedeemTitle": "Redeem {name}?",
+    "@wRedeemTitle": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "wRedeemBody": "Deduct from your hobby wallet:\n{price}\n\nBalance after redemption:\n{balance}\n\nThis is a virtual ledger entry. Any real purchase is your own decision.",
+    "@wRedeemBody": {
+        "placeholders": {
+            "price": {
+                "type": "String"
+            },
+            "balance": {
+                "type": "String"
+            }
+        }
+    },
+    "wRedeemedAt": "Redeemed {date}",
+    "@wRedeemedAt": {
+        "placeholders": {
+            "date": {
+                "type": "String"
+            }
+        }
+    },
+    "wReminderBody": "You haven’t completed {name} today. Your reward: {amount}.",
+    "@wReminderBody": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            },
+            "amount": {
+                "type": "String"
+            }
+        }
     }
 }

@@ -1,0 +1,25 @@
+// Local build-only workaround. Active only when explicitly requested.
+if (System.getenv('WISHLOOP_MAVEN_MIRROR') == '1') {
+    def centralMirror = 'https://maven-central.storage-download.googleapis.com/maven2'
+    def redirectCentral = { repos ->
+        repos.all { repo ->
+            if (repo instanceof org.gradle.api.artifacts.repositories.MavenArtifactRepository &&
+                repo.url.host in ['repo.maven.apache.org', 'repo1.maven.org']) {
+                repo.setUrl(centralMirror)
+            }
+        }
+    }
+    gradle.beforeSettings { settings ->
+        settings.pluginManagement.repositories {
+            google()
+            maven { url = uri(centralMirror) }
+            gradlePluginPortal()
+        }
+        redirectCentral(settings.pluginManagement.repositories)
+        redirectCentral(settings.dependencyResolutionManagement.repositories)
+    }
+    gradle.beforeProject { project ->
+        redirectCentral(project.repositories)
+        redirectCentral(project.buildscript.repositories)
+    }
+}

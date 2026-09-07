@@ -16,6 +16,7 @@ import 'dart:io';
 
 import 'package:flutter/widgets.dart' show WidgetsFlutterBinding, runApp;
 import 'package:native_natural_sort/native_natural_sort.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'common/app_info.dart';
 import 'entries/app/entry.dart';
@@ -32,6 +33,19 @@ Future<void> main() async {
     WidgetsFlutterBinding.ensureInitialized();
   }
 
+  // Chinese-first on the first WishLoop launch; subsequent language choices,
+  // including Follow System, remain managed by the existing profile handler.
+  final preferences = await SharedPreferences.getInstance();
+  if (!preferences.containsKey('wishloopInitialized')) {
+    if (!preferences.containsKey('appLocale')) {
+      await preferences.setString(
+        'appLocale',
+        '{"lc":"zh","cc":null,"sc":null}',
+      );
+    }
+    await preferences.setBool('wishloopInitialized', true);
+  }
+
   await loadLinuxBundledFont();
   await AppLoggerMananger(t: AppLoggerHandlerType.debugging).init();
   await AppInfo().init();
@@ -44,5 +58,5 @@ Future<void> main() async {
     ),
   );
 
-  runApp(const AppEntry());
+  runApp(const AppEntry(wishLoop: true));
 }

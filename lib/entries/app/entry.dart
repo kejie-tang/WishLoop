@@ -80,6 +80,7 @@ import 'navigation_chrome.dart';
 import 'navigation_destination.dart';
 import 'providers.dart';
 import 'shell.dart';
+import 'wishloop_app.dart';
 
 /// Note: [AppProviders] are use to build providers that need to be initialized
 /// in [MaterialApp]. An important to note that, e.g., [Localizations] are
@@ -119,7 +120,8 @@ class AppEntry extends StatelessWidget {
     AdaptiveStyleOverrideProfileHandler.new,
   ];
 
-  const AppEntry({super.key});
+  final bool wishLoop;
+  const AppEntry({super.key, this.wishLoop = false});
 
   @override
   Widget build(BuildContext context) {
@@ -131,7 +133,10 @@ class AppEntry extends StatelessWidget {
         errorBuilder: (details) => AppErrorEntry(errorDetails: details),
         builder: (context, child) => DateChanger(
           interval: const Duration(seconds: 10),
-          builder: (context) => const AppProviders(child: _AppEntry()),
+          builder: (context) => AppProviders(
+            offline: wishLoop,
+            child: wishLoop ? const WishLoopApp() : const _AppEntry(),
+          ),
         ),
       ),
     );

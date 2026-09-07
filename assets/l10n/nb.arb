@@ -4,7 +4,7 @@
     "@localeScriptName": {
         "description": "The human-readable name of the language used for the locale."
     },
-    "appName": "🚧(nb_NO) - Table Habit",
+    "appName": "WishLoop",
     "habitDisplay_selectButton_label": "Marker",
     "@habitDisplay_selectButton_label": {
         "description": "Mirrors Apple's localized UIKitCore Localizable.strings \"Select\" system action."

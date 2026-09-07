@@ -145,7 +145,7 @@ abstract class L10n {
   /// No description provided for @appName.
   ///
   /// In en, this message translates to:
-  /// **'Table Habit'**
+  /// **'WishLoop'**
   String get appName;
 
   /// Separator used between items in compact localized lists.
@@ -2801,13 +2801,13 @@ abstract class L10n {
   /// No description provided for @appReminder_dailyReminder_title.
   ///
   /// In en, this message translates to:
-  /// **'🏝 Did you stick to your habits today?'**
+  /// **'WishLoop'**
   String get appReminder_dailyReminder_title;
 
   /// No description provided for @appReminder_dailyReminder_body.
   ///
   /// In en, this message translates to:
-  /// **'click to enter app and punch in on time.'**
+  /// **'Make a little time for something you love today.'**
   String get appReminder_dailyReminder_body;
 
   /// No description provided for @common_habitColorType_cc1.
@@ -3604,6 +3604,630 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Manual'**
   String get habitDisplay_groupType_manual;
+
+  /// No description provided for @wToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get wToday;
+
+  /// No description provided for @wHobbies.
+  ///
+  /// In en, this message translates to:
+  /// **'Hobbies'**
+  String get wHobbies;
+
+  /// No description provided for @wWallet.
+  ///
+  /// In en, this message translates to:
+  /// **'Hobby wallet'**
+  String get wWallet;
+
+  /// No description provided for @wWalletTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Wallet'**
+  String get wWalletTab;
+
+  /// No description provided for @wWishlist.
+  ///
+  /// In en, this message translates to:
+  /// **'Wishes'**
+  String get wWishlist;
+
+  /// No description provided for @wTodayReward.
+  ///
+  /// In en, this message translates to:
+  /// **'Today’s rewards'**
+  String get wTodayReward;
+
+  /// No description provided for @wMonthReward.
+  ///
+  /// In en, this message translates to:
+  /// **'This month’s rewards'**
+  String get wMonthReward;
+
+  /// No description provided for @wSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Save a little dedication for the things you love.'**
+  String get wSubtitle;
+
+  /// No description provided for @wCurrentWish.
+  ///
+  /// In en, this message translates to:
+  /// **'Your next reward'**
+  String get wCurrentWish;
+
+  /// No description provided for @wTodayHobbies.
+  ///
+  /// In en, this message translates to:
+  /// **'Today’s hobbies'**
+  String get wTodayHobbies;
+
+  /// No description provided for @wAllDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Today’s dedication is safely saved.'**
+  String get wAllDone;
+
+  /// No description provided for @wEmptyToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing scheduled today. Enjoy some time for yourself.'**
+  String get wEmptyToday;
+
+  /// No description provided for @wEmptyHobbies.
+  ///
+  /// In en, this message translates to:
+  /// **'Start with one thing you love'**
+  String get wEmptyHobbies;
+
+  /// No description provided for @wEmptyHobbiesBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a hobby and choose a small reward for each check-in.'**
+  String get wEmptyHobbiesBody;
+
+  /// No description provided for @wEmptyWishes.
+  ///
+  /// In en, this message translates to:
+  /// **'Something to look forward to'**
+  String get wEmptyWishes;
+
+  /// No description provided for @wEmptyWishesBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Add something you truly want, then work toward it one day at a time.'**
+  String get wEmptyWishesBody;
+
+  /// No description provided for @wEmptyLedger.
+  ///
+  /// In en, this message translates to:
+  /// **'Every small step will leave a record here.'**
+  String get wEmptyLedger;
+
+  /// No description provided for @wAddHobby.
+  ///
+  /// In en, this message translates to:
+  /// **'Add hobby'**
+  String get wAddHobby;
+
+  /// No description provided for @wEditHobby.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit hobby'**
+  String get wEditHobby;
+
+  /// No description provided for @wAddWish.
+  ///
+  /// In en, this message translates to:
+  /// **'Add wish'**
+  String get wAddWish;
+
+  /// No description provided for @wEditWish.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit wish'**
+  String get wEditWish;
+
+  /// No description provided for @wName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get wName;
+
+  /// No description provided for @wEmoji.
+  ///
+  /// In en, this message translates to:
+  /// **'Emoji / icon'**
+  String get wEmoji;
+
+  /// No description provided for @wDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Description (optional)'**
+  String get wDescription;
+
+  /// No description provided for @wDuration.
+  ///
+  /// In en, this message translates to:
+  /// **'Duration (minutes)'**
+  String get wDuration;
+
+  /// No description provided for @wReward.
+  ///
+  /// In en, this message translates to:
+  /// **'Reward per check-in (¥)'**
+  String get wReward;
+
+  /// No description provided for @wFrequency.
+  ///
+  /// In en, this message translates to:
+  /// **'Frequency'**
+  String get wFrequency;
+
+  /// No description provided for @wWeekdays.
+  ///
+  /// In en, this message translates to:
+  /// **'Days of the week'**
+  String get wWeekdays;
+
+  /// No description provided for @wTimes.
+  ///
+  /// In en, this message translates to:
+  /// **'Times per period'**
+  String get wTimes;
+
+  /// No description provided for @wDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Days per period'**
+  String get wDays;
+
+  /// No description provided for @wDaily.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily'**
+  String get wDaily;
+
+  /// No description provided for @wWeekly.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly'**
+  String get wWeekly;
+
+  /// No description provided for @wMonthly.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly'**
+  String get wMonthly;
+
+  /// No description provided for @wCustom.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom period'**
+  String get wCustom;
+
+  /// No description provided for @wFrequencyHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Check in on selected weekdays, at most once a day. Rest after reaching the period’s target.'**
+  String get wFrequencyHint;
+
+  /// No description provided for @wComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete'**
+  String get wComplete;
+
+  /// No description provided for @wCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed ✓'**
+  String get wCompleted;
+
+  /// No description provided for @wUndo.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo'**
+  String get wUndo;
+
+  /// No description provided for @wSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get wSave;
+
+  /// No description provided for @wCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get wCancel;
+
+  /// No description provided for @wDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get wDelete;
+
+  /// No description provided for @wArchive.
+  ///
+  /// In en, this message translates to:
+  /// **'Archive'**
+  String get wArchive;
+
+  /// No description provided for @wRestoreHobby.
+  ///
+  /// In en, this message translates to:
+  /// **'Unarchive'**
+  String get wRestoreHobby;
+
+  /// No description provided for @wArchived.
+  ///
+  /// In en, this message translates to:
+  /// **'Archived'**
+  String get wArchived;
+
+  /// No description provided for @wShowArchived.
+  ///
+  /// In en, this message translates to:
+  /// **'Show archived hobbies'**
+  String get wShowArchived;
+
+  /// No description provided for @wAdjust.
+  ///
+  /// In en, this message translates to:
+  /// **'Adjust balance'**
+  String get wAdjust;
+
+  /// No description provided for @wAdjustHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a positive amount to add or a negative amount to subtract. Every adjustment is recorded.'**
+  String get wAdjustHelp;
+
+  /// No description provided for @wAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Adjustment (¥)'**
+  String get wAmount;
+
+  /// No description provided for @wReason.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason'**
+  String get wReason;
+
+  /// No description provided for @wRecent.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent activity'**
+  String get wRecent;
+
+  /// No description provided for @wLedgerLimit.
+  ///
+  /// In en, this message translates to:
+  /// **'Showing the latest 200 entries. Full history is included in backups.'**
+  String get wLedgerLimit;
+
+  /// No description provided for @wEarn.
+  ///
+  /// In en, this message translates to:
+  /// **'Hobby reward'**
+  String get wEarn;
+
+  /// No description provided for @wSpend.
+  ///
+  /// In en, this message translates to:
+  /// **'Wish redeemed'**
+  String get wSpend;
+
+  /// No description provided for @wAdjustment.
+  ///
+  /// In en, this message translates to:
+  /// **'Adjustment'**
+  String get wAdjustment;
+
+  /// No description provided for @wTargetPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Target price (¥)'**
+  String get wTargetPrice;
+
+  /// No description provided for @wNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Note (optional)'**
+  String get wNote;
+
+  /// No description provided for @wPrimary.
+  ///
+  /// In en, this message translates to:
+  /// **'Make this my primary wish'**
+  String get wPrimary;
+
+  /// No description provided for @wRedeem.
+  ///
+  /// In en, this message translates to:
+  /// **'Redeem reward'**
+  String get wRedeem;
+
+  /// No description provided for @wConfirmRedeem.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm redemption'**
+  String get wConfirmRedeem;
+
+  /// No description provided for @wReady.
+  ///
+  /// In en, this message translates to:
+  /// **'🎉 Your reward is within reach'**
+  String get wReady;
+
+  /// No description provided for @wRedeemed.
+  ///
+  /// In en, this message translates to:
+  /// **'Redeemed'**
+  String get wRedeemed;
+
+  /// No description provided for @wSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get wSettings;
+
+  /// No description provided for @wCurrency.
+  ///
+  /// In en, this message translates to:
+  /// **'Default currency'**
+  String get wCurrency;
+
+  /// No description provided for @wCurrencyValue.
+  ///
+  /// In en, this message translates to:
+  /// **'CNY ¥ · Virtual bookkeeping unit'**
+  String get wCurrencyValue;
+
+  /// No description provided for @wDisclaimer.
+  ///
+  /// In en, this message translates to:
+  /// **'Amounts in your hobby wallet are only for personal motivation and virtual bookkeeping.\nThe app does not provide real money rewards, withdrawals or currency exchange.'**
+  String get wDisclaimer;
+
+  /// No description provided for @wAbout.
+  ///
+  /// In en, this message translates to:
+  /// **'About WishLoop'**
+  String get wAbout;
+
+  /// No description provided for @wAboutBody.
+  ///
+  /// In en, this message translates to:
+  /// **'WishLoop · Hobby Wallet\nBuild lasting hobbies and reward yourself.\nBased on Table Habit, licensed under Apache-2.0.'**
+  String get wAboutBody;
+
+  /// No description provided for @wBackup.
+  ///
+  /// In en, this message translates to:
+  /// **'Export full backup'**
+  String get wBackup;
+
+  /// No description provided for @wBackupHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Includes hobbies, check-ins, ledger and wishes. Theme and language stay on this device.'**
+  String get wBackupHelp;
+
+  /// No description provided for @wImport.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore full backup'**
+  String get wImport;
+
+  /// No description provided for @wImportConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore replaces all current hobbies, check-ins, ledger and wishes. Export a backup first. Invalid files leave your data unchanged.'**
+  String get wImportConfirm;
+
+  /// No description provided for @wImportDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Backup restored'**
+  String get wImportDone;
+
+  /// No description provided for @wBackupDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Backup saved'**
+  String get wBackupDone;
+
+  /// No description provided for @wLegacyImport.
+  ///
+  /// In en, this message translates to:
+  /// **'Import Table Habit data'**
+  String get wLegacyImport;
+
+  /// No description provided for @wLegacyHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep existing hobbies and check-ins. Historical records do not earn retroactive rewards.'**
+  String get wLegacyHelp;
+
+  /// No description provided for @wLegacyConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Merge hobbies and historical check-ins. Matching records may be updated. Export a full backup first.'**
+  String get wLegacyConfirm;
+
+  /// No description provided for @wLegacyDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Import finished. Check your hobbies; historical check-ins do not earn rewards.'**
+  String get wLegacyDone;
+
+  /// No description provided for @wNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications & reminders'**
+  String get wNotifications;
+
+  /// No description provided for @wReminder.
+  ///
+  /// In en, this message translates to:
+  /// **'Hobby reminder'**
+  String get wReminder;
+
+  /// No description provided for @wReminderHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'A gentle reminder at your chosen time. Android battery settings may delay delivery.'**
+  String get wReminderHelp;
+
+  /// No description provided for @wReminderDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not enable reminders. Allow WishLoop notifications in Android settings.'**
+  String get wReminderDenied;
+
+  /// No description provided for @wTestNotification.
+  ///
+  /// In en, this message translates to:
+  /// **'Send test notification'**
+  String get wTestNotification;
+
+  /// No description provided for @wTestSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Test notification sent'**
+  String get wTestSent;
+
+  /// No description provided for @wRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get wRetry;
+
+  /// No description provided for @wError.
+  ///
+  /// In en, this message translates to:
+  /// **'The action could not be completed. Please try again.'**
+  String get wError;
+
+  /// No description provided for @wLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load your data. Please retry.'**
+  String get wLoadError;
+
+  /// No description provided for @wInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid value. Amounts allow up to two decimal places.'**
+  String get wInvalid;
+
+  /// No description provided for @wInsufficient.
+  ///
+  /// In en, this message translates to:
+  /// **'Not enough rewards to redeem this wish.'**
+  String get wInsufficient;
+
+  /// No description provided for @wAlreadyRedeemed.
+  ///
+  /// In en, this message translates to:
+  /// **'This wish has already been redeemed.'**
+  String get wAlreadyRedeemed;
+
+  /// No description provided for @wSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved'**
+  String get wSaved;
+
+  /// No description provided for @wUndoDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Check-in and its reward undone'**
+  String get wUndoDone;
+
+  /// No description provided for @wNegativeBalance.
+  ///
+  /// In en, this message translates to:
+  /// **'Undoing or adjusting can make your balance negative. Future rewards will continue to add up.'**
+  String get wNegativeBalance;
+
+  /// No description provided for @wDeleteConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Deleting does not erase rewards you have already earned.'**
+  String get wDeleteConfirm;
+
+  /// No description provided for @wNotificationsOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminders are off'**
+  String get wNotificationsOff;
+
+  /// No description provided for @wNotificationBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Make a little time for something you love today.'**
+  String get wNotificationBody;
+
+  /// No description provided for @wMinutes.
+  ///
+  /// In en, this message translates to:
+  /// **'About {value} min'**
+  String wMinutes(int value);
+
+  /// No description provided for @wRewardLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Reward {amount}'**
+  String wRewardLabel(String amount);
+
+  /// No description provided for @wCompleteFeedback.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} complete. Reward {amount} 🎉'**
+  String wCompleteFeedback(String name, String amount);
+
+  /// No description provided for @wWishAmounts.
+  ///
+  /// In en, this message translates to:
+  /// **'{balance} / {target}'**
+  String wWishAmounts(String balance, String target);
+
+  /// No description provided for @wShortfall.
+  ///
+  /// In en, this message translates to:
+  /// **'{amount} to go'**
+  String wShortfall(String amount);
+
+  /// No description provided for @wRedeemTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Redeem {name}?'**
+  String wRedeemTitle(String name);
+
+  /// No description provided for @wRedeemBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Deduct from your hobby wallet:\n{price}\n\nBalance after redemption:\n{balance}\n\nThis is a virtual ledger entry. Any real purchase is your own decision.'**
+  String wRedeemBody(String price, String balance);
+
+  /// No description provided for @wRedeemedAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Redeemed {date}'**
+  String wRedeemedAt(String date);
+
+  /// No description provided for @wReminderBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You haven’t completed {name} today. Your reward: {amount}.'**
+  String wReminderBody(String name, String amount);
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

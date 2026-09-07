@@ -47,7 +47,8 @@ import '../../storage/profile_provider.dart';
 import '../../widgets/provider.dart';
 
 class AppProviders extends SingleChildStatelessWidget {
-  const AppProviders({super.key, super.child});
+  final bool offline;
+  const AppProviders({super.key, super.child, this.offline = false});
 
   Iterable<SingleChildWidget> _buildCommonAppProviders() => [
     Provider<Global>(create: (context) => Global()),
@@ -279,7 +280,7 @@ class AppProviders extends SingleChildStatelessWidget {
       ..._buildHabitsAppProviders(),
       ..._buildGroupAppProviders(),
       ..._buildProfileBackedAppProviders(),
-      ..._buildAppSyncProviders(),
+      if (!offline) ..._buildAppSyncProviders(),
       ..._buildRootAdjacentSupportProviders(),
     ],
     child: child,

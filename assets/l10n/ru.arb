@@ -4,7 +4,7 @@
     "@localeScriptName": {
         "description": "The human-readable name of the language used for the locale."
     },
-    "appName": "Таблица Привычек",
+    "appName": "WishLoop",
     "habitEdit_saveButton_text": "Сохранить",
     "habitEdit_habitName_hintText": "Название привычки ...",
     "habitEdit_colorPicker_title": "Выберите цвет",

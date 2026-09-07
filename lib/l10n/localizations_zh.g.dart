@@ -12,7 +12,7 @@ class L10nZh extends L10n {
   String get localeScriptName => '简体中文';
 
   @override
-  String get appName => '桌上习惯';
+  String get appName => 'WishLoop';
 
   @override
   String get common_listSeparator => '，';
@@ -1662,10 +1662,10 @@ class L10nZh extends L10n {
   String get batchCheckin_close_confirmDialog_cancelButton_text => '取消';
 
   @override
-  String get appReminder_dailyReminder_title => '🏝 你今天坚持了自己的习惯吗？';
+  String get appReminder_dailyReminder_title => 'WishLoop';
 
   @override
-  String get appReminder_dailyReminder_body => '点击进入应用并按时打卡。';
+  String get appReminder_dailyReminder_body => '留一点时间给喜欢的事，今天也值得为自己坚持。';
 
   @override
   String get common_habitColorType_cc1 => '紫罗兰';
@@ -2114,6 +2114,337 @@ class L10nZh extends L10n {
 
   @override
   String get habitDisplay_groupType_manual => '自定义';
+
+  @override
+  String get wToday => '今天';
+
+  @override
+  String get wHobbies => '兴趣';
+
+  @override
+  String get wWallet => '兴趣账户';
+
+  @override
+  String get wWalletTab => '账户';
+
+  @override
+  String get wWishlist => '愿望';
+
+  @override
+  String get wTodayReward => '今日奖励';
+
+  @override
+  String get wMonthReward => '本月奖励';
+
+  @override
+  String get wSubtitle => '把每一次坚持，存成喜欢的生活。';
+
+  @override
+  String get wCurrentWish => '当前愿望';
+
+  @override
+  String get wTodayHobbies => '今天的兴趣';
+
+  @override
+  String get wAllDone => '今天的坚持，已经存好了。';
+
+  @override
+  String get wEmptyToday => '今天没有待完成的兴趣，给自己一点自由时间。';
+
+  @override
+  String get wEmptyHobbies => '从一件喜欢的小事开始';
+
+  @override
+  String get wEmptyHobbiesBody => '添加兴趣，设定每次完成的小奖励。';
+
+  @override
+  String get wEmptyWishes => '给坚持一个期待';
+
+  @override
+  String get wEmptyWishesBody => '把真正想要的东西放在这里，慢慢靠近它。';
+
+  @override
+  String get wEmptyLedger => '每一次坚持，都会在这里留下记录。';
+
+  @override
+  String get wAddHobby => '添加兴趣';
+
+  @override
+  String get wEditHobby => '编辑兴趣';
+
+  @override
+  String get wAddWish => '添加愿望';
+
+  @override
+  String get wEditWish => '编辑愿望';
+
+  @override
+  String get wName => '名称';
+
+  @override
+  String get wEmoji => 'Emoji / 图标';
+
+  @override
+  String get wDescription => '描述（可选）';
+
+  @override
+  String get wDuration => '预计时长（分钟）';
+
+  @override
+  String get wReward => '每次完成奖励（¥）';
+
+  @override
+  String get wFrequency => '频率';
+
+  @override
+  String get wWeekdays => '指定星期';
+
+  @override
+  String get wTimes => '周期内次数';
+
+  @override
+  String get wDays => '周期天数';
+
+  @override
+  String get wDaily => '每天';
+
+  @override
+  String get wWeekly => '每周';
+
+  @override
+  String get wMonthly => '每月';
+
+  @override
+  String get wCustom => '自定义周期';
+
+  @override
+  String get wFrequencyHint => '按所选星期打卡，每天最多奖励一次；周 / 月 / 自定义周期达到次数后休息。';
+
+  @override
+  String get wComplete => '完成';
+
+  @override
+  String get wCompleted => '已完成 ✓';
+
+  @override
+  String get wUndo => '撤销';
+
+  @override
+  String get wSave => '保存';
+
+  @override
+  String get wCancel => '取消';
+
+  @override
+  String get wDelete => '删除';
+
+  @override
+  String get wArchive => '归档';
+
+  @override
+  String get wRestoreHobby => '恢复兴趣';
+
+  @override
+  String get wArchived => '已归档';
+
+  @override
+  String get wShowArchived => '显示已归档兴趣';
+
+  @override
+  String get wAdjust => '调整余额';
+
+  @override
+  String get wAdjustHelp => '输入调整金额，正数增加、负数扣减。每次调整都会保留记录。';
+
+  @override
+  String get wAmount => '调整金额（¥）';
+
+  @override
+  String get wReason => '调整原因';
+
+  @override
+  String get wRecent => '最近记录';
+
+  @override
+  String get wLedgerLimit => '显示最近 200 条；完整记录保存在数据备份中。';
+
+  @override
+  String get wEarn => '兴趣收入';
+
+  @override
+  String get wSpend => '愿望兑换';
+
+  @override
+  String get wAdjustment => '人工调整';
+
+  @override
+  String get wTargetPrice => '目标金额（¥）';
+
+  @override
+  String get wNote => '备注（可选）';
+
+  @override
+  String get wPrimary => '设为当前主要愿望';
+
+  @override
+  String get wRedeem => '兑换奖励';
+
+  @override
+  String get wConfirmRedeem => '确认兑换';
+
+  @override
+  String get wReady => '🎉 你已经攒够奖励了';
+
+  @override
+  String get wRedeemed => '已兑换';
+
+  @override
+  String get wSettings => '设置';
+
+  @override
+  String get wCurrency => '默认货币';
+
+  @override
+  String get wCurrencyValue => 'CNY ¥ · 虚拟记账单位';
+
+  @override
+  String get wDisclaimer => '兴趣账户中的金额仅用于个人兴趣激励和虚拟记账。\nApp 不提供真实货币奖励、提现或兑换服务。';
+
+  @override
+  String get wAbout => '关于 WishLoop';
+
+  @override
+  String get wAboutBody =>
+      'WishLoop · 兴趣账户\n通过坚持兴趣，为自己积累喜欢的奖励。\n基于 Table Habit，遵循 Apache-2.0 开源许可证。';
+
+  @override
+  String get wBackup => '导出完整备份';
+
+  @override
+  String get wBackupHelp => '包含兴趣、打卡、账本和愿望；主题及语言保留在本机。';
+
+  @override
+  String get wImport => '恢复完整备份';
+
+  @override
+  String get wImportConfirm => '恢复将替换当前全部兴趣、打卡、账本和愿望。请先导出当前备份；无效文件不会修改现有数据。';
+
+  @override
+  String get wImportDone => '备份已恢复';
+
+  @override
+  String get wBackupDone => '备份已保存';
+
+  @override
+  String get wLegacyImport => '导入 Table Habit 数据';
+
+  @override
+  String get wLegacyHelp => '保留原兴趣与打卡，历史记录不补发奖励。';
+
+  @override
+  String get wLegacyConfirm => '将合并导入兴趣和历史打卡，匹配的记录可能更新。建议先导出完整备份。';
+
+  @override
+  String get wLegacyDone => '导入完成，请检查兴趣列表；历史打卡不补发奖励。';
+
+  @override
+  String get wNotifications => '通知与提醒';
+
+  @override
+  String get wReminder => '兴趣提醒';
+
+  @override
+  String get wReminderHelp => '在预计完成时间提醒自己。Android 可能因省电策略延后通知。';
+
+  @override
+  String get wReminderDenied => '未能启用提醒，请在系统设置中允许 WishLoop 发送通知。';
+
+  @override
+  String get wTestNotification => '发送测试通知';
+
+  @override
+  String get wTestSent => '测试通知已发送';
+
+  @override
+  String get wRetry => '重试';
+
+  @override
+  String get wError => '操作未完成，请重试。数据保持原状。';
+
+  @override
+  String get wLoadError => '暂时无法读取数据，请重试。';
+
+  @override
+  String get wInvalid => '请输入有效内容，金额最多保留两位小数。';
+
+  @override
+  String get wInsufficient => '奖励金不足，暂时无法兑换。';
+
+  @override
+  String get wAlreadyRedeemed => '这个愿望已经兑换过了。';
+
+  @override
+  String get wSaved => '已保存';
+
+  @override
+  String get wUndoDone => '已撤销完成及对应奖励';
+
+  @override
+  String get wNegativeBalance => '撤销或调整后余额可能为负，后续奖励会继续累积。';
+
+  @override
+  String get wDeleteConfirm => '删除后不会抹去已经获得的奖励记录。';
+
+  @override
+  String get wNotificationsOff => '提醒未启用';
+
+  @override
+  String get wNotificationBody => '留一点时间给喜欢的事，今天也值得为自己坚持。';
+
+  @override
+  String wMinutes(int value) {
+    return '约 $value 分钟';
+  }
+
+  @override
+  String wRewardLabel(String amount) {
+    return '完成奖励 $amount';
+  }
+
+  @override
+  String wCompleteFeedback(String name, String amount) {
+    return '$name完成，奖励 $amount 🎉';
+  }
+
+  @override
+  String wWishAmounts(String balance, String target) {
+    return '$balance / $target';
+  }
+
+  @override
+  String wShortfall(String amount) {
+    return '还差 $amount';
+  }
+
+  @override
+  String wRedeemTitle(String name) {
+    return '兑换 $name？';
+  }
+
+  @override
+  String wRedeemBody(String price, String balance) {
+    return '将从兴趣账户扣除：\n$price\n\n兑换后账户余额：\n$balance\n\n这是一笔虚拟记账，实际购买由你自行决定。';
+  }
+
+  @override
+  String wRedeemedAt(String date) {
+    return '兑换于 $date';
+  }
+
+  @override
+  String wReminderBody(String name, String amount) {
+    return '今天的$name还没完成，完成后奖励 $amount。';
+  }
 }
 
 /// The translations for Chinese, using the Han script (`zh_Hant`).
@@ -2124,7 +2455,7 @@ class L10nZhHant extends L10nZh {
   String get localeScriptName => '繁體中文';
 
   @override
-  String get appName => '桌上習慣';
+  String get appName => 'WishLoop';
 
   @override
   String get common_listSeparator => '，';
