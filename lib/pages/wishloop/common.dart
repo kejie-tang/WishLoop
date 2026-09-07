@@ -14,13 +14,21 @@ String money(BuildContext context, int amount, {bool signed = false}) =>
       signed: signed,
     );
 
-void feedback(BuildContext context, String text, {SnackBarAction? action}) {
+void feedback(
+  BuildContext context,
+  String text, {
+  SnackBarAction? action,
+  Duration duration = const Duration(seconds: 4),
+}) {
   ScaffoldMessenger.of(context)
-    ..hideCurrentSnackBar()
+    ..clearSnackBars()
     ..showSnackBar(
       SnackBar(
         content: Text(text),
         action: action,
+        duration: duration,
+        // Material 3 otherwise keeps action snackbars visible indefinitely.
+        persist: false,
         behavior: SnackBarBehavior.floating,
       ),
     );

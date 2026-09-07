@@ -1,0 +1,96 @@
+After timeout
+WishLoop [42,173][298,246] android.view.View
+设置 [943,147][1070,273] android.widget.Button
+12, 当前愿望
+📚  新书奖励
+¥6.16 / ¥50.00
+12.3%
+预计还要 55 天
+按含今天的最近14个自然日净奖励估算，未打卡日计为0。 [53,283][1028,788] android.widget.ProgressBar
+2026年9月7日的兴趣 [53,819][1028,898] android.view.View
+当天净奖励 +¥5.00 [53,898][1028,953] android.view.View
+🌱
+跑步
+约 30 分钟
+完成奖励 +¥5.00
+已完成 ✓ [53,995][1028,1541] android.view.View
+撤销 [807,1326][975,1452] android.widget.Button
+🌱
+熬夜
+约 30 分钟
+发生扣减 −¥3.46 [53,1541][1028,2087] android.view.View
+记录发生 [105,1872][975,1998] android.widget.Button
+今天的坚持，已经存好了。 [53,2087][1028,2127] android.view.View
+今天
+第 1 个标签，共 4 个 [0,2127][270,2337] android.widget.Button
+兴趣
+第 2 个标签，共 4 个 [270,2127][540,2337] android.widget.Button
+账户
+第 3 个标签，共 4 个 [540,2127][810,2337] android.widget.Button
+愿望
+第 4 个标签，共 4 个 [810,2127][1080,2337] android.widget.Button
+
+Card undo after timeout
+WishLoop [42,173][298,246] android.view.View
+设置 [943,147][1070,273] android.widget.Button
+2, 当前愿望
+📚  新书奖励
+¥1.16 / ¥50.00
+2.3%
+预计还要 111 天
+按含今天的最近14个自然日净奖励估算，未打卡日计为0。 [53,283][1028,788] android.widget.ProgressBar
+2026年9月7日的兴趣 [53,819][1028,898] android.view.View
+当天净奖励 +¥0.00 [53,898][1028,953] android.view.View
+🌱
+跑步
+约 30 分钟
+完成奖励 +¥5.00 [53,995][1028,1541] android.view.View
+完成 [105,1326][975,1452] android.widget.Button
+🌱
+熬夜
+约 30 分钟
+发生扣减 −¥3.46 [53,1541][1028,2087] android.view.View
+记录发生 [105,1872][975,1998] android.widget.Button
+已撤销完成及对应奖励 [0,1962][1080,2127] android.view.View
+今天
+第 1 个标签，共 4 个 [0,2127][270,2337] android.widget.Button
+兴趣
+第 2 个标签，共 4 个 [270,2127][540,2337] android.widget.Button
+账户
+第 3 个标签，共 4 个 [540,2127][810,2337] android.widget.Button
+愿望
+第 4 个标签，共 4 个 [810,2127][1080,2337] android.widget.Button
+
+Complete again
+WishLoop [42,173][298,246] android.view.View
+设置 [943,147][1070,273] android.widget.Button
+12, 当前愿望
+📚  新书奖励
+¥6.16 / ¥50.00
+12.3%
+预计还要 55 天
+按含今天的最近14个自然日净奖励估算，未打卡日计为0。 [53,283][1028,788] android.widget.ProgressBar
+2026年9月7日的兴趣 [53,819][1028,898] android.view.View
+当天净奖励 +¥5.00 [53,898][1028,953] android.view.View
+🌱
+跑步
+约 30 分钟
+完成奖励 +¥5.00
+已完成 ✓ [53,995][1028,1541] android.view.View
+撤销 [807,1326][975,1452] android.widget.Button
+🌱
+熬夜
+约 30 分钟
+发生扣减 −¥3.46 [53,1541][1028,2087] android.view.View
+记录发生 [105,1872][975,1998] android.widget.Button
+今天的坚持，已经存好了。 [53,2087][1028,2127] android.view.View
+跑步完成，奖励 +¥5.00 🎉 [0,1959][1080,2127] android.view.View
+撤销 [852,1973][1020,2099] android.widget.Button
+今天
+第 1 个标签，共 4 个 [0,2127][270,2337] android.widget.Button
+兴趣
+第 2 个标签，共 4 个 [270,2127][540,2337] android.widget.Button
+账户
+第 3 个标签，共 4 个 [540,2127][810,2337] android.widget.Button
+愿望
+第 4 个标签，共 4 个 [810,2127][1080,2337] android.widget.Button

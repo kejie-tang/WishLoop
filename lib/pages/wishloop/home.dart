@@ -137,6 +137,7 @@ class _WishLoopHomeState extends State<WishLoopHome>
                 hobby.name,
                 money(context, reward, signed: true),
               ),
+        duration: const Duration(milliseconds: 1500),
         action: SnackBarAction(
           label: l.wUndo,
           onPressed: () => _undo(hobby, day),

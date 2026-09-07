@@ -129,6 +129,20 @@ void main() {
     );
     await commandTap(tester, find.byKey(ValueKey('complete-$hobby')));
     expect(vm.snapshot.balanceMinor, 500);
+    await commandTap(
+      tester,
+      find.descendant(of: find.byType(SnackBar), matching: find.text('撤销')),
+    );
+    expect(vm.snapshot.balanceMinor, 0);
+    await commandTap(tester, find.byKey(ValueKey('complete-$hobby')));
+    expect(vm.snapshot.balanceMinor, 500);
+    // Exercise actual timer behavior: an action SnackBar otherwise persists
+    // indefinitely in Material 3 even when its duration has elapsed.
+    await tester.pump(const Duration(seconds: 1));
+    expect(find.byType(SnackBar), findsOneWidget);
+    await tester.pump(const Duration(seconds: 1));
+    await tester.pumpAndSettle();
+    expect(find.byType(SnackBar), findsNothing);
     await commandTap(tester, find.byKey(ValueKey('undo-$hobby')));
     expect(vm.snapshot.balanceMinor, 0);
     await commandTap(tester, find.byKey(ValueKey('complete-$hobby')));
