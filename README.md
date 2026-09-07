@@ -18,12 +18,12 @@ WishLoop 让它成为坚持兴趣的理由：为跑步、阅读、学习设定�
 
 ## 界面预览
 
-以下为 **v1.2.0 的 Android 实际截图**，使用演示数据。点击图片可查看大图。
+以下为 **Android 实际截图**，使用演示数据。账户与货币设置来自 v1.3.0，其余页面来自 v1.2.0。点击图片可查看大图。
 
 <p align="center">
   <a href="docs/screenshots/today.png"><img src="docs/screenshots/today.png" width="260" alt="紧凑首页：奖励日历、账户余额和兴趣优先列表"></a>
   <a href="docs/screenshots/hobbies.png"><img src="docs/screenshots/hobbies.png" width="260" alt="兴趣页面：跑步完成获得奖励，熬夜记录发生后扣减"></a>
-  <a href="docs/screenshots/wallet.png"><img src="docs/screenshots/wallet.png" width="260" alt="账户页面：余额、本月净奖励，以及收入、扣减和愿望兑换流水"></a>
+  <a href="docs/screenshots/wallet.png"><img src="docs/screenshots/wallet.png" width="260" alt="账户页面：余额与最近 14、30、180 天变化曲线"></a>
 </p>
 
 <p align="center">
@@ -35,6 +35,7 @@ WishLoop 让它成为坚持兴趣的理由：为跑步、阅读、学习设定�
 <p align="center">
   <a href="docs/screenshots/home-widget.png"><img src="docs/screenshots/home-widget.png" width="260" alt="Android 桌面小组件：余额、愿望进度和按自定义顺序排列的今日兴趣"></a>
   <a href="docs/screenshots/categories.png"><img src="docs/screenshots/categories.png" width="260" alt="兴趣分类管理：新建、改名、删除与拖动排序"></a>
+  <a href="docs/screenshots/currency-settings.png"><img src="docs/screenshots/currency-settings.png" width="260" alt="默认货币可在人民币和美元之间切换，并提供小组件添加帮助"></a>
 </p>
 
 ## 给坚持一个看得见的理由
@@ -53,6 +54,8 @@ WishLoop 让它成为坚持兴趣的理由：为跑步、阅读、学习设定�
 - **首页可以更紧凑。** 在首页右上角切换紧凑模式、选择兴趣优先；布局会自动记住。
 - **从 Android 桌面开始。** 小组件显示余额、愿望进度和今日兴趣，点击兴趣即可进入 App 完成或撤销。
 - **按分类整理，按喜好排序。** 支持创建、改名、删除分类与分类筛选；拖动兴趣右侧的排序柄即可调整顺序，首页和小组件同步更新。
+- **用曲线回看账户变化。** 最近 14、30、180 天随时切换，点按或拖动可查看每天的余额与变化；收入、扣减、兑换和调整都计入。
+- **人民币或美元，由你选择。** 默认人民币，可在设置切换美元；统一更换虚拟记账单位，金额数值不变，不进行汇率换算。
 - **奖励与扣减都由你设定。** 支持正数、零和负数金额；输入自动规范为两位小数。
 - **按自己的节奏坚持。** 支持每天、每周、每月、自定义周期和指定星期，可设置预计时长与提醒。
 - **漏记了，也能补上。** 周/月日历支持左右翻页、选择过去日期补记或撤销；颜色深浅随当前周/月的数据变化。
@@ -75,7 +78,7 @@ WishLoop 让它成为坚持兴趣的理由：为跑步、阅读、学习设定�
 
 已有积累可以在“账户 → 调整余额”中补入。建议定期使用“设置 → 导出完整备份”，把备份保存到自己的文件目录。
 
-**当前版本：v1.2.0 · 支持 Android 7.0 及以上。** 目前面向个人日常使用，通过 APK 安装。
+**当前版本：v1.3.0 · 支持 Android 7.0 及以上。** 目前面向个人日常使用，通过 APK 安装。
 
 升级使用同一签名的新版 APK，可覆盖安装保留数据。如果手机已安装官方 Table Habit，两者当前包名相同、签名不同，不能直接覆盖；请先在原 App 导出数据，避免丢失记录。
 
@@ -83,7 +86,7 @@ WishLoop 让它成为坚持兴趣的理由：为跑步、阅读、学习设定�
 
 余额由完整账本求和得到；金额以整数分保存。完成、撤销和愿望兑换通过数据库事务处理，数据库升级保留已有记录。
 
-当前 v1.2.0 已通过 **1383 项测试**、`flutter analyze` 静态检查、release APK 构建及 Android 模拟器验证。详情见 [版本验证记录](docs/wishloop/V1.2.0.md)。实体手机上的通知及时性仍可能受到厂商省电策略影响。
+当前 v1.3.0 已通过 **1399 项测试**、`flutter analyze` 静态检查、release APK 构建及 Android 模拟器验证。详情见 [版本验证记录](docs/wishloop/V1.3.0.md)。实体手机上的通知及时性仍可能受到厂商省电策略影响。
 
 ## 开发与文档
 
@@ -100,6 +103,7 @@ flutter build apk --release
 
 - [技术与数据说明](docs/wishloop/TECHNICAL_NOTES.md)：账本、预计天数、数据库迁移、备份与当前限制。
 - [Android 构建环境](docs/wishloop/BUILD.md)：Flutter / JDK 版本、构建配置及网络环境说明。
+- [vivo / OriginOS 6 小组件说明](docs/wishloop/VIVO-WIDGET.md)：官方添加入口、平台规则与真机验证范围。
 - [截图说明](docs/screenshots/README.md)：截图版本与演示数据说明。
 - [问题反馈](https://github.com/kejie-tang/WishLoop/issues)：欢迎记录实际使用中遇到的问题。
 

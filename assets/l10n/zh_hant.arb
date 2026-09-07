@@ -1254,5 +1254,53 @@
     "wWidgetRefresh": "開啟以更新今日興趣",
     "wWidgetEmpty": "新增你的第一個興趣",
     "wWidgetNoWish": "設定一個主要願望",
-    "wWidgetOpen": "開啟 WishLoop"
+    "wWidgetOpen": "開啟 WishLoop",
+    "wCurrencyCny": "人民幣 · CNY ¥",
+    "wCurrencyUsd": "美元 · USD $",
+    "wCurrencyChangeTitle": "切換為{currency}？",
+    "@wCurrencyChangeTitle": {
+        "placeholders": {
+            "currency": {
+                "type": "String"
+            }
+        }
+    },
+    "wCurrencyChangeBody": "餘額、興趣獎勵、願望價格和歷史紀錄將統一使用新單位。金額數值不變，不進行匯率換算。",
+    "wConfirmCurrency": "確認切換",
+    "wBalanceHistory": "餘額變化",
+    "wChartDays": "{days}天",
+    "@wChartDays": {
+        "placeholders": {
+            "days": {
+                "type": "int"
+            }
+        }
+    },
+    "wChartRecentDays": "最近{days}天",
+    "@wChartRecentDays": {
+        "placeholders": {
+            "days": {
+                "type": "int"
+            }
+        }
+    },
+    "wChartDayChange": "當日變化 {amount}",
+    "@wChartDayChange": {
+        "placeholders": {
+            "amount": {
+                "type": "String"
+            }
+        }
+    },
+    "wChartPeriodChange": "期間變化 {amount}",
+    "@wChartPeriodChange": {
+        "placeholders": {
+            "amount": {
+                "type": "String"
+            }
+        }
+    },
+    "wWidgetAddHelp": "小元件新增說明",
+    "wWidgetAddInstructions": "先開啟一次 WishLoop，再長按桌面空白處，在小元件清單中尋找 WishLoop。\n\nvivo／OriginOS：進入「原子元件」，找到 WishLoop 後長按拖到桌面。\n\n如果應用程式內新增按鈕沒有彈出確認框，可用上述桌面入口手動新增。元件大小與背景更新時機會受桌面和省電設定影響。",
+    "wClose": "關閉"
 }

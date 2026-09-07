@@ -256,11 +256,14 @@ class _DBHelper implements DBHelper {
         } else if (oldVersion < 10) {
           await HobbyWalletSchema.upgradeToSigned(db);
         }
+        if (oldVersion >= 9 && oldVersion < 11) {
+          await HobbyWalletSchema.upgradeCurrency(db);
+        }
       },
       onConfigure: (db) async {
         // SQLite cannot change foreign_keys from inside onUpgrade's transaction.
-        final migratingV9 = await db.getVersion() == 9;
-        await db.execute('PRAGMA foreign_keys = ${migratingV9 ? 'OFF' : 'ON'}');
+        final rebuilding = {9, 10}.contains(await db.getVersion());
+        await db.execute('PRAGMA foreign_keys = ${rebuilding ? 'OFF' : 'ON'}');
       },
       onOpen: (db) async => db.execute('PRAGMA foreign_keys = ON'),
       singleInstance: false,

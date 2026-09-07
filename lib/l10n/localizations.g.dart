@@ -4528,6 +4528,84 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Open WishLoop'**
   String get wWidgetOpen;
+
+  /// No description provided for @wCurrencyCny.
+  ///
+  /// In en, this message translates to:
+  /// **'Chinese yuan · CNY ¥'**
+  String get wCurrencyCny;
+
+  /// No description provided for @wCurrencyUsd.
+  ///
+  /// In en, this message translates to:
+  /// **'US dollar · USD \$'**
+  String get wCurrencyUsd;
+
+  /// No description provided for @wCurrencyChangeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch to {currency}?'**
+  String wCurrencyChangeTitle(String currency);
+
+  /// No description provided for @wCurrencyChangeBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The balance, hobby rewards, wish prices and history will use the new unit. Numerical amounts stay unchanged; no exchange-rate conversion is performed.'**
+  String get wCurrencyChangeBody;
+
+  /// No description provided for @wConfirmCurrency.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm switch'**
+  String get wConfirmCurrency;
+
+  /// No description provided for @wBalanceHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Balance history'**
+  String get wBalanceHistory;
+
+  /// No description provided for @wChartDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{days}d'**
+  String wChartDays(int days);
+
+  /// No description provided for @wChartRecentDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Last {days} days'**
+  String wChartRecentDays(int days);
+
+  /// No description provided for @wChartDayChange.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily change {amount}'**
+  String wChartDayChange(String amount);
+
+  /// No description provided for @wChartPeriodChange.
+  ///
+  /// In en, this message translates to:
+  /// **'Period change {amount}'**
+  String wChartPeriodChange(String amount);
+
+  /// No description provided for @wWidgetAddHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'How to add the widget'**
+  String get wWidgetAddHelp;
+
+  /// No description provided for @wWidgetAddInstructions.
+  ///
+  /// In en, this message translates to:
+  /// **'Open WishLoop once, then long-press an empty area on the home screen and find WishLoop in the widget list.\n\nvivo / OriginOS: open Atomic components, find WishLoop, then drag it onto the home screen.\n\nIf the in-app button does not show a confirmation, use the home screen picker. Widget sizing and background refresh depend on the launcher and power settings.'**
+  String get wWidgetAddInstructions;
+
+  /// No description provided for @wClose.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get wClose;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

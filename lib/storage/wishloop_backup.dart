@@ -16,6 +16,7 @@ class WishLoopBackup {
   final Database db;
   const WishLoopBackup(this.db);
   static const tables = [
+    'hw_settings',
     'mh_groups',
     'mh_habits',
     'mh_records',
@@ -57,7 +58,7 @@ class WishLoopBackup {
     final envelope = jsonDecode(text) as Map<String, dynamic>;
     if (envelope['format'] != 'WishLoop' ||
         envelope['version'] != 1 ||
-        !{9, appDBVersion}.contains(envelope['schema']) ||
+        !{9, 10, appDBVersion}.contains(envelope['schema']) ||
         envelope['data'] is! String) {
       throw const FormatException('Unsupported backup');
     }
@@ -66,6 +67,11 @@ class WishLoopBackup {
       throw const FormatException('Backup checksum mismatch');
     }
     final raw = jsonDecode(payload) as Map<String, dynamic>;
+    if ((envelope['schema'] as int) < 11 && !raw.containsKey('hw_settings')) {
+      raw['hw_settings'] = [
+        {'id': 1, 'currency': 'CNY'},
+      ];
+    }
     if (raw.length != tables.length) {
       throw const FormatException('Missing tables');
     }
@@ -103,6 +109,10 @@ class WishLoopBackup {
           }
           await txn.insert(table, row);
         }
+      }
+      final settings = await txn.query('hw_settings');
+      if (settings.length != 1 || settings.single['id'] != 1) {
+        throw const FormatException('Missing account currency');
       }
       for (final row in await txn.query('mh_habits')) {
         final hobby = Hobby.fromRow(row);

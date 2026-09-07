@@ -6,7 +6,8 @@ import 'package:intl/intl.dart';
 /// All arithmetic and decimal parsing use integers. Doubles are only used for
 /// visual progress, never for a monetary amount or ledger total.
 abstract final class RewardMoney {
-  static const currency = 'CNY';
+  static const currencies = ['CNY', 'USD'];
+  static String symbol(String currency) => currency == 'USD' ? r'$' : '¥';
   static const maxMinor = 999999999999;
 
   static int? parse(String input, {bool signed = false}) {
@@ -38,6 +39,7 @@ abstract final class RewardMoney {
   static String format(
     int minor, {
     String locale = 'en',
+    String currency = 'CNY',
     bool showCode = false,
     bool showSymbol = true,
     bool signed = false,
@@ -54,7 +56,7 @@ abstract final class RewardMoney {
     final unit = showCode
         ? '$currency '
         : showSymbol
-        ? '¥'
+        ? symbol(currency)
         : '';
     return '$sign$unit$whole.$fraction';
   }

@@ -47,6 +47,7 @@ class WishLoopReminders {
                     RewardMoney.format(
                       hobby.rewardMinor.abs(),
                       locale: l10n.localeName,
+                      currency: state.currency,
                     ),
                   )
                 : l10n.wReminderBody(
@@ -54,6 +55,7 @@ class WishLoopReminders {
                     RewardMoney.format(
                       hobby.rewardMinor,
                       locale: l10n.localeName,
+                      currency: state.currency,
                     ),
                   ),
             reminder: HabitReminder.daily(time: reminder.time),

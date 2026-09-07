@@ -39,6 +39,55 @@ class HobbyWalletRepository {
           )).single['total']
           as int;
 
+  Future<String> _currency(DatabaseExecutor db) async =>
+      (await db.query('hw_settings', where: 'id = 1')).single['currency']
+          as String;
+
+  /// This is a virtual unit change, not an exchange-rate conversion.
+  Future<void> setCurrency(String currency) => _db.transaction((db) async {
+    if (!RewardMoney.currencies.contains(currency)) {
+      throw const WalletException(WalletFailure.invalidInput);
+    }
+    await db.update('hw_settings', {'currency': currency}, where: 'id = 1');
+    await db.update('hw_transactions', {'currency': currency});
+  });
+
+  Future<List<WalletDayBalance>> _balanceHistory(
+    DatabaseExecutor db,
+    HabitDate today,
+  ) async {
+    // Aggregate the entire ledger, not the recent 200-row presentation limit.
+    // Check-ins retain their selected calendar day even after a timezone change.
+    final rows = await db.rawQuery("""
+      SELECT COALESCE(c.day, CAST(julianday(date(t.timestamp / 1000,
+        'unixepoch', 'localtime')) - julianday('1970-01-01') AS INTEGER)) AS account_day,
+        SUM(t.amount_minor) AS total
+      FROM hw_transactions t LEFT JOIN hw_checkins c
+        ON t.source_type = 'CHECK_IN' AND t.source_id = c.id
+      GROUP BY account_day ORDER BY account_day
+    """);
+    final start = today.subtractDays(179);
+    var running = 0;
+    final changes = <int, int>{};
+    for (final row in rows) {
+      final day = row['account_day'] as int;
+      final value = row['total'] as int;
+      if (day < start.epochDay) {
+        running += value;
+      } else {
+        changes[day] = value;
+      }
+    }
+    return List.unmodifiable(
+      List.generate(180, (index) {
+        final day = start.addDays(index);
+        final delta = changes[day.epochDay] ?? 0;
+        running += delta;
+        return WalletDayBalance(day, running, delta);
+      }),
+    );
+  }
+
   Future<void> _checkBalanceRange(DatabaseExecutor db, int delta) async {
     if (((await _balance(db)) + delta).abs() > RewardMoney.maxMinor) {
       throw const WalletException(WalletFailure.invalidInput);
@@ -96,6 +145,8 @@ class HobbyWalletRepository {
         .map((r) => r['parent_uuid'] as String)
         .toSet();
     return HobbyWalletSnapshot(
+      currency: await _currency(db),
+      balanceHistory: await _balanceHistory(db, currentDay),
       groups: List.unmodifiable(
         (await db.query(
           'mh_groups',
@@ -517,6 +568,7 @@ class HobbyWalletRepository {
       'previous_record': previous.isEmpty ? null : jsonEncode(previous.single),
     });
     await db.insert('hw_transactions', {
+      'currency': await _currency(db),
       'id': 'earn:$id',
       'amount_minor': hobby.rewardMinor,
       'type': 'EARN',
@@ -606,6 +658,7 @@ class HobbyWalletRepository {
     }
     await _checkBalanceRange(db, amountMinor);
     await db.insert('hw_transactions', {
+      'currency': await _currency(db),
       'id': 'adjust:$requestId',
       'amount_minor': amountMinor,
       'type': 'ADJUSTMENT',
@@ -702,6 +755,7 @@ class HobbyWalletRepository {
     }
     final stamp = now().millisecondsSinceEpoch;
     await db.insert('hw_transactions', {
+      'currency': await _currency(db),
       'id': 'spend:$id',
       'amount_minor': -wish.targetPriceMinor,
       'type': 'SPEND',

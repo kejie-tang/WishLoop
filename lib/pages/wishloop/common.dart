@@ -2,14 +2,17 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../l10n/localizations.dart';
 import '../../models/hobby_wallet.dart';
+import '../../providers/wishloop/wallet_controller.dart';
 import '../../utils/reward_money.dart';
 
 String money(BuildContext context, int amount, {bool signed = false}) =>
     RewardMoney.format(
       amount,
+      currency: context.read<WalletController>().snapshot.currency,
       locale: L10n.of(context)!.localeName,
       signed: signed,
       showSymbol: !signed,

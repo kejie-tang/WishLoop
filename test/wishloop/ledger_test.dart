@@ -409,7 +409,7 @@ void main() {
       await databaseFactory.setDatabasesPath(dir.path);
       final upgraded = DBHelper();
       await upgraded.init();
-      expect(await upgraded.db.getVersion(), 10);
+      expect(await upgraded.db.getVersion(), appDBVersion);
       expect((await upgraded.db.query('mh_habits')).single['name'], 'Existing');
       expect((await upgraded.db.query('mh_habits')).single['reward_minor'], 0);
       expect(

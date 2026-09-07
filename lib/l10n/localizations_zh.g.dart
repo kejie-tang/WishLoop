@@ -2609,6 +2609,56 @@ class L10nZh extends L10n {
 
   @override
   String get wWidgetOpen => '打开 WishLoop';
+
+  @override
+  String get wCurrencyCny => '人民币 · CNY ¥';
+
+  @override
+  String get wCurrencyUsd => '美元 · USD \$';
+
+  @override
+  String wCurrencyChangeTitle(String currency) {
+    return '切换为$currency？';
+  }
+
+  @override
+  String get wCurrencyChangeBody => '余额、兴趣奖励、愿望价格和历史记录将统一使用新单位。金额数值不变，不进行汇率换算。';
+
+  @override
+  String get wConfirmCurrency => '确认切换';
+
+  @override
+  String get wBalanceHistory => '余额变化';
+
+  @override
+  String wChartDays(int days) {
+    return '$days天';
+  }
+
+  @override
+  String wChartRecentDays(int days) {
+    return '最近$days天';
+  }
+
+  @override
+  String wChartDayChange(String amount) {
+    return '当日变化 $amount';
+  }
+
+  @override
+  String wChartPeriodChange(String amount) {
+    return '期间变化 $amount';
+  }
+
+  @override
+  String get wWidgetAddHelp => '小组件添加帮助';
+
+  @override
+  String get wWidgetAddInstructions =>
+      '先打开一次 WishLoop，再长按桌面空白处，在小组件列表中查找 WishLoop。\n\nvivo／OriginOS：进入「原子组件」，找到 WishLoop 后长按拖到桌面。\n\n如果应用内添加按钮没有弹出确认框，可用上述桌面入口手动添加。组件大小与后台刷新时机会受桌面和省电设置影响。';
+
+  @override
+  String get wClose => '关闭';
 }
 
 /// The translations for Chinese, using the Han script (`zh_Hant`).
@@ -4426,4 +4476,54 @@ class L10nZhHant extends L10nZh {
 
   @override
   String get wWidgetOpen => '開啟 WishLoop';
+
+  @override
+  String get wCurrencyCny => '人民幣 · CNY ¥';
+
+  @override
+  String get wCurrencyUsd => '美元 · USD \$';
+
+  @override
+  String wCurrencyChangeTitle(String currency) {
+    return '切換為$currency？';
+  }
+
+  @override
+  String get wCurrencyChangeBody => '餘額、興趣獎勵、願望價格和歷史紀錄將統一使用新單位。金額數值不變，不進行匯率換算。';
+
+  @override
+  String get wConfirmCurrency => '確認切換';
+
+  @override
+  String get wBalanceHistory => '餘額變化';
+
+  @override
+  String wChartDays(int days) {
+    return '$days天';
+  }
+
+  @override
+  String wChartRecentDays(int days) {
+    return '最近$days天';
+  }
+
+  @override
+  String wChartDayChange(String amount) {
+    return '當日變化 $amount';
+  }
+
+  @override
+  String wChartPeriodChange(String amount) {
+    return '期間變化 $amount';
+  }
+
+  @override
+  String get wWidgetAddHelp => '小元件新增說明';
+
+  @override
+  String get wWidgetAddInstructions =>
+      '先開啟一次 WishLoop，再長按桌面空白處，在小元件清單中尋找 WishLoop。\n\nvivo／OriginOS：進入「原子元件」，找到 WishLoop 後長按拖到桌面。\n\n如果應用程式內新增按鈕沒有彈出確認框，可用上述桌面入口手動新增。元件大小與背景更新時機會受桌面和省電設定影響。';
+
+  @override
+  String get wClose => '關閉';
 }

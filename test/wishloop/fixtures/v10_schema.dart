@@ -5,7 +5,7 @@ import 'package:sqflite/sqflite.dart';
 
 /// Called inside sqflite's onCreate/onUpgrade transaction. Never removes
 /// existing habits, records, groups, settings, or sync metadata.
-abstract final class HobbyWalletSchema {
+abstract final class LegacyWalletV10Schema {
   static Future<void> migrate(DatabaseExecutor db) async {
     final columns = (await db.rawQuery(
       'PRAGMA table_info(mh_habits)',
@@ -34,41 +34,8 @@ abstract final class HobbyWalletSchema {
   /// v9 → v10: SQLite's documented create/copy/drop/rename procedure. The
   /// opener disables foreign keys BEFORE the migration transaction and enables
   /// them onOpen. Rows, IDs, indexes, triggers and references are preserved.
-  static Future<void> upgradeToSigned(Database db) => _rebuild(
-    db,
-    ['mh_habits', 'hw_checkins', 'hw_transactions'],
-    'signed_v10',
-    (schema) => schema
-        .replaceAll(
-          'reward_minor BETWEEN 0 AND 999999999999',
-          'reward_minor BETWEEN -999999999999 AND 999999999999',
-        )
-        .replaceAll(
-          "AND source_type = 'CHECK_IN' AND amount_minor >= 0",
-          "AND source_type = 'CHECK_IN'",
-        ),
-  );
-
-  /// v10 → v11 keeps every ledger row and foreign key, and adds the account unit.
-  static Future<void> upgradeCurrency(Database db) async {
-    await _rebuild(
-      db,
-      ['hw_transactions'],
-      'currency_v11',
-      (schema) => schema.replaceAll(
-        "CHECK(currency = 'CNY')",
-        "CHECK(currency IN ('CNY','USD'))",
-      ),
-    );
-    await migrate(db);
-  }
-
-  static Future<void> _rebuild(
-    Database db,
-    List<String> tables,
-    String suffix,
-    String Function(String) revise,
-  ) async {
+  static Future<void> upgradeToSigned(Database db) async {
+    const tables = ['mh_habits', 'hw_checkins', 'hw_transactions'];
     final triggers = await db.rawQuery(
       "SELECT name, sql FROM sqlite_master WHERE type = 'trigger' AND sql IS NOT NULL",
     );
@@ -92,8 +59,17 @@ abstract final class HobbyWalletSchema {
         where: 'name = ?',
         whereArgs: [table],
       );
-      final temporary = '${table}_$suffix';
-      final revised = revise(schema).replaceFirst(table, temporary);
+      final temporary = '${table}_signed_v10';
+      final revised = schema
+          .replaceFirst(table, temporary)
+          .replaceAll(
+            'reward_minor BETWEEN 0 AND 999999999999',
+            'reward_minor BETWEEN -999999999999 AND 999999999999',
+          )
+          .replaceAll(
+            "AND source_type = 'CHECK_IN' AND amount_minor >= 0",
+            "AND source_type = 'CHECK_IN'",
+          );
       await db.execute(revised);
       await db.execute('INSERT INTO $temporary SELECT * FROM $table');
       await db.execute('DROP TABLE $table');
@@ -121,18 +97,11 @@ abstract final class HobbyWalletSchema {
       'CREATE INDEX IF NOT EXISTS hw_checkins_day ON hw_checkins(day)',
     );
     if ((await db.rawQuery('PRAGMA foreign_key_check')).isNotEmpty) {
-      throw StateError(
-        'Foreign key validation failed during $suffix migration',
-      );
+      throw StateError('Foreign key validation failed during v10 migration');
     }
   }
 
   static const _statements = [
-    """CREATE TABLE IF NOT EXISTS hw_settings (
-      id INTEGER PRIMARY KEY CHECK(id = 1),
-      currency TEXT NOT NULL DEFAULT 'CNY' CHECK(currency IN ('CNY','USD'))
-    )""",
-    "INSERT OR IGNORE INTO hw_settings(id, currency) VALUES(1, 'CNY')",
     '''CREATE TABLE IF NOT EXISTS hw_checkins (
       id TEXT PRIMARY KEY NOT NULL,
       habit_uuid TEXT NOT NULL REFERENCES mh_habits(uuid),
@@ -152,7 +121,7 @@ abstract final class HobbyWalletSchema {
       source_id TEXT NOT NULL,
       title TEXT NOT NULL,
       timestamp INTEGER NOT NULL,
-      currency TEXT NOT NULL DEFAULT 'CNY' CHECK(currency IN ('CNY','USD')),
+      currency TEXT NOT NULL DEFAULT 'CNY' CHECK(currency = 'CNY'),
       UNIQUE(source_type, source_id),
       CHECK((type = 'EARN' AND source_type = 'CHECK_IN')
         OR (type = 'SPEND' AND source_type = 'WISHLIST' AND amount_minor < 0)
@@ -179,12 +148,6 @@ abstract final class HobbyWalletSchema {
       amount_minor INTEGER NOT NULL CHECK(amount_minor BETWEEN 1 AND 999999999999),
       timestamp INTEGER NOT NULL
     )''',
-    """CREATE TRIGGER IF NOT EXISTS hw_currency_insert BEFORE INSERT ON hw_transactions
-    WHEN NEW.currency != (SELECT currency FROM hw_settings WHERE id = 1)
-    BEGIN SELECT RAISE(ABORT, 'Account currency mismatch'); END""",
-    """CREATE TRIGGER IF NOT EXISTS hw_currency_update BEFORE UPDATE OF currency ON hw_transactions
-    WHEN NEW.currency != (SELECT currency FROM hw_settings WHERE id = 1)
-    BEGIN SELECT RAISE(ABORT, 'Account currency mismatch'); END""",
     // Legacy record editors/importers cannot leave rewards for an undone record.
     '''CREATE TRIGGER IF NOT EXISTS hw_record_changed AFTER UPDATE ON mh_records
     WHEN EXISTS(SELECT 1 FROM hw_checkins WHERE record_uuid = NEW.uuid

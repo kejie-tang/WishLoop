@@ -192,7 +192,17 @@ class WishlistRedemption {
       );
 }
 
+/// Integer end-of-day balance and net movement; floats are only chart coordinates.
+class WalletDayBalance {
+  final HabitDate day;
+  final int balanceMinor;
+  final int changeMinor;
+  const WalletDayBalance(this.day, this.balanceMinor, this.changeMinor);
+}
+
 class HobbyWalletSnapshot {
+  final String currency;
+  final List<WalletDayBalance> balanceHistory;
   final List<GroupDBCell> groups;
   final List<Hobby> hobbies;
   final List<Hobby> dayHobbies;
@@ -210,6 +220,8 @@ class HobbyWalletSnapshot {
   final int monthEarnedMinor;
 
   const HobbyWalletSnapshot({
+    this.currency = 'CNY',
+    this.balanceHistory = const [],
     this.groups = const [],
     this.hobbies = const [],
     this.dayHobbies = const [],

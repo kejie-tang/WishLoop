@@ -10,6 +10,7 @@ import '../../l10n/localizations.dart';
 import '../../models/hobby_wallet.dart';
 import '../../providers/wishloop/wallet_controller.dart';
 import '../../utils/reward_money.dart';
+import 'balance_chart.dart';
 import 'common.dart';
 
 class WalletBody extends StatelessWidget {
@@ -63,6 +64,7 @@ class WalletBody extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 16),
             child: Text(l.wNegativeBalance),
           ),
+        WalletBalanceChart(history: s.balanceHistory),
         Text(l.wRecent, style: theme.textTheme.titleLarge),
         const SizedBox(height: 14),
         if (s.transactions.isEmpty)

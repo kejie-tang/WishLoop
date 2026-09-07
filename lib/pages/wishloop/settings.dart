@@ -29,6 +29,7 @@ import '../app_settings/_widgets/app_language_changer.dart';
 import '../app_settings/_widgets/app_setting_reminder_tile.dart';
 import '../app_settings/_widgets/app_setting_theme_mode.dart';
 import 'common.dart';
+import 'currency_setting.dart';
 
 class WishLoopSettings extends StatefulWidget {
   const WishLoopSettings({super.key});
@@ -160,6 +161,24 @@ class _WishLoopSettingsState extends State<WishLoopSettings> with XShare {
                 leading: const Icon(Icons.widgets_outlined),
                 title: Text(l.wHomeWidget),
                 subtitle: Text(l.wHomeWidgetHelp),
+                trailing: IconButton(
+                  tooltip: l.wWidgetAddHelp,
+                  icon: const Icon(Icons.help_outline),
+                  onPressed: () => showDialog<void>(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: Text(l.wWidgetAddHelp),
+                      scrollable: true,
+                      content: Text(l.wWidgetAddInstructions),
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: Text(l.wClose),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
                 onTap: () => _work(() async {
                   final widget = WishLoopWidget();
                   await widget.refresh(
@@ -189,11 +208,7 @@ class _WishLoopSettingsState extends State<WishLoopSettings> with XShare {
                 }
               },
             ),
-            ListTile(
-              leading: const Icon(Icons.currency_yen),
-              title: Text(l.wCurrency),
-              subtitle: Text(l.wCurrencyValue),
-            ),
+            const CurrencySettingTile(),
             const Divider(),
             Padding(
               padding: const EdgeInsets.all(16),

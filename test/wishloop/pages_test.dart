@@ -1,8 +1,10 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mhabit/common/consts.dart';
 import 'package:mhabit/models/habit_freq.dart';
 import 'package:mhabit/models/reward_calendar.dart';
+import 'package:mhabit/pages/wishloop/currency_setting.dart';
 import 'package:mhabit/pages/wishloop/editors.dart';
 import 'package:mhabit/pages/wishloop/home.dart';
 import 'package:mhabit/providers/wishloop/wallet_controller.dart';
@@ -98,6 +100,134 @@ void main() {
     await tester.pumpAndSettle();
     expect(vm.busy, isFalse);
   }
+
+  testWidgets('account switches 14 30 180 days and allows selecting a day', (
+    tester,
+  ) async {
+    await vm.run(
+      () => vm.repository.complete(
+        hobby,
+        onDay: vm.repository.today.subtractDays(2),
+      ),
+    );
+    await pump(tester);
+    await tab(tester, 2);
+    LineChart chart() => tester.widget<LineChart>(find.byType(LineChart));
+    expect(chart().data.lineBarsData.single.spots.length, 14);
+    for (final days in [30, 180, 14]) {
+      await commandTap(tester, find.text('$days天'));
+      expect(chart().data.lineBarsData.single.spots.length, days);
+    }
+    await Scrollable.ensureVisible(
+      tester.element(find.byType(LineChart)),
+      alignment: .5,
+    );
+    await tester.pumpAndSettle();
+    final rect = tester.getRect(
+      find.byKey(const ValueKey('balance-line-chart')),
+    );
+    await tester.tapAt(Offset(rect.left + 65, rect.center.dy));
+    await tester.pumpAndSettle();
+    expect(
+      tester
+          .widget<Text>(find.byKey(const ValueKey('chart-selected-balance')))
+          .data,
+      '¥0.00',
+    );
+    expect(
+      tester
+          .widget<Text>(find.byKey(const ValueKey('chart-period-change')))
+          .data,
+      '期间变化 +5.00',
+    );
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets(
+    'currency picker cancellation leaves CNY and confirmation updates balance',
+    (tester) async {
+      await vm.complete(hobby);
+      await tester.pumpWidget(
+        ChangeNotifierProvider.value(
+          value: vm,
+          child: const MaterialApp(
+            locale: Locale('zh'),
+            supportedLocales: appSupportedLocales,
+            localizationsDelegates: appLocalizationsDelegates,
+            home: Scaffold(body: CurrencySettingTile()),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const ValueKey('currency-setting')));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const ValueKey('currency-USD')));
+      await tester.pumpAndSettle();
+      expect(find.textContaining('金额数值不变'), findsOneWidget);
+      await tester.tap(find.text('取消'));
+      await tester.pumpAndSettle();
+      expect(vm.snapshot.currency, 'CNY');
+      await tester.tap(find.byKey(const ValueKey('currency-setting')));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const ValueKey('currency-USD')));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('确认切换'));
+      await tester.pumpAndSettle();
+      expect(vm.snapshot.currency, 'USD');
+      expect(find.text(r'美元 · USD $'), findsOneWidget);
+      await pump(tester);
+      await tab(tester, 2);
+      expect(find.text(r'$5.00'), findsWidgets);
+      expect(vm.snapshot.balanceMinor, 500);
+      expect(tester.takeException(), isNull);
+    },
+  );
+
+  testWidgets(
+    '180 day chart with negative balance renders at large text in dark mode',
+    (tester) async {
+      await vm.run(
+        () => vm.repository.adjust(
+          requestId: 'negative',
+          amountMinor: -500,
+          title: 'negative',
+        ),
+      );
+      await pump(
+        tester,
+        themeMode: ThemeMode.dark,
+        scale: 2,
+        locale: const Locale('en'),
+      );
+      await tab(tester, 2);
+      await tester.scrollUntilVisible(
+        find.text('180d'),
+        180,
+        scrollable: find
+            .descendant(
+              of: find.byKey(const PageStorageKey('wallet-scroll')),
+              matching: find.byType(Scrollable),
+            )
+            .first,
+      );
+      await commandTap(tester, find.text('180d'));
+      await commandTap(
+        tester,
+        find.byKey(const ValueKey('balance-line-chart')),
+      );
+      expect(
+        tester
+            .widget<LineChart>(find.byType(LineChart))
+            .data
+            .lineBarsData
+            .single
+            .spots
+            .length,
+        180,
+      );
+      expect(tester.takeException(), isNull);
+    },
+  );
 
   testWidgets(
     'compact home exposes completion without scrolling and keeps layout choice',

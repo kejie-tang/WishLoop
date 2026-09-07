@@ -2786,4 +2786,55 @@ class L10nTr extends L10n {
 
   @override
   String get wWidgetOpen => 'Open WishLoop';
+
+  @override
+  String get wCurrencyCny => 'Chinese yuan · CNY ¥';
+
+  @override
+  String get wCurrencyUsd => 'US dollar · USD \$';
+
+  @override
+  String wCurrencyChangeTitle(String currency) {
+    return 'Switch to $currency?';
+  }
+
+  @override
+  String get wCurrencyChangeBody =>
+      'The balance, hobby rewards, wish prices and history will use the new unit. Numerical amounts stay unchanged; no exchange-rate conversion is performed.';
+
+  @override
+  String get wConfirmCurrency => 'Confirm switch';
+
+  @override
+  String get wBalanceHistory => 'Balance history';
+
+  @override
+  String wChartDays(int days) {
+    return '${days}d';
+  }
+
+  @override
+  String wChartRecentDays(int days) {
+    return 'Last $days days';
+  }
+
+  @override
+  String wChartDayChange(String amount) {
+    return 'Daily change $amount';
+  }
+
+  @override
+  String wChartPeriodChange(String amount) {
+    return 'Period change $amount';
+  }
+
+  @override
+  String get wWidgetAddHelp => 'How to add the widget';
+
+  @override
+  String get wWidgetAddInstructions =>
+      'Open WishLoop once, then long-press an empty area on the home screen and find WishLoop in the widget list.\n\nvivo / OriginOS: open Atomic components, find WishLoop, then drag it onto the home screen.\n\nIf the in-app button does not show a confirmation, use the home screen picker. Widget sizing and background refresh depend on the launcher and power settings.';
+
+  @override
+  String get wClose => 'Close';
 }

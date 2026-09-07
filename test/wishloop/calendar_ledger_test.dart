@@ -300,6 +300,12 @@ void main() {
           await LegacyWalletV9Schema.migrate(db);
         },
       );
+      // Only the current seeding helper needs settings; remove it before opening
+      // the legacy file, so migration/backup are exercised against real v9 tables.
+      await old.execute(
+        "CREATE TABLE hw_settings(id INTEGER PRIMARY KEY, currency TEXT)",
+      );
+      await old.insert('hw_settings', {'id': 1, 'currency': 'CNY'});
       final legacy = HobbyWalletRepository(old, clock: () => now);
       final id = await legacy.saveHobby(
         name: 'old',
@@ -324,21 +330,43 @@ void main() {
         where: 'name = ?',
         whereArgs: ['mh_habits'],
       );
+      await old.execute('DROP TABLE hw_settings');
+      final legacyTables = WishLoopBackup.tables.where(
+        (t) => t != 'hw_settings',
+      );
       final before = {
-        for (final table in WishLoopBackup.tables)
-          table: await old.query(table),
+        for (final table in legacyTables) table: await old.query(table),
       };
-      final envelope =
-          jsonDecode(await WishLoopBackup(old).exportData())
-              as Map<String, dynamic>;
-      envelope['schema'] = 9;
-      final oldBackup = jsonEncode(envelope);
+      final payload = jsonEncode(
+        before.map(
+          (table, rows) => MapEntry(
+            table,
+            rows
+                .map(
+                  (row) => row.map(
+                    (key, value) => MapEntry(
+                      key,
+                      value is double && !value.isFinite ? 'Infinity' : value,
+                    ),
+                  ),
+                )
+                .toList(),
+          ),
+        ),
+      );
+      final oldBackup = jsonEncode({
+        'format': 'WishLoop',
+        'version': 1,
+        'schema': 9,
+        'data': payload,
+        'sha256': sha256.convert(utf8.encode(payload)).toString(),
+      });
       await old.close();
       await databaseFactory.setDatabasesPath(dir.path);
       final upgraded = DBHelper();
       await upgraded.init();
       try {
-        expect(await upgraded.db.getVersion(), 10);
+        expect(await upgraded.db.getVersion(), appDBVersion);
         expect(
           (await upgraded.db.rawQuery(
             'PRAGMA foreign_keys',
@@ -346,7 +374,7 @@ void main() {
           1,
         );
         expect(await upgraded.db.rawQuery('PRAGMA foreign_key_check'), isEmpty);
-        for (final table in WishLoopBackup.tables) {
+        for (final table in legacyTables) {
           expect(await upgraded.db.query(table), before[table], reason: table);
         }
         final newRepo = HobbyWalletRepository(upgraded.db, clock: () => now);

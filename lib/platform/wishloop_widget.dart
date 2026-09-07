@@ -86,6 +86,7 @@ class WishLoopWidget {
         .firstOrNull;
     String format(int amount, {bool signed = false}) => RewardMoney.format(
       amount,
+      currency: s.currency,
       locale: l.localeName,
       signed: signed,
       showSymbol: !signed,

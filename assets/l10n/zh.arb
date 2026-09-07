@@ -1736,5 +1736,53 @@
     "wWidgetRefresh": "打开更新今日兴趣",
     "wWidgetEmpty": "添加你的第一个兴趣",
     "wWidgetNoWish": "设置一个主要愿望",
-    "wWidgetOpen": "打开 WishLoop"
+    "wWidgetOpen": "打开 WishLoop",
+    "wCurrencyCny": "人民币 · CNY ¥",
+    "wCurrencyUsd": "美元 · USD $",
+    "wCurrencyChangeTitle": "切换为{currency}？",
+    "@wCurrencyChangeTitle": {
+        "placeholders": {
+            "currency": {
+                "type": "String"
+            }
+        }
+    },
+    "wCurrencyChangeBody": "余额、兴趣奖励、愿望价格和历史记录将统一使用新单位。金额数值不变，不进行汇率换算。",
+    "wConfirmCurrency": "确认切换",
+    "wBalanceHistory": "余额变化",
+    "wChartDays": "{days}天",
+    "@wChartDays": {
+        "placeholders": {
+            "days": {
+                "type": "int"
+            }
+        }
+    },
+    "wChartRecentDays": "最近{days}天",
+    "@wChartRecentDays": {
+        "placeholders": {
+            "days": {
+                "type": "int"
+            }
+        }
+    },
+    "wChartDayChange": "当日变化 {amount}",
+    "@wChartDayChange": {
+        "placeholders": {
+            "amount": {
+                "type": "String"
+            }
+        }
+    },
+    "wChartPeriodChange": "期间变化 {amount}",
+    "@wChartPeriodChange": {
+        "placeholders": {
+            "amount": {
+                "type": "String"
+            }
+        }
+    },
+    "wWidgetAddHelp": "小组件添加帮助",
+    "wWidgetAddInstructions": "先打开一次 WishLoop，再长按桌面空白处，在小组件列表中查找 WishLoop。\n\nvivo／OriginOS：进入「原子组件」，找到 WishLoop 后长按拖到桌面。\n\n如果应用内添加按钮没有弹出确认框，可用上述桌面入口手动添加。组件大小与后台刷新时机会受桌面和省电设置影响。",
+    "wClose": "关闭"
 }

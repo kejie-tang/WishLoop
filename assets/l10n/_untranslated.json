@@ -245,7 +245,20 @@
     "wWidgetRefresh",
     "wWidgetEmpty",
     "wWidgetNoWish",
-    "wWidgetOpen"
+    "wWidgetOpen",
+    "wCurrencyCny",
+    "wCurrencyUsd",
+    "wCurrencyChangeTitle",
+    "wCurrencyChangeBody",
+    "wConfirmCurrency",
+    "wBalanceHistory",
+    "wChartDays",
+    "wChartRecentDays",
+    "wChartDayChange",
+    "wChartPeriodChange",
+    "wWidgetAddHelp",
+    "wWidgetAddInstructions",
+    "wClose"
   ],
 
   "cs": [
@@ -406,7 +419,20 @@
     "wWidgetRefresh",
     "wWidgetEmpty",
     "wWidgetNoWish",
-    "wWidgetOpen"
+    "wWidgetOpen",
+    "wCurrencyCny",
+    "wCurrencyUsd",
+    "wCurrencyChangeTitle",
+    "wCurrencyChangeBody",
+    "wConfirmCurrency",
+    "wBalanceHistory",
+    "wChartDays",
+    "wChartRecentDays",
+    "wChartDayChange",
+    "wChartPeriodChange",
+    "wWidgetAddHelp",
+    "wWidgetAddInstructions",
+    "wClose"
   ],
 
   "de": [
@@ -775,7 +801,20 @@
     "wWidgetRefresh",
     "wWidgetEmpty",
     "wWidgetNoWish",
-    "wWidgetOpen"
+    "wWidgetOpen",
+    "wCurrencyCny",
+    "wCurrencyUsd",
+    "wCurrencyChangeTitle",
+    "wCurrencyChangeBody",
+    "wConfirmCurrency",
+    "wBalanceHistory",
+    "wChartDays",
+    "wChartRecentDays",
+    "wChartDayChange",
+    "wChartPeriodChange",
+    "wWidgetAddHelp",
+    "wWidgetAddInstructions",
+    "wClose"
   ],
 
   "es": [
@@ -1070,7 +1109,20 @@
     "wWidgetRefresh",
     "wWidgetEmpty",
     "wWidgetNoWish",
-    "wWidgetOpen"
+    "wWidgetOpen",
+    "wCurrencyCny",
+    "wCurrencyUsd",
+    "wCurrencyChangeTitle",
+    "wCurrencyChangeBody",
+    "wConfirmCurrency",
+    "wBalanceHistory",
+    "wChartDays",
+    "wChartRecentDays",
+    "wChartDayChange",
+    "wChartPeriodChange",
+    "wWidgetAddHelp",
+    "wWidgetAddInstructions",
+    "wClose"
   ],
 
   "eu": [
@@ -1796,7 +1848,20 @@
     "wWidgetRefresh",
     "wWidgetEmpty",
     "wWidgetNoWish",
-    "wWidgetOpen"
+    "wWidgetOpen",
+    "wCurrencyCny",
+    "wCurrencyUsd",
+    "wCurrencyChangeTitle",
+    "wCurrencyChangeBody",
+    "wConfirmCurrency",
+    "wBalanceHistory",
+    "wChartDays",
+    "wChartRecentDays",
+    "wChartDayChange",
+    "wChartPeriodChange",
+    "wWidgetAddHelp",
+    "wWidgetAddInstructions",
+    "wClose"
   ],
 
   "fa": [
@@ -2185,7 +2250,20 @@
     "wWidgetRefresh",
     "wWidgetEmpty",
     "wWidgetNoWish",
-    "wWidgetOpen"
+    "wWidgetOpen",
+    "wCurrencyCny",
+    "wCurrencyUsd",
+    "wCurrencyChangeTitle",
+    "wCurrencyChangeBody",
+    "wConfirmCurrency",
+    "wBalanceHistory",
+    "wChartDays",
+    "wChartRecentDays",
+    "wChartDayChange",
+    "wChartPeriodChange",
+    "wWidgetAddHelp",
+    "wWidgetAddInstructions",
+    "wClose"
   ],
 
   "fr": [
@@ -2517,7 +2595,20 @@
     "wWidgetRefresh",
     "wWidgetEmpty",
     "wWidgetNoWish",
-    "wWidgetOpen"
+    "wWidgetOpen",
+    "wCurrencyCny",
+    "wCurrencyUsd",
+    "wCurrencyChangeTitle",
+    "wCurrencyChangeBody",
+    "wConfirmCurrency",
+    "wBalanceHistory",
+    "wChartDays",
+    "wChartRecentDays",
+    "wChartDayChange",
+    "wChartPeriodChange",
+    "wWidgetAddHelp",
+    "wWidgetAddInstructions",
+    "wClose"
   ],
 
   "he": [
@@ -2678,7 +2769,20 @@
     "wWidgetRefresh",
     "wWidgetEmpty",
     "wWidgetNoWish",
-    "wWidgetOpen"
+    "wWidgetOpen",
+    "wCurrencyCny",
+    "wCurrencyUsd",
+    "wCurrencyChangeTitle",
+    "wCurrencyChangeBody",
+    "wConfirmCurrency",
+    "wBalanceHistory",
+    "wChartDays",
+    "wChartRecentDays",
+    "wChartDayChange",
+    "wChartPeriodChange",
+    "wWidgetAddHelp",
+    "wWidgetAddInstructions",
+    "wClose"
   ],
 
   "hu": [
@@ -2927,7 +3031,20 @@
     "wWidgetRefresh",
     "wWidgetEmpty",
     "wWidgetNoWish",
-    "wWidgetOpen"
+    "wWidgetOpen",
+    "wCurrencyCny",
+    "wCurrencyUsd",
+    "wCurrencyChangeTitle",
+    "wCurrencyChangeBody",
+    "wConfirmCurrency",
+    "wBalanceHistory",
+    "wChartDays",
+    "wChartRecentDays",
+    "wChartDayChange",
+    "wChartPeriodChange",
+    "wWidgetAddHelp",
+    "wWidgetAddInstructions",
+    "wClose"
   ],
 
   "it": [
@@ -3283,7 +3400,20 @@
     "wWidgetRefresh",
     "wWidgetEmpty",
     "wWidgetNoWish",
-    "wWidgetOpen"
+    "wWidgetOpen",
+    "wCurrencyCny",
+    "wCurrencyUsd",
+    "wCurrencyChangeTitle",
+    "wCurrencyChangeBody",
+    "wConfirmCurrency",
+    "wBalanceHistory",
+    "wChartDays",
+    "wChartRecentDays",
+    "wChartDayChange",
+    "wChartPeriodChange",
+    "wWidgetAddHelp",
+    "wWidgetAddInstructions",
+    "wClose"
   ],
 
   "ja": [
@@ -3548,7 +3678,20 @@
     "wWidgetRefresh",
     "wWidgetEmpty",
     "wWidgetNoWish",
-    "wWidgetOpen"
+    "wWidgetOpen",
+    "wCurrencyCny",
+    "wCurrencyUsd",
+    "wCurrencyChangeTitle",
+    "wCurrencyChangeBody",
+    "wConfirmCurrency",
+    "wBalanceHistory",
+    "wChartDays",
+    "wChartRecentDays",
+    "wChartDayChange",
+    "wChartPeriodChange",
+    "wWidgetAddHelp",
+    "wWidgetAddInstructions",
+    "wClose"
   ],
 
   "nb": [
@@ -4272,7 +4415,20 @@
     "wWidgetRefresh",
     "wWidgetEmpty",
     "wWidgetNoWish",
-    "wWidgetOpen"
+    "wWidgetOpen",
+    "wCurrencyCny",
+    "wCurrencyUsd",
+    "wCurrencyChangeTitle",
+    "wCurrencyChangeBody",
+    "wConfirmCurrency",
+    "wBalanceHistory",
+    "wChartDays",
+    "wChartRecentDays",
+    "wChartDayChange",
+    "wChartPeriodChange",
+    "wWidgetAddHelp",
+    "wWidgetAddInstructions",
+    "wClose"
   ],
 
   "nl": [
@@ -5003,7 +5159,20 @@
     "wWidgetRefresh",
     "wWidgetEmpty",
     "wWidgetNoWish",
-    "wWidgetOpen"
+    "wWidgetOpen",
+    "wCurrencyCny",
+    "wCurrencyUsd",
+    "wCurrencyChangeTitle",
+    "wCurrencyChangeBody",
+    "wConfirmCurrency",
+    "wBalanceHistory",
+    "wChartDays",
+    "wChartRecentDays",
+    "wChartDayChange",
+    "wChartPeriodChange",
+    "wWidgetAddHelp",
+    "wWidgetAddInstructions",
+    "wClose"
   ],
 
   "pl": [
@@ -5272,7 +5441,20 @@
     "wWidgetRefresh",
     "wWidgetEmpty",
     "wWidgetNoWish",
-    "wWidgetOpen"
+    "wWidgetOpen",
+    "wCurrencyCny",
+    "wCurrencyUsd",
+    "wCurrencyChangeTitle",
+    "wCurrencyChangeBody",
+    "wConfirmCurrency",
+    "wBalanceHistory",
+    "wChartDays",
+    "wChartRecentDays",
+    "wChartDayChange",
+    "wChartPeriodChange",
+    "wWidgetAddHelp",
+    "wWidgetAddInstructions",
+    "wClose"
   ],
 
   "pt": [
@@ -5674,7 +5856,20 @@
     "wWidgetRefresh",
     "wWidgetEmpty",
     "wWidgetNoWish",
-    "wWidgetOpen"
+    "wWidgetOpen",
+    "wCurrencyCny",
+    "wCurrencyUsd",
+    "wCurrencyChangeTitle",
+    "wCurrencyChangeBody",
+    "wConfirmCurrency",
+    "wBalanceHistory",
+    "wChartDays",
+    "wChartRecentDays",
+    "wChartDayChange",
+    "wChartPeriodChange",
+    "wWidgetAddHelp",
+    "wWidgetAddInstructions",
+    "wClose"
   ],
 
   "ru": [
@@ -5942,7 +6137,20 @@
     "wWidgetRefresh",
     "wWidgetEmpty",
     "wWidgetNoWish",
-    "wWidgetOpen"
+    "wWidgetOpen",
+    "wCurrencyCny",
+    "wCurrencyUsd",
+    "wCurrencyChangeTitle",
+    "wCurrencyChangeBody",
+    "wConfirmCurrency",
+    "wBalanceHistory",
+    "wChartDays",
+    "wChartRecentDays",
+    "wChartDayChange",
+    "wChartPeriodChange",
+    "wWidgetAddHelp",
+    "wWidgetAddInstructions",
+    "wClose"
   ],
 
   "tr": [
@@ -6190,7 +6398,20 @@
     "wWidgetRefresh",
     "wWidgetEmpty",
     "wWidgetNoWish",
-    "wWidgetOpen"
+    "wWidgetOpen",
+    "wCurrencyCny",
+    "wCurrencyUsd",
+    "wCurrencyChangeTitle",
+    "wCurrencyChangeBody",
+    "wConfirmCurrency",
+    "wBalanceHistory",
+    "wChartDays",
+    "wChartRecentDays",
+    "wChartDayChange",
+    "wChartPeriodChange",
+    "wWidgetAddHelp",
+    "wWidgetAddInstructions",
+    "wClose"
   ],
 
   "uk": [
@@ -6388,7 +6609,20 @@
     "wWidgetRefresh",
     "wWidgetEmpty",
     "wWidgetNoWish",
-    "wWidgetOpen"
+    "wWidgetOpen",
+    "wCurrencyCny",
+    "wCurrencyUsd",
+    "wCurrencyChangeTitle",
+    "wCurrencyChangeBody",
+    "wConfirmCurrency",
+    "wBalanceHistory",
+    "wChartDays",
+    "wChartRecentDays",
+    "wChartDayChange",
+    "wChartPeriodChange",
+    "wWidgetAddHelp",
+    "wWidgetAddInstructions",
+    "wClose"
   ],
 
   "vi": [
@@ -6637,6 +6871,19 @@
     "wWidgetRefresh",
     "wWidgetEmpty",
     "wWidgetNoWish",
-    "wWidgetOpen"
+    "wWidgetOpen",
+    "wCurrencyCny",
+    "wCurrencyUsd",
+    "wCurrencyChangeTitle",
+    "wCurrencyChangeBody",
+    "wConfirmCurrency",
+    "wBalanceHistory",
+    "wChartDays",
+    "wChartRecentDays",
+    "wChartDayChange",
+    "wChartPeriodChange",
+    "wWidgetAddHelp",
+    "wWidgetAddInstructions",
+    "wClose"
   ]
 }

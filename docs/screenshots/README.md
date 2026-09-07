@@ -2,7 +2,7 @@
 
 这些截图用于项目 [README](../../README.md) 的功能展示。
 
-- 版本：WishLoop **1.2.0（202）** release APK。
+- 版本：账户与货币设置为 **1.3.0（203）** release APK；其余页面为 **1.2.0（202）** release APK。
 - 设备：专用 Android 16 / API 36 模拟器，1080 × 2400 像素。
 - 语言：简体中文；主题：浅色及深色。
 - 采集日期：2026-09-07。
@@ -12,7 +12,9 @@
 | --- | --- |
 | [today.png](today.png) | 紧凑首页、周奖励日历和兴趣优先布局 |
 | [hobbies.png](hobbies.png) | 分类、拖动排序、正数奖励与负数习惯 |
-| [wallet.png](wallet.png) | 余额、当月净奖励和账本流水 |
+| [wallet.png](wallet.png) | 人民币余额与 14 / 30 / 180 天变化曲线 |
+| [wallet-usd.png](wallet-usd.png) | 切换美元后的余额与曲线 |
+| [currency-settings.png](currency-settings.png) | 默认货币切换与小组件帮助入口 |
 | [wishlist.png](wishlist.png) | 愿望进度、预计天数和已兑换记录 |
 | [calendar-month.png](calendar-month.png) | 按当前月份归一化的每日净奖励 |
 | [dark-mode.png](dark-mode.png) | 深色模式下的今天页面 |

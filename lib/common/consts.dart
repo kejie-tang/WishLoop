@@ -60,7 +60,7 @@ const String appSyncFailedZipFile = "app_sync_failed.zip";
 /// ## version 8
 /// - add mh_groups.sort_position column (manual group sort)
 // Hobby Wallet: additive virtual ledger and wishlist migration.
-const int appDBVersion = 10;
+const int appDBVersion = 11;
 //#endregion
 
 //#region app-theme

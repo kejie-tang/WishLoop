@@ -2231,5 +2231,53 @@
     "wWidgetRefresh": "Open to refresh today’s hobbies",
     "wWidgetEmpty": "Add your first hobby",
     "wWidgetNoWish": "Choose a primary wish",
-    "wWidgetOpen": "Open WishLoop"
+    "wWidgetOpen": "Open WishLoop",
+    "wCurrencyCny": "Chinese yuan · CNY ¥",
+    "wCurrencyUsd": "US dollar · USD $",
+    "wCurrencyChangeTitle": "Switch to {currency}?",
+    "@wCurrencyChangeTitle": {
+        "placeholders": {
+            "currency": {
+                "type": "String"
+            }
+        }
+    },
+    "wCurrencyChangeBody": "The balance, hobby rewards, wish prices and history will use the new unit. Numerical amounts stay unchanged; no exchange-rate conversion is performed.",
+    "wConfirmCurrency": "Confirm switch",
+    "wBalanceHistory": "Balance history",
+    "wChartDays": "{days}d",
+    "@wChartDays": {
+        "placeholders": {
+            "days": {
+                "type": "int"
+            }
+        }
+    },
+    "wChartRecentDays": "Last {days} days",
+    "@wChartRecentDays": {
+        "placeholders": {
+            "days": {
+                "type": "int"
+            }
+        }
+    },
+    "wChartDayChange": "Daily change {amount}",
+    "@wChartDayChange": {
+        "placeholders": {
+            "amount": {
+                "type": "String"
+            }
+        }
+    },
+    "wChartPeriodChange": "Period change {amount}",
+    "@wChartPeriodChange": {
+        "placeholders": {
+            "amount": {
+                "type": "String"
+            }
+        }
+    },
+    "wWidgetAddHelp": "How to add the widget",
+    "wWidgetAddInstructions": "Open WishLoop once, then long-press an empty area on the home screen and find WishLoop in the widget list.\n\nvivo / OriginOS: open Atomic components, find WishLoop, then drag it onto the home screen.\n\nIf the in-app button does not show a confirmation, use the home screen picker. Widget sizing and background refresh depend on the launcher and power settings.",
+    "wClose": "Close"
 }
