@@ -20,7 +20,7 @@ WishLoop 的初衷是帮助你培养兴趣，并为喜欢的事持续留出时�
 
 ## 界面预览
 
-以下为 **Android 实际截图**，使用演示数据。预计天数小组件来自 v1.4.1，账户和深色小组件来自 v1.4.0，货币设置来自 v1.3.0，其余页面来自 v1.2.0。点击图片可查看大图。
+以下 6 张为 **Android 实际截图**，使用演示数据。桌面小组件来自 v1.4.1，账户来自 v1.4.0，其余页面来自 v1.2.0。点击图片可查看大图。
 
 <p align="center">
   <a href="docs/screenshots/today.png"><img src="docs/screenshots/today.png" width="260" alt="紧凑首页：奖励日历、账户余额和兴趣优先列表"></a>
@@ -31,13 +31,7 @@ WishLoop 的初衷是帮助你培养兴趣，并为喜欢的事持续留出时�
 <p align="center">
   <a href="docs/screenshots/wishlist.png"><img src="docs/screenshots/wishlist.png" width="260" alt="愿望页面：目标金额、当前进度、预计天数及兑换记录"></a>
   <a href="docs/screenshots/calendar-month.png"><img src="docs/screenshots/calendar-month.png" width="260" alt="月奖励日历：用红绿深浅显示每日净奖励，支持选择历史日期"></a>
-  <a href="docs/screenshots/dark-mode.png"><img src="docs/screenshots/dark-mode.png" width="260" alt="深色模式下的紧凑首页、奖励日历和兴趣列表"></a>
-</p>
-
-<p align="center">
   <a href="docs/screenshots/home-widget-estimate.png"><img src="docs/screenshots/home-widget-estimate.png" width="260" alt="Android 4×2 桌面小组件：余额、愿望进度、预计达成天数，以及可直接点击的兴趣 emoji 和金额"></a>
-  <a href="docs/screenshots/categories.png"><img src="docs/screenshots/categories.png" width="260" alt="兴趣分类管理：新建、改名、删除与拖动排序"></a>
-  <a href="docs/screenshots/currency-settings.png"><img src="docs/screenshots/currency-settings.png" width="260" alt="默认货币可在人民币和美元之间切换，并提供小组件添加帮助"></a>
 </p>
 
 ## 为兴趣设立奖励，为坚持留个纪念
